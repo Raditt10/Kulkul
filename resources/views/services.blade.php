@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/main.js') }}"></script>
+    <style href="{{ asset('css/sidebarscroll.css') }}"></style>
 
     <!-- Tailwind custom config -->
     <script>
@@ -179,7 +180,7 @@
         </div>
 
         <!-- Menu Items -->
-        <ul class="flex-1 overflow-y-auto sidebar-scroll px-6 py-4 space-y-3">
+        <ul class="px-6 py-6 space-y-3">
             <li>
                 <a href="{{ route('home') }}" class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30">
                     <i class="fas fa-home text-orange-400 w-5"></i>
@@ -197,11 +198,11 @@
                     <i class="fas fa-cogs text-orange-400 w-5"></i>
                     <span class="font-medium">Layanan</span>
                 </a>
-            </li> 
+            </li>
             <li>
                 <a href="{{ route('eskul') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-list text-orange-400 w-5"></i>
-                 <span class="font-medium">Eskul list</span>
+                    <span class="font-medium">Eskul list</span>
                 </a>
             </li>
             <li>
@@ -211,22 +212,22 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                <a href="{{ route('friend') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-users text-orange-400 w-5"></i>
                     <span class="font-medium">Teman Saya</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                <a href="{{ route('settings') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-cog text-orange-400 w-5"></i>
                     <span class="font-medium">Pengaturan</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('login') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-sign-in-alt text-green-400 w-5"></i>
+                    <i class="fas fa-sign-in-alt text-orange-400 w-5"></i>
                     <span class="font-medium">Masuk</span>
-            </li>
+
             <li class="pt-4 border-t border-orange-500/20">
                 <a href="#" class="flex items-center space-x-4 text-red-300 hover:text-red-200 hover:bg-red-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-sign-out-alt text-red-400 w-5"></i>
@@ -436,6 +437,28 @@
     </footer>
 
     <script>
+    // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full');
+            sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+        });
+    
+// Swiper 
   const swiper = new Swiper('.mySwiper', {
     effect: 'coverflow',
     grabCursor: true,

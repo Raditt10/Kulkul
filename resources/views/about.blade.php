@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,59 +29,72 @@
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' }
+                            '0%, 100%': {
+                                transform: 'translateY(0px)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            }
                         },
                         glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(251, 146, 60, 0.4)' },
-                            '100%': { boxShadow: '0 0 40px rgba(251, 146, 60, 0.8), 0 0 60px rgba(234, 88, 12, 0.3)' }
+                            '0%': {
+                                boxShadow: '0 0 20px rgba(251, 146, 60, 0.4)'
+                            },
+                            '100%': {
+                                boxShadow: '0 0 40px rgba(251, 146, 60, 0.8), 0 0 60px rgba(234, 88, 12, 0.3)'
+                            }
                         },
                         slideUp: {
-                            '0%': { transform: 'translateY(100px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                            '0%': {
+                                transform: 'translateY(100px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            }
                         },
                         slideIn: {
-                            '0%': { transform: 'translateX(100px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                            '0%': {
+                                transform: 'translateX(100px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            }
                         },
                         rotate: {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' }
+                            '0%': {
+                                transform: 'rotate(0deg)'
+                            },
+                            '100%': {
+                                transform: 'rotate(360deg)'
+                            }
                         },
                         fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            }
                         }
                     }
                 }
             }
         }
     </script>
-    <style>
-     /* Custom Scrollbar untuk Sidebar */
-        .sidebar-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-track {
-            background: rgba(51, 65, 85, 0.3);
-            border-radius: 10px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #f97316, #dc2626);
-            border-radius: 10px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #fb923c, #ef4444);
-        }
-</style>
+    <style href="{{ asset('css/sidebarscroll.css') }}"></style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-slate-950 overflow-x-hidden">
     <!-- Navigation Bar -->
     <nav class="glass-effect fixed w-full z-50 transition-all duration-500 border-b border-orange-500/20 bg-slate-900/80">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-20">
-                                <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-6">
                     <!-- Logo -->
                     <div class="relative group">
                         <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center animate-glow hover:scale-110 transition-all duration-300 shadow-xl">
@@ -112,7 +126,7 @@
                             TENTANG KAMI
                             <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400"></span>
                         </span>
-                    </a>    
+                    </a>
                     <a href="{{ route('services') }}" class="group flex items-center text-slate-300 hover:text-white font-medium transition-all duration-300 hover-lift">
                         <i class="fas fa-cogs mr-2 group-hover:animate-spin text-orange-400"></i>
                         <span class="relative">
@@ -145,20 +159,18 @@
         </div>
     </nav>
 
-      <!-- Sidebar -->
-   <div id="sidebar" class="fixed top-0 right-0 w-80 h-full backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95 flex flex-col">
-        <!-- Header (Fixed) -->
-        <div class="flex items-center justify-between px-6 py-4 border-b border-orange-500/30 bg-gradient-to-r from-orange-600/20 to-red-600/20 flex-shrink-0">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 right-0 w-80 h-full backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 py-4 border-b border-orange-500/30 bg-gradient-to-r from-orange-600/20 to-red-600/20">
             <h2 class="text-xl font-bold text-white">Menu Navigasi</h2>
             <button id="closeSidebar" class="text-slate-300 hover:text-white transition-colors duration-300 hover:rotate-90">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+                <i class="fas fa-times text-xl"></i>
             </button>
         </div>
 
         <!-- Profile Card -->
-        <div class="px-6 py-4 border-b border-orange-500/30 flex-shrink-0">
+        <div class="px-6 py-6 border-b border-orange-500/20">
             <div class="flex items-center space-x-4 hover-lift bg-gradient-to-r from-orange-600/10 to-red-600/10 p-4 rounded-xl border border-orange-500/20">
                 <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center animate-pulse-slow shadow-lg">
                     <i class="fas fa-user text-white text-xl"></i>
@@ -172,7 +184,7 @@
         </div>
 
         <!-- Menu Items -->
-        <ul class="flex-1 overflow-y-auto sidebar-scroll px-6 py-4 space-y-3">
+        <ul class="px-6 py-6 space-y-3">
             <li>
                 <a href="{{ route('home') }}" class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30">
                     <i class="fas fa-home text-orange-400 w-5"></i>
@@ -190,11 +202,11 @@
                     <i class="fas fa-cogs text-orange-400 w-5"></i>
                     <span class="font-medium">Layanan</span>
                 </a>
-            </li> 
+            </li>
             <li>
                 <a href="{{ route('eskul') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-list text-orange-400 w-5"></i>
-                 <span class="font-medium">Eskul list</span>
+                    <span class="font-medium">Eskul list</span>
                 </a>
             </li>
             <li>
@@ -204,22 +216,22 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                <a href="{{ route('friend') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-users text-orange-400 w-5"></i>
                     <span class="font-medium">Teman Saya</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                <a href="{{ route('settings') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-cog text-orange-400 w-5"></i>
                     <span class="font-medium">Pengaturan</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('login') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-sign-in-alt text-green-400 w-5"></i>
+                    <i class="fas fa-sign-in-alt text-orange-400 w-5"></i>
                     <span class="font-medium">Masuk</span>
-            </li>
+
             <li class="pt-4 border-t border-orange-500/20">
                 <a href="#" class="flex items-center space-x-4 text-red-300 hover:text-red-200 hover:bg-red-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-sign-out-alt text-red-400 w-5"></i>
@@ -320,7 +332,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Right Content -->
                 <div class="relative animate-slide-in">
                     <div class="relative group hover-lift">
@@ -382,7 +394,7 @@
                 </p>
                 <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-red-400 mx-auto mt-6"></div>
             </div>
-            
+
             <div class="grid md:grid-cols-3 gap-10">
                 <!-- Pembina Card 1 -->
                 <div class="group bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-orange-500/20 hover:border-orange-400/40 transition-all duration-500">
@@ -455,7 +467,7 @@
         </div>
     </section>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-slate-950 py-12 relative">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 text-slate-400">
@@ -502,7 +514,28 @@
             </div>
         </div>
     </footer>
-</body>
-</html>
+    <script>
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const closeSidebar = document.getElementById('closeSidebar');
 
-  
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full');
+            sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+        });
+    </script>
+</body>
+
+</html>
