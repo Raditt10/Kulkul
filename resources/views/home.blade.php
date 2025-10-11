@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Kulkul SMKN 13 BANDUNG</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-    <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/sidebarscroll.css') }}">
    <script>
     tailwind.config = {
         theme: {
@@ -60,179 +60,13 @@
         }
     }
 </script>
-<style>
-        .sidebar-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-track {
-            background: rgba(51, 65, 85, 0.3);
-            border-radius: 10px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #f97316, #dc2626);
-            border-radius: 10px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #fb923c, #ef4444);
-        }
-</style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-    <!-- Navigation Bar -->
-    <nav class="glass-effect fixed w-full z-50 transition-all duration-500 border-b border-orange-500/20 bg-slate-900/80">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
-                   
-                <div class="flex items-center space-x-6">
-                    <!-- Logo -->
-                    <div class="relative group">
-                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center animate-glow hover:scale-110 transition-all duration-300 shadow-xl">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-10 h-10 object-contain">
-                        </div>
-                        <!-- Efek hover overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                    </div>
-
-                    <!-- Brand Text -->
-                    <div class="hidden md:block">
-                        <h1 class="text-xl font-bold text-white">SMKN 13 Bandung</h1>
-                        <p class="text-sm text-orange-300">Excellence in Education</p>
-                    </div>
-                </div>
-
-
-                <!-- Navigation Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ route('home') }}" class="group flex items-center text-white font-medium transition-all duration-300 hover-lift">
-                        <i class="fas fa-home mr-2 group-hover:animate-bounce text-orange-400"></i>
-                        <span class="relative">
-                            BERANDA
-                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400"></span>
-                        </span>
-                    </a>
-                    <a href="{{ route('about') }}" class="group flex items-center text-slate-300 hover:text-white font-medium transition-all duration-300 hover-lift">
-                        <i class="fas fa-info-circle mr-2 group-hover:animate-pulse text-orange-400"></i>
-                        <span class="relative">
-                            TENTANG KAMI
-                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>    
-                    <a href="{{ route('services') }}" class="group flex items-center text-slate-300 hover:text-white font-medium transition-all duration-300 hover-lift">
-                        <i class="fas fa-cogs mr-2 group-hover:animate-spin text-orange-400"></i>
-                        <span class="relative">
-                            LAYANAN
-                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                </div>
-
-                <!-- User Profile -->
-                <div class="flex items-center">
-                    <div class="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-1 shadow-xl">
-                        <div class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
-                            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full overflow-hidden animate-pulse-slow shadow-lg">
-                                <div class="w-full h-full bg-gradient-to-br from-orange-300 to-red-400 flex items-center justify-center">
-                                    <i class="fas fa-user text-white text-lg"></i>
-                                </div>
-                            </div>
-                            <div class="hidden sm:block">
-                                <div class="text-sm font-bold text-white">Username</div>
-                                <div class="text-xs text-orange-300">NIS : 2080710</div>
-                            </div>
-                            <button id="sidebarToggle" class="text-slate-300 hover:text-white transition-colors duration-300 hover:rotate-90">
-                                <i class="fas fa-bars text-lg"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Sidebar -->
-   <div id="sidebar" class="fixed top-0 right-0 w-80 h-full backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95 flex flex-col">
-        <!-- Header (Fixed) -->
-        <div class="flex items-center justify-between px-6 py-4 border-b border-orange-500/30 bg-gradient-to-r from-orange-600/20 to-red-600/20 flex-shrink-0">
-            <h2 class="text-xl font-bold text-white">Menu Navigasi</h2>
-            <button id="closeSidebar" class="text-slate-300 hover:text-white transition-colors duration-300 hover:rotate-90">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-
-        <!-- Profile Card -->
-        <div class="px-6 py-4 border-b border-orange-500/30 flex-shrink-0">
-            <div class="flex items-center space-x-4 hover-lift bg-gradient-to-r from-orange-600/10 to-red-600/10 p-4 rounded-xl border border-orange-500/20">
-                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center animate-pulse-slow shadow-lg">
-                    <i class="fas fa-user text-white text-xl"></i>
-                </div>
-                <div>
-                    <p class="font-bold text-white text-base">Username</p>
-                    <p class="text-sm text-orange-300">NIS: 2080710</p>
-                    <p class="text-xs text-slate-400">Siswa Aktif</p>
-                </div>
-            </div>
-        </div>
-
-      <!-- Menu Items -->
-        <ul class="px-6 py-6 space-y-3">
-            <li>
-                <a href="{{ route('home') }}" class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30">
-                    <i class="fas fa-home text-orange-400 w-5"></i>
-                    <span class="font-medium">Beranda</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('about') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-info-circle text-orange-400 w-5"></i>
-                    <span class="font-medium">Tentang Kami</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('services') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-cogs text-orange-400 w-5"></i>
-                    <span class="font-medium">Layanan</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('eskul') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-list text-orange-400 w-5"></i>
-                    <span class="font-medium">Eskul list</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('profile') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-user-graduate text-orange-400 w-5"></i>
-                    <span class="font-medium">Profil Saya</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('friend') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-users text-orange-400 w-5"></i>
-                    <span class="font-medium">Teman Saya</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('settings') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-cog text-orange-400 w-5"></i>
-                    <span class="font-medium">Pengaturan</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('login') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-sign-in-alt text-orange-400 w-5"></i>
-                    <span class="font-medium">Masuk</span>
-
-            <li class="pt-4 border-t border-orange-500/20">
-                <a href="#" class="flex items-center space-x-4 text-red-300 hover:text-red-200 hover:bg-red-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-sign-out-alt text-red-400 w-5"></i>
-                    <span class="font-medium">Keluar</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+    
+    @include('includes.navbar')
+  
+    @include('includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
@@ -309,13 +143,12 @@
                         <!-- Hero Image dengan Overlay (dengan teks yang berganti) -->
                         <div class="relative rounded-2xl overflow-hidden group mb-6">
                         <!-- Ubah bg jadi gambar -->
-                        <div 
+                         <div 
                             class="aspect-video bg-cover bg-center flex items-center justify-center" 
-                            style="background-image: url('{{ asset('images/eskul.jpg') }}');"
-
-                        >
+                            style="background-image: url('{{ asset('images/eskul.jpg') }}');">
+                            
                             <!-- Overlay biar teks tetap terbaca -->
-                            <div class="absolute inset-0 bg     -black/50"></div>
+                            <div class="absolute inset-0 bg-black/50"></div>
 
                             <!-- Konten -->
                             <div class="relative text-center text-white z-10">
@@ -395,7 +228,7 @@
         >
             <animate
                 attributeName="d"
-                dur="5s"
+                dur="5s" dowidnp
                 repeatCount="indefinite"
                 values="
                     M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z;
@@ -498,121 +331,9 @@
 
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 py-12 relative">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 text-slate-400">
-                <div>
-                    <h4 class="text-white font-bold mb-4">SMKN 13 Bandung</h4>
-                    <p class="text-sm">
-                        Jl. Soekarno-Hatta KM.10 <br>
-                        Bandung, Jawa Barat 40286
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-orange-400">Home</a></li>
-                        <li><a href="#" class="hover:text-orange-400">About Us</a></li>
-                        <li><a href="#" class="hover:text-orange-400">Services</a></li>
-                        <li><a href="#" class="hover:text-orange-400">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-phone mr-2"></i> (022) 7318960</li>
-                        <li><i class="fas fa-envelope mr-2"></i> info@smkn13bdg.sch.id</li>
-                    </ul>
-                </div>  
-                <div>
-                    <h4 class="text-white font-bold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
-                            <i class="fab fa-facebook-f text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
-                            <i class="fab fa-twitter text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
-                            <i class="fab fa-instagram text-white"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
-                <p>&copy; 2025 SMKN 13 Bandung. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-     // Sidebar Toggle
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const closeSidebar = document.getElementById('closeSidebar');
+     @include('includes.footer')
 
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.remove('translate-x-full');
-        sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
-    });
-
-    closeSidebar.addEventListener('click', () => {
-        sidebar.classList.add('translate-x-full');
-        sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
-    });
-
-    sidebarOverlay.addEventListener('click', () => {
-        sidebar.classList.add('translate-x-full');
-        sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
-    });
-
-        (function () {
-    const texts = ['Berdaya suai', 'Kompeten', 'Berahlak Mulia'];
-    const el = document.getElementById('rotating-title');
-    let idx = 0;
-    const fadeDuration = 500; // harus sinkron dengan duration-500 di class tailwind (ms)
-    const displayInterval = 2500; // berapa lama tiap teks ditampilkan (ms)
-    let intervalId = null;
-    let isPaused = false;
-
-    function showNext() {
-      // fade out
-      el.classList.add('opacity-0');
-      setTimeout(() => {
-        idx = (idx + 1) % texts.length;
-        el.textContent = texts[idx];
-        // fade in
-        el.classList.remove('opacity-0');
-      }, fadeDuration);
-    }
-
-    function start() {
-      if (intervalId) return;
-      intervalId = setInterval(() => {
-        if (!isPaused) showNext();
-      }, displayInterval);
-    }
-
-    function stop() {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-
-    // pause on hover of the whole card (".group") supaya pembaca dapat memfokuskan teks
-    const card = el.closest('.group');
-    if (card) {
-      card.addEventListener('mouseenter', () => { isPaused = true; });
-      card.addEventListener('mouseleave', () => { isPaused = false; });
-    }
-
-    // start after DOM siap
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', start);
-    } else {
-      start();
-    }
-  })();
-  </script>
+    <script src="{{ asset('js/overllayImagePage.js') }}"></script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 </html> 

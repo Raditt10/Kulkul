@@ -157,3 +157,4 @@ Route::get('/friend', function () {
         ]
     ]);
 })->name('friend');
+

@@ -90,74 +90,10 @@
 </head>
 
 <body class="bg-slate-950 overflow-x-hidden">
-    <!-- Navigation Bar -->
-    <nav class="glass-effect fixed w-full z-50 transition-all duration-500 border-b border-orange-500/20 bg-slate-900/80">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-6">
-                    <!-- Logo -->
-                    <div class="relative group">
-                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center animate-glow hover:scale-110 transition-all duration-300 shadow-xl">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-10 h-10 object-contain">
-                        </div>
-                        <!-- Efek hover overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                    </div>
+    
+    @include('includes.navbar')
 
-                    <!-- Brand Text -->
-                    <div class="hidden md:block">
-                        <h1 class="text-xl font-bold text-white">SMKN 13 Bandung</h1>
-                        <p class="text-sm text-orange-300">Excellence in Education</p>
-                    </div>
-                </div>
-
-                <!-- Navigation Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ route('home') }}" class="group flex items-center text-slate-300 hover:text-white font-medium transition-all duration-300 hover-lift">
-                        <i class="fas fa-home mr-2 group-hover:animate-bounce text-orange-400"></i>
-                        <span class="relative">
-                            BERANDA
-                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                    <a href="{{ route('about') }}" class="group flex items-center text-white font-medium transition-all duration-300 hover-lift">
-                        <i class="fas fa-info-circle mr-2 group-hover:animate-pulse text-orange-400"></i>
-                        <span class="relative">
-                            TENTANG KAMI
-                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400"></span>
-                        </span>
-                    </a>
-                    <a href="{{ route('services') }}" class="group flex items-center text-slate-300 hover:text-white font-medium transition-all duration-300 hover-lift">
-                        <i class="fas fa-cogs mr-2 group-hover:animate-spin text-orange-400"></i>
-                        <span class="relative">
-                            LAYANAN
-                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                </div>
-
-                <!-- User Profile -->
-                <div class="flex items-center">
-                    <div class="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-1 shadow-xl">
-                        <div class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
-                            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full overflow-hidden animate-pulse-slow shadow-lg">
-                                <div class="w-full h-full bg-gradient-to-br from-orange-300 to-red-400 flex items-center justify-center">
-                                    <i class="fas fa-user text-white text-lg"></i>
-                                </div>
-                            </div>
-                            <div class="hidden sm:block">
-                                <div class="text-sm font-bold text-white">Username</div>
-                                <div class="text-xs text-orange-300">NIS : 2080710</div>
-                            </div>
-                            <button id="sidebarToggle" class="text-slate-300 hover:text-white transition-colors duration-300 hover:rotate-90">
-                                <i class="fas fa-bars text-lg"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('includes.sidebar')
 
     <!-- Sidebar -->
     <div id="sidebar" class="fixed top-0 right-0 w-80 h-full backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95">
@@ -467,75 +403,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 py-12 relative">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 text-slate-400">
-                <div>
-                    <h4 class="text-white font-bold mb-4">SMKN 13 Bandung</h4>
-                    <p class="text-sm">
-                        Jl. Soekarno-Hatta KM.10 <br>
-                        Bandung, Jawa Barat 40286
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-orange-400">Home</a></li>
-                        <li><a href="#" class="hover:text-orange-400">About Us</a></li>
-                        <li><a href="#" class="hover:text-orange-400">Services</a></li>
-                        <li><a href="#" class="hover:text-orange-400">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-phone mr-2"></i> (022) 7318960</li>
-                        <li><i class="fas fa-envelope mr-2"></i> info@smkn13bdg.sch.id</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
-                            <i class="fab fa-facebook-f text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
-                            <i class="fab fa-twitter text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
-                            <i class="fab fa-instagram text-white"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
-                <p>&copy; 2025 SMKN 13 Bandung. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-        // Sidebar Toggle
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const closeSidebar = document.getElementById('closeSidebar');
+    @include('includes.footer')
 
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.remove('translate-x-full');
-            sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
-        });
-
-        closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('translate-x-full');
-            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
-        });
-
-        sidebarOverlay.addEventListener('click', () => {
-            sidebar.classList.add('translate-x-full');
-            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
-        });
-    </script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 
 </html>
