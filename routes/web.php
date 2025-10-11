@@ -158,3 +158,14 @@ Route::get('/friend', function () {
     ]);
 })->name('friend');
 
+// otime route
+Route::get('/otime', function () {
+    return view('otime', [
+        'user' => [
+            'name' => 'Alif',
+            'nis' => '28692907',
+            'username' => 'Username',
+        ]
+    ]);
+})->name('otime');
+

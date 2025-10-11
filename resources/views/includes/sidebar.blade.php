@@ -63,6 +63,12 @@
                 </a>
             </li>
             <li>
+               <a href="{{ route('otime') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                    <i class="fas fa-stopwatch text-orange-400 w-5"></i>
+                    <span class="font-medium">Overtime</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('settings') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-cog text-orange-400 w-5"></i>
                     <span class="font-medium">Pengaturan</span>
