@@ -85,7 +85,7 @@
                 ripple.classList.add('ripple');
                 
                 this.appendChild(ripple);
-                
+                    
                 setTimeout(() => {
                     ripple.remove();
                 }, 600);
@@ -98,7 +98,6 @@
             .ripple {
                 position: absolute;
                 border-radius: 50%;
-                opacity: 1;
                 background: rgba(255, 255, 255, 0.3);
                 transform: scale(0);
                 animation: ripple-animation 0.6s linear;

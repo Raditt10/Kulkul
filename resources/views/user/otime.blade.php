@@ -50,10 +50,10 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-    @include('includes.navbar')
+    @include('user/includes.navbar')
 
     <div class="container mx-auto px-4 py-12 mt-16" style="margin-top: 0;">
-        @include('includes.sidebar')
+        @include('user/includes.sidebar')
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-12 mt-16" >
@@ -143,7 +143,7 @@
         </div>
     </div>
 
-    @include('includes.footer')
+    @include('user/includes.footer')
 
     <script src="{{ asset('js/miniCalendar.js') }}"></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>

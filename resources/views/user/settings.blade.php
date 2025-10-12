@@ -183,9 +183,9 @@
         </div>
     </div>
 
-   @include('includes.navbar')
+   @include('user/includes.navbar')
   
-   @include('includes.sidebar')
+   @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
@@ -887,7 +887,7 @@
         </div>
     </div>
 
-    @include('includes.footer')
+    @include('user/includes.footer')
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>

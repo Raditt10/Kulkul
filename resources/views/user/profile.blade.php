@@ -93,9 +93,9 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-    @include('includes.navbar')
+    @include('user/includes.navbar')
   
-    @include('includes.sidebar')
+    @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
@@ -322,7 +322,7 @@
         </section>
     </main>
  
-   @include('includes.footer')
+   @include('user/includes.footer')
  
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/profileTab.js') }}"></script>

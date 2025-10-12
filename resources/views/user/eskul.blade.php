@@ -72,9 +72,9 @@
 
 <body class="bg-slate-950 overflow-x-hidden">
 
-    @include('includes.navbar')
+    @include('user/includes.navbar')
   
-    @include('includes.sidebar')
+    @include('user/includes.sidebar')
 
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20">
@@ -129,7 +129,7 @@
     </div>
 </section>
 
-  @include('includes.footer')
+  @include('user/includes.footer')
 
   <script src="{{ asset('js/sidebar.js') }}"></script>
   <script src="{{ asset('js/dataEkstrakurikuler.js') }}"></script>

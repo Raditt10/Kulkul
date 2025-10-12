@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Home route
 Route::get('/', function () {
-    return view('home', [
+    return view('user/home', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -15,7 +15,7 @@ Route::get('/', function () {
 
 // About route
 Route::get('/about', function () {
-    return view('about', [
+    return view('user/about', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -26,7 +26,7 @@ Route::get('/about', function () {
 
 // services route
 Route::get('/services', function () {
-    return view('services', [
+    return view('user/services', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -37,7 +37,7 @@ Route::get('/services', function () {
 
 // profile route
 Route::get('/profile', function () {
-    return view('profile', [
+    return view('user/profile', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -48,7 +48,7 @@ Route::get('/profile', function () {
 
 //login route
 Route::get('/login', function () {
-    return view('login', [
+    return view('user/login', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -59,7 +59,7 @@ Route::get('/login', function () {
 
 // eskul route
 Route::get('/eskul', function () {
-    return view('eskul', [
+    return view('user/eskul', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -70,7 +70,7 @@ Route::get('/eskul', function () {
 
 // settigs route
 Route::get('/settings', function () {
-    return view('settings', [
+    return view('user/settings', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -81,7 +81,7 @@ Route::get('/settings', function () {
 
 // friends route
 Route::get('/friend', function () {
-    return view('friend', [
+    return view('user/friend', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',
@@ -160,7 +160,7 @@ Route::get('/friend', function () {
 
 // otime route
 Route::get('/otime', function () {
-    return view('otime', [
+    return view('user/otime', [
         'user' => [
             'name' => 'Alif',
             'nis' => '28692907',

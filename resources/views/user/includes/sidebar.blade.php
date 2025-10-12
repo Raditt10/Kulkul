@@ -1,5 +1,5 @@
  <!-- Sidebar -->
-   <div id="sidebar" class="fixed top-0 right-0 w-80 h-full backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95 flex flex-col">
+  <div id="sidebar" class="fixed top-0 right-0 w-80 h-full overflow-y-auto backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95 flex flex-col">
         <!-- Header (Fixed) -->
         <div class="flex items-center justify-between px-6 py-4 border-b border-orange-500/30 bg-gradient-to-r from-orange-600/20 to-red-600/20 flex-shrink-0">
             <h2 class="text-xl font-bold text-white">Menu Navigasi</h2>
@@ -65,7 +65,7 @@
             <li>
                <a href="{{ route('otime') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-stopwatch text-orange-400 w-5"></i>
-                    <span class="font-medium">Overtime</span>
+                    <span class="font-medium">O Time</span>
                 </a>
             </li>
             <li>
@@ -87,3 +87,5 @@
             </li>
         </ul>
     </div>
+
+    
