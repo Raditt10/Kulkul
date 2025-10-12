@@ -37,7 +37,7 @@
         <div class="p-6 border-b border-orange-500/20">
             <div class="flex items-center space-x-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                    <i class="fas fa-graduation-cap text-white text-xl"></i>
+                   <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-10 h-10 object-contain">
                 </div>
                 <div>
                     <h1 class="text-white font-bold text-lg">Kulkul Admin</h1>
