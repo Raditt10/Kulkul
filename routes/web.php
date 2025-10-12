@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Home route
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('user/home');
 })->name('home');
 
@@ -24,7 +24,7 @@ Route::get('/profile', function () {
 })->name('profile');
 
 //login route
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('user/login');
 })->name('login');
 
