@@ -1,9 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Usercontroller;
+
+//route login
+Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::get('/home', [UserController::class, 'home'])->name('home');
 
 // Home route
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home', [
         'user' => [
             'name' => 'Alif',
@@ -47,7 +52,7 @@ Route::get('/profile', function () {
 })->name('profile');
 
 //login route
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login', [
         'user' => [
             'name' => 'Alif',
