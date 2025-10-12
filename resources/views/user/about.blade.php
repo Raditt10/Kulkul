@@ -122,7 +122,7 @@
                     <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-orange-500 ml-4"></div>
                 </div>
                 <h1 class="text-6xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                    Tentang <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Kulkul</span>
+                    Tentang <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Kami</span>
                 </h1>
                 <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                     Mengenal lebih dekat program ekstrakurikuler unggulan yang mengembangkan potensi siswa SMKN 13 Bandung menuju masa depan yang gemilang

@@ -13,9 +13,8 @@
                     <h4 class="text-white font-bold mb-4">Links</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#" class="hover:text-orange-400">Home</a></li>
-                        <li><a href="#" class="hover:text-orange-400">About Us</a></li>
-                        <li><a href="#" class="hover:text-orange-400">Services</a></li>
-                        <li><a href="#" class="hover:text-orange-400">Contact</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-orange-400">About Us</a></li>
+                        <li><a href="{{ route('services') }}" class="hover:text-orange-400">Services</a></li>
                     </ul>
                 </div>
                 <div>
@@ -28,7 +27,7 @@
                 <div>
                     <h4 class="text-white font-bold mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
+                        <a href="       " class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
                             <i class="fab fa-facebook-f text-white"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300">
