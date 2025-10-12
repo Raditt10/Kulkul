@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pendaftarans', function (Blueprint $table) {
             
             // Gunakan bigIncrements() untuk Primary Key Auto-Increment bernama kustom.
-            $table->bigIncrements('id_pendaftaran'); 
+            $table->id('id_pendaftaran'); 
             
             // Gunakan foreignId() dan constrained() untuk FK yang mereferensi tabel 'users'
             // asumsi kode_user adalah Primary Key di tabel 'users'.
