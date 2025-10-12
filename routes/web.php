@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Usercontroler;
+
+//route login
+Route::post('/login', [Usercontroler::class, 'login'])->name('login');
+Route::get('/home', [Usercontroler::class, 'home'])->name('home');
 
 // Home route
 Route::get('/home', function () {
