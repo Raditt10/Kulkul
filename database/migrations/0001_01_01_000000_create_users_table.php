@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('no_tlp');
+            $table->string('alamat_rumah');
+            $table->date('tgl_lahir');
+            $table->enum('pangkat', ['admin', 'siswa'])->default('siswa');
             $table->rememberToken();
             $table->timestamps();
         });

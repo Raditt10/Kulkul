@@ -153,9 +153,15 @@
                                             <i class="fas fa-camera text-white text-sm"></i>
                                         </button>
                                     </div>
-                                    <h2 class="text-2xl font-bold text-white mb-2">Alif Pratama</h2>
-                                    <p class="text-orange-300 font-medium">NIS: 2080710</p>
+                                    @if($user)
+                                    <h2 class="text-2xl font-bold text-white mb-2">{{$user->name}}</h2>
+                                    <p class="text-orange-300 font-medium">NIS: {{$user->nis}}</p>
                                     <p class="text-slate-400 text-sm">Siswa Aktif • Kelas XII RPL</p>
+                                    @else                                    
+                                    <h2 class="text-2xl font-bold text-white mb-2">none</h2>
+                                    <p class="text-orange-300 font-medium">NIS: none</p>
+                                    <p class="text-slate-400 text-sm">none</p>
+                                    @endif
                                 </div>
 
                                 <!-- Quick Stats -->
@@ -200,26 +206,27 @@
 
                                 <!-- Personal Data Tab -->
                                 <div id="personalContent" class="tab-content">
+                                    @if($user)
                                     <form class="space-y-6">
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Nama Lengkap</label>
-                                                <input type="text" value="Alif Pratama Wijaya" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="text" value="{{$user->name}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">NIS</label>
-                                                <input type="text" value="2080710" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="text" value="{{$user->nis}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                                <input type="email" value="alif.pratama@student.smkn13bdg.sch.id" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="email" value="{{$user->email}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">No. Telepon</label>
-                                                <input type="tel" value="+62 812 3456 7890" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="tel" value="{{$user->no_tlp}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
@@ -230,15 +237,56 @@
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Tanggal Lahir</label>
-                                                <input type="date" value="2007-03-15" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="date" value="{{$user->tgl_lahir}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label class="block text-sm font-medium text-slate-300 mb-2">Alamat Lengkap</label>
-                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>Jl. Soekarno Hatta No. 123, Bandung, Jawa Barat</textarea>
+                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>{{$user->alamat_rumah}}</textarea>
                                         </div>
                                     </form>
+                                    @else
+                                    <form class="space-y-6">
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label class="block text-sm font-medium text-slate-300 mb-2">Nama Lengkap</label>
+                                                <input type="text" value="nan" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-slate-300 mb-2">NIS</label>
+                                                <input type="text" value="nan" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                                <input type="email" value="nan" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-slate-300 mb-2">No. Telepon</label>
+                                                <input type="tel" value="nan" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label class="block text-sm font-medium text-slate-300 mb-2">Tempat Lahir</label>
+                                                <input type="text" value="nan" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-slate-300 mb-2">Tanggal Lahir</label>
+                                                <input type="date" value="nan" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label class="block text-sm font-medium text-slate-300 mb-2">Alamat Lengkap</label>
+                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>nan</textarea>
+                                        </div>
+                                    </form>
+                                    @endif
                                 </div>
 
                                 <!-- Academic Data Tab -->

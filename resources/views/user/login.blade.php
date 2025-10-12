@@ -457,11 +457,15 @@
                         animate();
                     }, i * 10);
                     }
+                    if(result.admin){
+                        window.location.href = "{{ route('admin') }}"
+                    }
                     setTimeout(() => {
                         // Redirect ke halaman home
                         window.location.href = "{{ route('home') }}"  // Ubah baris ini
                     }, 2000);
                 }else{
+                    console.log(result);
                     btnText.textContent = 'COBA LAGI';
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');

@@ -56,8 +56,13 @@
                                 </div>
                             </div>
                             <div class="hidden sm:block">
-                                <div class="text-sm font-bold text-white">Username</div>
-                                <div class="text-xs text-orange-300">NIS : 2080710</div>
+                                @if(session('users'))
+                                <div class="text-sm font-bold text-white">{{session('users')->name}}</div>
+                                <div class="text-xs text-orange-300">NIS : {{session('users')->nis}}</div>
+                                @else
+                                <div class="text-sm font-bold text-white">Guest</div>
+                                <div class="text-xs text-orange-300">NIS : xxxxxxx</div>
+                                @endif
                             </div>
                             <button id="sidebarToggle" class="text-slate-300 hover:text-white transition-colors duration-300 hover:rotate-90">
                                 <i class="fas fa-bars text-lg"></i>

@@ -17,9 +17,15 @@
                     <i class="fas fa-user text-white text-xl"></i>
                 </div>
                 <div>
-                    <p class="font-bold text-white text-base">Username</p>
-                    <p class="text-sm text-orange-300">NIS: 2080710</p>
+                    @if(session('users'))
+                    <p class="font-bold text-white text-base">{{session('users')->name}}</p>
+                    <p class="text-sm text-orange-300">NIS: {{session('users')->nis}}</p>
                     <p class="text-xs text-slate-400">Siswa Aktif</p>
+                    @else
+                    <p class="font-bold text-white text-base">guest</p>
+                    <p class="text-sm text-orange-300">NIS: xxxxx</p>
+                    <p class="text-xs text-slate-400">Belum login</p>
+                    @endif
                 </div>
             </div>
         </div>

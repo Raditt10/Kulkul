@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class Usercontroller extends Controller
+class Usercontroler extends Controller
 {
 public function login(Request $request)
 {
@@ -17,10 +17,14 @@ public function login(Request $request)
 
         if ($user && $data['password'] === $user->password) {
         session(['users' => $user]);
+
+        if($user->pangkat === 'admin'){
+            return response()->json(['success' => true,'admin'=>true]);
+        }
         return response()->json(['success' => true]);
     }
 
-    return response()->json(['success' => false]);
+    return response()->json(['success' => false,'admin'=>true]);
 }
 
 }
