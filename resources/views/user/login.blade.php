@@ -174,7 +174,8 @@
                             </div>
 
                             <!-- Login Form -->
-                            <form id="loginForm" class="space-y-4">
+                            <form id="loginForm" method="POST" action="{{ url('/login') }}" class="space-y-4">
+                                @csrf
                                 <!-- Username/NIS Field -->
                                 <div class="space-y-2">
                                     <label for="username" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
@@ -371,25 +372,11 @@
         const loginCard = document.getElementById('loginCard');
         const loadingBar = document.getElementById('loadingBar');
         
-        loginForm.addEventListener('submit', function(e) {
+        loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const username = usernameInput.value;
             const password = passwordInput.value;
-
-            if (username.length < 3) {
-                loginCard.classList.add('shake');
-                usernameInput.focus();
-                setTimeout(() => loginCard.classList.remove('shake'), 500);
-                return;
-            }
-
-            if (password.length < 3) {
-                loginCard.classList.add('shake');
-                passwordInput.focus();
-                setTimeout(() => loginCard.classList.remove('shake'), 500);
-                return;
-            }
 
             // Show loading state
             const submitBtn = document.getElementById('loginBtn');
@@ -413,18 +400,27 @@
             }, 30);
 
             // Simulate API call
-            setTimeout(() => {
+            try {
+                const response = await fetch("{{ route('login') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: new FormData(loginForm)
+                });
+
+                const result = await response.json();
                 clearInterval(loadingInterval);
                 loadingBarFill.style.width = '100%';
-                
-                // Success animation
-                loginCard.classList.add('success-pulse');
-                btnText.textContent = '✓ BERHASIL!';
-                submitBtn.classList.remove('opacity-75');
-                submitBtn.classList.add('bg-green-600');
-                
-                // Create success particles
-                for (let i = 0; i < 30; i++) {
+
+                if(result.success){
+                    loginCard.classList.add('success-pulse');
+                    btnText.textContent = '✓ BERHASIL!';
+                    submitBtn.classList.remove('opacity-75');
+                    submitBtn.classList.add('bg-green-600');
+
+                    for (let i = 0; i < 30; i++) {
                     setTimeout(() => {
                         const particle = document.createElement('div');
                         particle.className = 'particle';
@@ -460,28 +456,27 @@
                         };
                         animate();
                     }, i * 10);
-                }
-                
-                 // Ganti bagian setTimeout pada event submit form:
+                    }
+                    if(result.admin){
+                        window.location.href = "{{ route('admin') }}"
+                    }
                     setTimeout(() => {
-                        clearInterval(loadingInterval);
-                        loadingBarFill.style.width = '100%';
-                        
-                        // Success animation
-                        loginCard.classList.add('success-pulse');
-                        btnText.textContent = '✓ BERHASIL!';
-                        submitBtn.classList.remove('opacity-75');
-                        submitBtn.classList.add('bg-green-600');
-                        
-                        // Create success particles
-                        // ...existing particle animation code...
-                        
-                        setTimeout(() => {
-                            // Redirect ke halaman home
-                            window.location.href = " {{ route('home') }}"  // Ubah baris ini
-                        }, 2000);
+                        // Redirect ke halaman home
+                        window.location.href = "{{ route('home') }}"  // Ubah baris ini
                     }, 2000);
-            }, 2000);
+                }else{
+                    console.log(result);
+                    btnText.textContent = 'COBA LAGI';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    loginCard.classList.add('shake');
+                    usernameInput.focus();
+                    setTimeout(() => loginCard.classList.remove('shake'), 500);
+                }
+            }catch (error) {
+                console.error(error);
+                alert('Terjadi kesalahan pada server.');
+            };
         });
 
         // Add hover effects to inputs

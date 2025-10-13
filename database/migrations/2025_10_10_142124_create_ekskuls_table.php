@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ekskuls', function (Blueprint $table) {
             // Menggunakan bigIncrements() untuk Primary Key Auto-Increment dengan nama kustom.
-            $table->bigIncrements('id_ekskul'); 
+            $table->id('id_ekskul'); 
             
             // Tambahkan unique() jika nama ekskul tidak boleh duplikat
             $table->string('nama_ekskul', 50)->unique(); 
