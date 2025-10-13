@@ -72,9 +72,9 @@
 
 <body class="bg-slate-950 overflow-x-hidden">
 
-    @include('includes.navbar')
+    @include('user/includes.navbar')
   
-    @include('includes.sidebar')
+    @include('user/includes.sidebar')
 
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20">
@@ -97,7 +97,13 @@
             <p class="text-xl text-slate-300 leading-relaxed">
                 Temukan passion-mu dan kembangkan bakat terbaikmu bersama berbagai pilihan ekstrakurikuler di SMKN 13 Bandung
             </p>
-        </div>
+            <div class="mt-8">
+          <a href="{{ route('otime') }}" class="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-full hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-lg">
+            <i class="fas fa-stopwatch mr-2"></i>
+            Lihat Jadwal O' Time
+        </a>
+       </div>
+     </div>
 
         <!-- Filter Section -->
         <div class="flex flex-wrap justify-center gap-4 mb-12">
@@ -129,7 +135,7 @@
     </div>
 </section>
 
-  @include('includes.footer')
+  @include('user/includes.footer')
 
   <script src="{{ asset('js/sidebar.js') }}"></script>
   <script src="{{ asset('js/dataEkstrakurikuler.js') }}"></script>

@@ -1,5 +1,5 @@
     <!-- Navigation Bar -->
-    <nav class="glass-effect fixed w-full z-50 transition-all duration-500 border-b border-orange-500/20 bg-slate-900/80">
+  <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur border-b border-orange-500/20">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-20">
                    

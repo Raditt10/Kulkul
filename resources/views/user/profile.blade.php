@@ -93,9 +93,9 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-    @include('includes.navbar')
+    @include('user/includes.navbar')
   
-    @include('includes.sidebar')
+    @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
@@ -204,7 +204,7 @@
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Nama Lengkap</label>
-                                                <input type="text" value="Alif Pratama Wijaya" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300">
+                                                <input type="text" value="Alif Pratama Wijaya" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">NIS</label>
@@ -215,28 +215,28 @@
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                                <input type="email" value="alif.pratama@student.smkn13bdg.sch.id" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300">
+                                                <input type="email" value="alif.pratama@student.smkn13bdg.sch.id" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">No. Telepon</label>
-                                                <input type="tel" value="+62 812 3456 7890" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300">
+                                                <input type="tel" value="+62 812 3456 7890" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Tempat Lahir</label>
-                                                <input type="text" value="Bandung" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300">
+                                                <input type="text" value="Bandung" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Tanggal Lahir</label>
-                                                <input type="date" value="2007-03-15" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300">
+                                                <input type="date" value="2007-03-15" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label class="block text-sm font-medium text-slate-300 mb-2">Alamat Lengkap</label>
-                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap...">Jl. Soekarno Hatta No. 123, Bandung, Jawa Barat</textarea>
+                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>Jl. Soekarno Hatta No. 123, Bandung, Jawa Barat</textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -247,7 +247,7 @@
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Kelas</label>
-                                                <select class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white focus:border-orange-400 focus:outline-none transition-colors duration-300">
+                                                <select class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                                     <option>XII RPL 1</option>
                                                     <option>XII RPL 2</option>
                                                     <option>XII RPL 3</option>
@@ -322,7 +322,7 @@
         </section>
     </main>
  
-   @include('includes.footer')
+   @include('user/includes.footer')
  
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/profileTab.js') }}"></script>

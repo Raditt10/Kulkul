@@ -85,7 +85,7 @@
                 ripple.classList.add('ripple');
                 
                 this.appendChild(ripple);
-                
+                    
                 setTimeout(() => {
                     ripple.remove();
                 }, 600);

@@ -6,9 +6,7 @@
     <title>Home - Kulkul SMKN 13 BANDUNG</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-     <link rel="stylesheet" href="{{ asset('css/sidebarscroll.css') }}">
-   <script>
+    <script>
     tailwind.config = {
         theme: {
             extend: {
@@ -64,15 +62,15 @@
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
     
-    @include('includes.navbar')
+    @include('user/includes.navbar')
   
-    @include('includes.sidebar')
+    @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
 
     <!-- Hero Section -->
-   <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24">
+     <section class="relative pt-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24">
         <!-- Animated Background -->
         <div class="absolute inset-0">
         <div class="absolute inset-0 bg-gradient-to-r from-orange-600/5 via-red-600/5 to-orange-600/5 animate-pulse-slow"></div>
@@ -331,7 +329,7 @@
 
     </section>
 
-     @include('includes.footer')
+     @include('user/includes.footer')
 
     <script src="{{ asset('js/overllayImagePage.js') }}"></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>

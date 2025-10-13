@@ -5,89 +5,43 @@ use App\Http\Controllers\AuthController;
 
 // Home route
 Route::get('/', function () {
-    return view('home', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/home');
 })->name('home');
+
 
 // About route
 Route::get('/about', function () {
-    return view('about', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/about');
 })->name('about');
 
 // services route
 Route::get('/services', function () {
-    return view('services', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/services');
 })->name('services');
 
 // profile route
 Route::get('/profile', function () {
-    return view('profile', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/profile');
 })->name('profile');
 
 //login route
 Route::get('/login', function () {
-    return view('login', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/login');
 })->name('login');
 
 // eskul route
 Route::get('/eskul', function () {
-    return view('eskul', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/eskul');
 })->name('eskul');
 
 // settigs route
 Route::get('/settings', function () {
-    return view('settings', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ]
-    ]);
+    return view('user/settings');
 })->name('settings');
 
 // friends route
 Route::get('/friend', function () {
-    return view('friend', [
-        'user' => [
-            'name' => 'Alif',
-            'nis' => '28692907',
-            'username' => 'Username',
-        ],
+    return view('user/friend', [
         'friends' => [
             [
                 'id' => 1,
@@ -158,4 +112,10 @@ Route::get('/friend', function () {
         ]
     ]);
 })->name('friend');
+
+// otime route
+Route::get('/otime', function () {
+    return view('user/otime');
+})->name('otime');
+
 

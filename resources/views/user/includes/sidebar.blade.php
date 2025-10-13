@@ -1,5 +1,5 @@
  <!-- Sidebar -->
-   <div id="sidebar" class="fixed top-0 right-0 w-80 h-full backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95 flex flex-col">
+  <div id="sidebar" class="fixed top-0 right-0 w-80 h-full overflow-y-auto backdrop-blur-xl text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 shadow-2xl border-l border-orange-500/20 bg-slate-900/95 flex flex-col">
         <!-- Header (Fixed) -->
         <div class="flex items-center justify-between px-6 py-4 border-b border-orange-500/30 bg-gradient-to-r from-orange-600/20 to-red-600/20 flex-shrink-0">
             <h2 class="text-xl font-bold text-white">Menu Navigasi</h2>
@@ -81,3 +81,5 @@
             </li>
         </ul>
     </div>
+
+    
