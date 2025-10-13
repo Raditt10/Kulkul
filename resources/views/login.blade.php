@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login - Kulkul SMKN 13 BANDUNG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -124,23 +125,8 @@
                 opacity: 0;
             }
         }
-        .image-shine {
-            position: relative;
-            overflow: hidden;
-        }
-        .image-shine::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shine 3s infinite;
-        }
-        @keyframes shine {
-            0% { left: -100%; }
-            50%, 100% { left: 100%; }
+        .error-message {
+            animation: slideUp 0.3s ease-out;
         }
     </style>
 </head>
@@ -161,137 +147,146 @@
 
     <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-md mx-auto">
-                <div class="animate-slide-up">
-                    <div class="relative group hover-lift">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000 animate-glow"></div>
-                        <div id="loginCard" class="relative glass-effect rounded-3xl p-6 border border-orange-500/20 shadow-2xl">
-                            <!-- Header -->
-                            <div class="text-center mb-6">
-                                <h2 class="text-3xl font-bold text-white mb-2">
-                                    Selamat Datang Kembali
-                                </h2>
-                                <p class="text-slate-400 text-sm">Masuk untuk melanjutkan petualanganmu</p>
+            <div class="animate-slide-up">
+                <div class="relative group hover-lift">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000 animate-glow"></div>
+                    <div id="loginCard" class="relative glass-effect rounded-3xl p-6 border border-orange-500/20 shadow-2xl">
+                        <!-- Header -->
+                        <div class="text-center mb-6">
+                            <h2 class="text-3xl font-bold text-white mb-2">
+                                Selamat Datang Kembali
+                            </h2>
+                            <p class="text-slate-400 text-sm">Masuk untuk melanjutkan petualanganmu</p>
+                        </div>
+
+                        <!-- Error Message Container -->
+                        <div id="errorContainer" class="hidden mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg">
+                            <p id="errorMessage" class="text-red-400 text-sm text-center font-medium"></p>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" class="space-y-4">
+                            @csrf
+                            <!-- Username/NIS Field -->
+                            <div class="space-y-2">
+                                <label for="username" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    NIS / Username
+                                </label>
+                                <div class="relative">
+                                    <input 
+                                        type="text" 
+                                        id="username" 
+                                        name="username"
+                                        required
+                                        class="input-focus w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                        placeholder="Masukkan NIS atau Username"
+                                    >
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                        <div id="usernameStatus" class="w-2.5 h-2.5 bg-slate-600 rounded-full transition-all duration-300"></div>
+                                    </div>
+                                </div>
+                                <p id="usernameError" class="text-red-400 text-xs hidden error-message"></p>
                             </div>
 
-                            <!-- Login Form -->
-                            <form id="loginForm" class="space-y-4">
-                                <!-- Username/NIS Field -->
-                                <div class="space-y-2">
-                                    <label for="username" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
-                                        NIS / Username
-                                    </label>
+                            <!-- Password Field -->
+                            <div class="space-y-2">
+                                <label for="password" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Password
+                                </label>
+                                <div class="relative">
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password"
+                                        required
+                                        class="input-focus w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                        placeholder="Masukkan Password"
+                                    >
+                                    <button 
+                                        type="button"
+                                        id="togglePassword"
+                                        class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-400 transition-all duration-300 hover:scale-110 text-xs font-bold"
+                                    >
+                                        <span id="toggleText">SHOW</span>
+                                    </button>
+                                </div>
+                                <p id="passwordError" class="text-red-400 text-xs hidden error-message"></p>
+                            </div>
+
+                            <!-- Remember Me & Forgot Password -->
+                            <div class="flex items-center justify-between text-xs pt-2">
+                                <label class="flex items-center text-slate-300 cursor-pointer group">
                                     <div class="relative">
                                         <input 
-                                            type="text" 
-                                            id="username" 
-                                            name="username"
-                                            required
-                                            class="input-focus w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                            placeholder="Masukkan NIS atau Username"
+                                            type="checkbox" 
+                                            id="rememberMe"
+                                            name="remember"
+                                            class="sr-only peer"
                                         >
-                                        <div class="absolute right-3 top-1/2 -translate-y-1/2">
-                                            <div id="usernameStatus" class="w-2.5 h-2.5 bg-slate-600 rounded-full transition-all duration-300"></div>
-                                        </div>
+                                        <div class="w-9 h-5 bg-slate-700 rounded-full peer peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600 transition-all duration-300"></div>
+                                        <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-4"></div>
                                     </div>
+                                    <span class="ml-2 group-hover:text-orange-400 transition-colors duration-300 font-medium">Ingat Saya</span>
+                                </label>
+                                <a href="#" class="text-orange-400 hover:text-orange-300 transition-all duration-300 hover:underline font-medium">
+                                    Lupa Password?
+                                </a>
+                            </div>
+
+                            <!-- Login Button -->
+                            <button 
+                                type="submit"
+                                id="loginBtn"
+                                class="relative w-full px-6 py-3.5 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-xl overflow-hidden group mt-6"
+                            >
+                                <span class="relative z-10" id="btnText">MASUK SEKARANG</span>
+                                <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+
+                            <!-- Loading Bar -->
+                            <div id="loadingBar" class="h-1 bg-slate-800 rounded-full overflow-hidden hidden">
+                                <div class="h-full bg-gradient-to-r from-orange-500 to-red-600 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+
+                            <!-- Divider -->
+                            <div class="relative my-6">
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="w-full border-t border-slate-700"></div>
                                 </div>
-
-                                <!-- Password Field -->
-                                <div class="space-y-2">
-                                    <label for="password" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
-                                        Password
-                                    </label>
-                                    <div class="relative">
-                                        <input 
-                                            type="password" 
-                                            id="password" 
-                                            name="password"
-                                            required
-                                            class="input-focus w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                            placeholder="Masukkan Password"
-                                        >
-                                        <button 
-                                            type="button"
-                                            id="togglePassword"
-                                            class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-400 transition-all duration-300 hover:scale-110 text-xs font-bold"
-                                        >
-                                            <span id="toggleText">SHOW</span>
-                                        </button>
-                                    </div>
+                                <div class="relative flex justify-center">
+                                    <span class="px-3 bg-slate-800/80 text-slate-500 text-xs font-medium">ATAU</span>
                                 </div>
+                            </div>
 
-                                <!-- Remember Me & Forgot Password -->
-                                <div class="flex items-center justify-between text-xs pt-2">
-                                    <label class="flex items-center text-slate-300 cursor-pointer group">
-                                        <div class="relative">
-                                            <input 
-                                                type="checkbox" 
-                                                id="rememberMe"
-                                                class="sr-only peer"
-                                            >
-                                            <div class="w-9 h-5 bg-slate-700 rounded-full peer peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600 transition-all duration-300"></div>
-                                            <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-4"></div>
-                                        </div>
-                                        <span class="ml-2 group-hover:text-orange-400 transition-colors duration-300 font-medium">Ingat Saya</span>
-                                    </label>
-                                    <a href="#" class="text-orange-400 hover:text-orange-300 transition-all duration-300 hover:underline font-medium">
-                                        Lupa Password?
-                                    </a>
-                                </div>
-
-                                <!-- Login Button -->
-                                <button 
-                                    type="submit"
-                                    id="loginBtn"
-                                    class="relative w-full px-6 py-3.5 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-xl overflow-hidden group mt-6"
-                                >
-                                    <span class="relative z-10" id="btnText">MASUK SEKARANG</span>
-                                    <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                </button>
-
-                                <!-- Loading Bar -->
-                                <div id="loadingBar" class="h-1 bg-slate-800 rounded-full overflow-hidden hidden">
-                                    <div class="h-full bg-gradient-to-r from-orange-500 to-red-600 rounded-full transition-all duration-300" style="width: 0%"></div>
-                                </div>
-
-                                <!-- Divider -->
-                                <div class="relative my-6">
-                                    <div class="absolute inset-0 flex items-center">
-                                        <div class="w-full border-t border-slate-700"></div>
-                                    </div>
-                                    <div class="relative flex justify-center">
-                                        <span class="px-3 bg-slate-800/80 text-slate-500 text-xs font-medium">ATAU</span>
-                                    </div>
-                                </div>
-
-                                <!-- Register Link -->
-                                <div class="text-center p-4 bg-slate-800/30 rounded-xl border border-slate-700 hover:border-orange-500/50 transition-all duration-300">
-                                    <p class="text-slate-300 text-sm mb-2">Belum punya akun?</p>
-                                    <a href="#" class="inline-block px-6 py-2 bg-slate-800 hover:bg-slate-700 text-orange-400 text-sm font-bold rounded-lg transition-all duration-300 hover-lift border border-orange-500/30">
-                                        DAFTAR SEKARANG
-                                    </a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Additional Info -->
-                    <div class="text-center mt-6 text-slate-400 text-xs">
-                        <p class="mb-3">© 2025 SMKN 13 Bandung. All rights reserved.</p>
-                        <div class="flex items-center justify-center gap-4">
-                            <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
-                                FACEBOOK
-                            </a>
-                            <span class="text-slate-700">•</span>
-                            <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
-                                TWITTER
-                            </a>
-                            <span class="text-slate-700">•</span>
-                            <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
-                                INSTAGRAM
-                            </a>
-                        </div>
+                            <!-- Register Link -->
+                            <div class="text-center p-4 bg-slate-800/30 rounded-xl border border-slate-700 hover:border-orange-500/50 transition-all duration-300">
+                                <p class="text-slate-300 text-sm mb-2">Belum punya akun?</p>
+                                <a href="" class="inline-block px-6 py-2 bg-slate-800 hover:bg-slate-700 text-orange-400 text-sm font-bold rounded-lg transition-all duration-300 hover-lift border border-orange-500/30">
+                                    DAFTAR SEKARANG
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
+                <!-- Additional Info -->
+                <div class="text-center mt-6 text-slate-400 text-xs">
+                    <p class="mb-3">© 2025 SMKN 13 Bandung. All rights reserved.</p>
+                    <div class="flex items-center justify-center gap-4">
+                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
+                            FACEBOOK
+                        </a>
+                        <span class="text-slate-700">•</span>
+                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
+                            TWITTER
+                        </a>
+                        <span class="text-slate-700">•</span>
+                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
+                            INSTAGRAM
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -315,6 +310,9 @@
             }
         }
         createParticles();
+
+        // Get CSRF token
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         // Toggle Password Visibility
         const togglePassword = document.getElementById('togglePassword');
@@ -366,28 +364,88 @@
 
         document.getElementById('loginBtn').addEventListener('click', createRipple);
 
-        // Form Submission with enhanced animations
+        // Show error message
+        function showError(message) {
+            const errorContainer = document.getElementById('errorContainer');
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorContainer.classList.remove('hidden');
+            
+            const loginCard = document.getElementById('loginCard');
+            loginCard.classList.add('shake');
+            setTimeout(() => loginCard.classList.remove('shake'), 500);
+        }
+
+        // Hide error message
+        function hideError() {
+            document.getElementById('errorContainer').classList.add('hidden');
+        }
+
+        // Create success particles
+        function createSuccessParticles() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.width = '8px';
+                    particle.style.height = '8px';
+                    particle.style.left = '50%';
+                    particle.style.top = '50%';
+                    particle.style.background = 'rgba(74, 222, 128, 0.8)';
+                    particle.style.position = 'fixed';
+                    particle.style.zIndex = '9999';
+                    document.body.appendChild(particle);
+                    
+                    const angle = (Math.PI * 2 * i) / 30;
+                    const velocity = 5;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+                    
+                    let posX = window.innerWidth / 2;
+                    let posY = window.innerHeight / 2;
+                    
+                    const animate = () => {
+                        posX += vx;
+                        posY += vy;
+                        particle.style.left = posX + 'px';
+                        particle.style.top = posY + 'px';
+                        particle.style.opacity = parseFloat(particle.style.opacity || 1) - 0.02;
+                        
+                        if (parseFloat(particle.style.opacity) > 0) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            particle.remove();
+                        }
+                    };
+                    animate();
+                }, i * 10);
+            }
+        }
+
+        // Form Submission with AJAX
         const loginForm = document.getElementById('loginForm');
         const loginCard = document.getElementById('loginCard');
         const loadingBar = document.getElementById('loadingBar');
         
-        loginForm.addEventListener('submit', function(e) {
+        loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            hideError();
             
             const username = usernameInput.value;
             const password = passwordInput.value;
+            const remember = document.getElementById('rememberMe').checked;
 
+            // Client-side validation
             if (username.length < 3) {
-                loginCard.classList.add('shake');
+                showError('NIS atau Username minimal 3 karakter');
                 usernameInput.focus();
-                setTimeout(() => loginCard.classList.remove('shake'), 500);
                 return;
             }
 
             if (password.length < 3) {
-                loginCard.classList.add('shake');
+                showError('Password minimal 3 karakter');
                 passwordInput.focus();
-                setTimeout(() => loginCard.classList.remove('shake'), 500);
                 return;
             }
 
@@ -407,81 +465,10 @@
             const loadingInterval = setInterval(() => {
                 progress += 5;
                 loadingBarFill.style.width = progress + '%';
-                if (progress >= 100) {
+                if (progress >= 90) {
                     clearInterval(loadingInterval);
                 }
-            }, 30);
-
-            // Simulate API call
-            setTimeout(() => {
-                clearInterval(loadingInterval);
-                loadingBarFill.style.width = '100%';
-                
-                // Success animation
-                loginCard.classList.add('success-pulse');
-                btnText.textContent = '✓ BERHASIL!';
-                submitBtn.classList.remove('opacity-75');
-                submitBtn.classList.add('bg-green-600');
-                
-                // Create success particles
-                for (let i = 0; i < 30; i++) {
-                    setTimeout(() => {
-                        const particle = document.createElement('div');
-                        particle.className = 'particle';
-                        particle.style.width = '8px';
-                        particle.style.height = '8px';
-                        particle.style.left = '50%';
-                        particle.style.top = '50%';
-                        particle.style.background = 'rgba(74, 222, 128, 0.8)';
-                        particle.style.position = 'fixed';
-                        particle.style.zIndex = '9999';
-                        document.body.appendChild(particle);
-                        
-                        const angle = (Math.PI * 2 * i) / 30;
-                        const velocity = 5;
-                        const vx = Math.cos(angle) * velocity;
-                        const vy = Math.sin(angle) * velocity;
-                        
-                        let posX = window.innerWidth / 2;
-                        let posY = window.innerHeight / 2;
-                        
-                        const animate = () => {
-                            posX += vx;
-                            posY += vy;
-                            particle.style.left = posX + 'px';
-                            particle.style.top = posY + 'px';
-                            particle.style.opacity = parseFloat(particle.style.opacity || 1) - 0.02;
-                            
-                            if (parseFloat(particle.style.opacity) > 0) {
-                                requestAnimationFrame(animate);
-                            } else {
-                                particle.remove();
-                            }
-                        };
-                        animate();
-                    }, i * 10);
-                }
-                
-                 // Ganti bagian setTimeout pada event submit form:
-                    setTimeout(() => {
-                        clearInterval(loadingInterval);
-                        loadingBarFill.style.width = '100%';
-                        
-                        // Success animation
-                        loginCard.classList.add('success-pulse');
-                        btnText.textContent = '✓ BERHASIL!';
-                        submitBtn.classList.remove('opacity-75');
-                        submitBtn.classList.add('bg-green-600');
-                        
-                        // Create success particles
-                        // ...existing particle animation code...
-                        
-                        setTimeout(() => {
-                            // Redirect ke halaman home
-                            window.location.href = " {{ route('home') }}"  // Ubah baris ini
-                        }, 2000);
-                    }, 2000);
-            }, 2000);
+            }, 50);
         });
 
         // Add hover effects to inputs
@@ -500,7 +487,7 @@
             if (e.ctrlKey && e.key === 'Enter') {
                 loginForm.dispatchEvent(new Event('submit'));
             }
-        });
+        });    
     </script>
 </body>
 </html>
