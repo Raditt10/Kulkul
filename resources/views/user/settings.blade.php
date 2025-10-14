@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="images/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style href="{{ asset('css/sidebarscroll.css') }}"></style>
     <script>
@@ -224,13 +225,15 @@
                             </div>
                         </div>
 
-                        <form id="passwordForm" class="space-y-4">
+                        <form id="passwordForm" method="POST" action="{{ route('resetPw')}}" class="space-y-4">
+                            @csrf
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Password Lama</label>
                                 <div class="relative">
                                     <input 
                                         type="password" 
                                         id="oldPassword"
+                                        name="old_password"
                                         class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
                                         placeholder="Masukkan password lama"
                                     >
@@ -243,6 +246,7 @@
                                     <input 
                                         type="password" 
                                         id="newPassword"
+                                        name="new_password"
                                         class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
                                         placeholder="Masukkan password baru"
                                     >
@@ -261,6 +265,7 @@
                                     <input 
                                         type="password" 
                                         id="confirmPassword"
+                                        name="confirm_password"
                                         class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
                                         placeholder="Konfirmasi password baru"
                                     >

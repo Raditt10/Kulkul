@@ -38,46 +38,61 @@
 
         // Password form submission
         const passwordForm = document.getElementById('passwordForm');
-        passwordForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const oldPassword = document.getElementById('oldPassword').value;
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (!oldPassword || !newPassword || !confirmPassword) {
-                showNotification('Harap isi semua field password!', 'error');
-                return;
-            }
-            
-            if (newPassword !== confirmPassword) {
-                showNotification('Password baru dan konfirmasi tidak cocok!', 'error');
-                return;
-            }
-            
-            if (newPassword.length < 8) {
-                showNotification('Password baru harus minimal 8 karakter!', 'error');
-                return;
-            }
-            
-            showNotification('Password berhasil diubah!', 'success');
-            passwordForm.reset();
-            passwordStrength.style.width = '0%';
-        });
+        passwordForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-        // Save all settings
-        const saveAllButton = document.getElementById('saveAllSettings');
-        saveAllButton.addEventListener('click', function() {
-            this.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Menyimpan...';
-            this.disabled = true;
-            
-            setTimeout(() => {
-                showNotification('Semua pengaturan berhasil disimpan!', 'success');
-                this.innerHTML = '<i class="fas fa-save mr-3"></i>Simpan Semua Pengaturan';
-                this.disabled = false;
-            }, 2000);
-        });
+        const oldPassword = document.getElementById('oldPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
 
+        if (!oldPassword || !newPassword || !confirmPassword) {
+            showNotification('Harap isi semua field password!', 'error');
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            showNotification('Password baru dan konfirmasi tidak cocok!', 'error');
+            return;
+        }
+
+        if (newPassword.length < 8) {
+            showNotification('Password baru harus minimal 8 karakter!', 'error');
+            return;
+        }
+
+        // Ambil CSRF token dari meta tag di Blade
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        try {
+            const response = await fetch('/reset-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': token
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({
+                    old_password: oldPassword,
+                    new_password: newPassword
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                showNotification(data.message || 'Password berhasil diubah!', 'success');
+                passwordForm.reset();
+                passwordStrength.style.width = '0%';
+            } else {
+                showNotification(data.error || 'Gagal mengubah password!', 'error');
+                console.log(response);
+            }
+        } catch (error) {
+            showNotification('Terjadi kesalahan pada server!', 'error');
+            console.log('data');
+        }
+    });
         // Language selection
         const languageOptions = document.querySelectorAll('.language-option');
         languageOptions.forEach(option => {
@@ -401,4 +416,3 @@
             }
         `;
         document.head.appendChild(style);
-    </script>

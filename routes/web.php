@@ -6,6 +6,7 @@ use App\Http\Controllers\Usercontroler;
 //route login
 Route::post('/login', [Usercontroler::class, 'login'])->name('login');
 Route::get('/home', [Usercontroler::class, 'home'])->name('home');
+Route::post('/reset-password', [Usercontroler::class, 'resetPassword'])->name('resetPw');
 
 
 // Home route
