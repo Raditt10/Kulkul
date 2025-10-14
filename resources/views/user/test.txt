@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class Usercontroler extends Controller
+{
+public function login(Request $request)
+{
+    $data = $request->validate([
+        'username' => 'required',
+        'password' => 'required',
+    ]);
+
+    $user = User::where('name', $data['username'])->first();
+
+        if ($user && $data['password'] === $user->password) {
+        session(['users' => $user]);
+
+        if($user->pangkat === 'admin'){
+            return response()->json(['success' => true,'admin'=>true]);
+        }
+        return response()->json(['success' => true]);
+    }
+
+    return response()->json(['success' => false,'admin'=>true]);
+}
+
+public function resetPassword(Request $request)
+{
+    $request->validate([
+        'old_password' => 'required',
+        'new_password' => 'required|min:8',
+    ]);
+
+    $user = Auth::user();
+
+    // Kalau kamu tidak pakai hash
+    if ($request->old_password !== $user->password) {
+        return response()->json(['error' => 'Password lama salah.'], 400);
+    }
+
+    $user->password = $request->new_password; // tanpa hash
+    $user->save();
+
+    return response()->json(['message' => 'Password berhasil diperbarui.']);
+}
+
+}
