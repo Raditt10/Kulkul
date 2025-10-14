@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Usercontroler;
+
 
 // Home route
 Route::get('/', function () {
+    $user = session('user');
     return view('user/home');
 })->name('home');
 
@@ -21,7 +23,10 @@ Route::get('/services', function () {
 
 // profile route
 Route::get('/profile', function () {
-    return view('user/profile');
+    $user = session('users');
+    return view('user/profile', [
+        'user'=>$user
+    ]);
 })->name('profile');
 
 //login route
@@ -118,4 +123,11 @@ Route::get('/otime', function () {
     return view('user/otime');
 })->name('otime');
 
+//admin route
+Route::get('admin', function(){
+    return view('admin/dashboard');
+})->name('admin');
 
+//route login
+Route::post('/login', [Usercontroler::class, 'login'])->name('login');
+Route::get('/home', [Usercontroler::class, 'home'])->name('home');

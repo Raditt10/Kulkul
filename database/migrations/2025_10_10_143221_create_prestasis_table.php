@@ -15,7 +15,7 @@ return new class extends Migration
             
             
             // Mengganti $table->id('id_prestasi') dengan bigIncrements() untuk PK kustom.
-            $table->bigIncrements('id_prestasi'); 
+            $table->id('id_prestasi'); 
             
             $table->string('nama_prestasi', 100); 
             $table->date('tgl_prestasi');

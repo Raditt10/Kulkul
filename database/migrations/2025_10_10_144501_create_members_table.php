@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             
             // Menggunakan bigIncrement.
-            $table->bigIncrements('id_member'); 
+            $table->id('id_member'); 
             
             // Asumsi: mereferensi Primary Key di tabel 'users'.
-            $table->foreignId('user_id') 
-                  ->constrained('users', 'kode_user') // Mereferensi kolom 'kode_user' di tabel 'users'
+            $table->foreignId('nis') 
+                  ->constrained('users', 'nis') // Mereferensi kolom 'kode_user' di tabel 'users'
                   ->onDelete('cascade'); // Opsional: Hapus member jika user dihapus
             
             // Kolom menggunakan ENUM atau BOOLEAN untuk data kategorikal.

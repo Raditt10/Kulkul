@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('komentars', function (Blueprint $table) {
             
             // bigIncrements() untuk PK kustom.
-            $table->bigIncrements('id_komentar'); 
+            $table->id('id_komentar'); 
             
             $table->text('isi_komentar'); 
             // Kolom created_at (untuk tgl_komentar) dan updated_at.
             // Asumsi: kode_user adalah Primary Key di tabel 'users'.
-            $table->foreignId('user_id')
-                  ->constrained('users', 'kode_user') // Asumsi FK di tabel 'users' bernama 'kode_user'
+            $table->foreignId('nis')
+                  ->constrained('users', 'nis') // Asumsi FK di tabel 'users' bernama 'kode_user'
                   ->onDelete('cascade'); // Opsional: hapus komentar jika user dihapus
             
             // Kolom timestamps yang mencakup created_at (seperti tgl_komentar)

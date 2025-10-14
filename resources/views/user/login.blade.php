@@ -165,7 +165,7 @@
                         </div>
 
                         <!-- Login Form -->
-                        <form id="loginForm" class="space-y-4">
+                        <form id="loginForm" method="POST" action="{{ url('/login') }}" class="space-y-4">
                             @csrf
                             <!-- Username/NIS Field -->
                             <div class="space-y-2">
@@ -468,7 +468,86 @@
                 if (progress >= 90) {
                     clearInterval(loadingInterval);
                 }
-            }, 50);
+            }, 30);
+
+            // Simulate API call
+            try {
+                const response = await fetch("{{ route('login') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: new FormData(loginForm)
+                });
+
+                const result = await response.json();
+                clearInterval(loadingInterval);
+                loadingBarFill.style.width = '100%';
+
+                if(result.success){
+                    loginCard.classList.add('success-pulse');
+                    btnText.textContent = '✓ BERHASIL!';
+                    submitBtn.classList.remove('opacity-75');
+                    submitBtn.classList.add('bg-green-600');
+
+                    for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.width = '8px';
+                        particle.style.height = '8px';
+                        particle.style.left = '50%';
+                        particle.style.top = '50%';
+                        particle.style.background = 'rgba(74, 222, 128, 0.8)';
+                        particle.style.position = 'fixed';
+                        particle.style.zIndex = '9999';
+                        document.body.appendChild(particle);
+                        
+                        const angle = (Math.PI * 2 * i) / 30;
+                        const velocity = 5;
+                        const vx = Math.cos(angle) * velocity;
+                        const vy = Math.sin(angle) * velocity;
+                        
+                        let posX = window.innerWidth / 2;
+                        let posY = window.innerHeight / 2;
+                        
+                        const animate = () => {
+                            posX += vx;
+                            posY += vy;
+                            particle.style.left = posX + 'px';
+                            particle.style.top = posY + 'px';
+                            particle.style.opacity = parseFloat(particle.style.opacity || 1) - 0.02;
+                            
+                            if (parseFloat(particle.style.opacity) > 0) {
+                                requestAnimationFrame(animate);
+                            } else {
+                                particle.remove();
+                            }
+                        };
+                        animate();
+                    }, i * 10);
+                    }
+                    if(result.admin){
+                        window.location.href = "{{ route('admin') }}"
+                    }
+                    setTimeout(() => {
+                        // Redirect ke halaman home
+                        window.location.href = "{{ route('home') }}"  // Ubah baris ini
+                    }, 2000);
+                }else{
+                    console.log(result);
+                    btnText.textContent = 'COBA LAGI';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    loginCard.classList.add('shake');
+                    usernameInput.focus();
+                    setTimeout(() => loginCard.classList.remove('shake'), 500);
+                }
+            }catch (error) {
+                console.error(error);
+                alert('Terjadi kesalahan pada server.');
+            };
         });
 
         // Add hover effects to inputs

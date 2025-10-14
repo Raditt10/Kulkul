@@ -47,23 +47,31 @@
                 </div>
 
                 <!-- User Profile -->
+                
                 <div class="flex items-center">
+                    @if(session('users'))
                     <div class="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-1 shadow-xl">
-                        <div class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
+                        <div id="sidebarToggle" class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
                             <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full overflow-hidden animate-pulse-slow shadow-lg">
                                 <div class="w-full h-full bg-gradient-to-br from-orange-300 to-red-400 flex items-center justify-center">
                                     <i class="fas fa-user text-white text-lg"></i>
                                 </div>
                             </div>
                             <div class="hidden sm:block">
-                                <div class="text-sm font-bold text-white">Username</div>
-                                <div class="text-xs text-orange-300">NIS : 2080710</div>
+                                <div class="text-sm font-bold text-white">{{session('users')->name}}</div>
+                                <div class="text-xs text-orange-300">NIS : {{session('users')->nis}}</div>
+                                @else
+                                <div class="text-sm font-bold text-white">Guest</div>
+                                <div class="text-xs text-orange-300">NIS : xxxxxxx</div>
+                                @endif
                             </div>
                             <button id="sidebarToggle" class="text-slate-300 hover:text-white transition-colors duration-300 hover:rotate-90">
                                 <i class="fas fa-bars text-lg"></i>
                             </button>
                         </div>
                     </div>
+                    @else
+                    <a href="{{ route('login') }}" class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 rounded-full font-medium hover:from-red-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover-lift">
                 </div>
             </div>
         </div>
