@@ -12,7 +12,7 @@ class TrimStrings extends Middleware
 {
     protected $except = [
         // 👇 Field input yang tidak boleh di-trim
-        'password',
-        'password_confirmation',
+        //'password',
+        //'password_confirmation',
     ];
 }
