@@ -11,5 +11,5 @@ use Illuminate\Http\Middleware\TrustProxies as Middleware;
 class TrustProxies extends Middleware
 {
     protected $proxies = '*'; // 👈 atau ['127.0.0.1', '::1']
-    protected $headers = Request::HEADER_X_FORWARDED_ALL;
+    protected $headers = Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO;
 }
