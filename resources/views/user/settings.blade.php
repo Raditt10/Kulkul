@@ -841,7 +841,7 @@
                         </div>
                         <div>
                             <h2 class="text-2xl font-bold text-red-400">Zona Bahaya</h2>
-                            <p class="text-sm text-slate-400">Tindakan yang tidak dapat dibatalkan</p>
+                            <p class="text-sm text-slate-400">Tindakan ini tidak dapat dibatalkan</p>
                         </div>
                     </div>
 

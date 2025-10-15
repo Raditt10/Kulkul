@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -20,16 +21,23 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors(['email' => 'Email atau password salah'])->onlyInput('email');
     }
 
     public function logout(Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        if ($user = Auth::user()) {
+        $user->update(['login_token' => null]);
+    }
+
+    Auth::logout();
+
+    Cookie::queue(Cookie::forget('auto_login_token'));
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
         return redirect('/login');
     }
 }
