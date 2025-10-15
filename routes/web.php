@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Usercontroler;
 
 //route login
-Route::post('/login', [Usercontroler::class, 'login'])->name('login');
-Route::get('/home', [Usercontroler::class, 'home'])->name('home');
+// Route::post('/login', [Usercontroler::class, 'login'])->name('login');
+// Route::get('/home', [Usercontroler::class, 'home'])->name('home');
 
 
 // Home route
-Route::get('/home', function () {
+Route::get('/', function () {
     $user = session('user');
     return view('user/home');
 })->name('home');
@@ -34,7 +34,7 @@ Route::get('/profile', function () {
 })->name('profile');
 
 //login route
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('user/login');
 })->name('login');
 
@@ -131,5 +131,11 @@ Route::get('/otime', function () {
 Route::get('admin', function(){
     return view('admin/dashboard');
 })->name('admin');
+
+Route::get('/form', function(){
+    return view('user/form');
+})->name('form');
+
+
 
 

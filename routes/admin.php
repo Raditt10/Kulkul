@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('admin/dashboard');
+})->name('dashboard');  
 
 Route::get('/ekstrakurikuler', function () {
     return view('admin/ekstrakurikuler');
@@ -29,3 +29,8 @@ Route::get('/prestasi', function () {
 Route::get('/laporan', function () {
     return view('admin/laporan');
 })->name('laporan');
+
+Route::get('/formulir', function () {
+    return view('admin/formulir');
+})->name('formulir');
+

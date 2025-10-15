@@ -279,10 +279,8 @@
     </div>
 
     <script>
-        // Toggle sidebar on mobile (optional)
         const sidebar = document.getElementById('sidebar');
         
-        // Add smooth scroll behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
