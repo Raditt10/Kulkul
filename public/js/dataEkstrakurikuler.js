@@ -335,16 +335,57 @@ function closeModal() {
 
 // Create Floating Action Button for Quick Registration
 function createFloatingButton() {
-    const fab = document.createElement('div');
-    fab.id = 'floatingActionButton';
-    fab.className = 'fixed bottom-8 right-8 z-40';
-    fab.innerHTML = `
-        <button onclick="goToRegistrationForm()" class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full shadow-2xl hover:shadow-orange-500/50 hover:scale-110 transition-all duration-300 flex items-center justify-center group">
-            <i class="fas fa-user-plus text-white text-2xl group-hover:scale-110 transition-transform"></i>
-        </button>
-    `;
-    document.body.appendChild(fab);
+  const fab = document.createElement('div');
+  fab.id = 'floatingActionButton';
+  fab.className = 'fixed bottom-10 right-10 z-50 flex items-center justify-end';
+
+  fab.innerHTML = `
+    <div class="relative group flex items-center space-x-4">
+
+      <!-- Label muncul saat hover -->
+      <span class="opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-3 
+        transition-all duration-500 ease-out
+        bg-white/10 backdrop-blur-2xl border border-white/20 
+        text-white font-semibold text-sm px-4 py-2 rounded-2xl
+        shadow-lg shadow-white/10 tracking-wide select-none
+        group-hover:shadow-white/20 group-hover:scale-105 group-hover:blur-0
+        blur-sm">
+        🚀 Daftar Sekarang
+      </span>
+
+      <!-- Tombol utama -->
+      <button onclick="goToRegistrationForm()"
+        class="relative w-16 h-16 rounded-full flex items-center justify-center
+        bg-gradient-to-tr from-orange-500 via-pink-500 to-red-600
+        shadow-lg shadow-pink-500/30 
+        hover:shadow-[0_0_40px_5px_rgba(255,115,180,0.6)]
+        transition-all duration-700 ease-out
+        hover:scale-125 hover:rotate-[10deg] active:scale-95 overflow-hidden group">
+
+        <!-- Gelombang cahaya berdenyut -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-pink-400 via-orange-400 to-red-500 opacity-0 group-hover:opacity-60 blur-2xl animate-pulse rounded-full"></div>
+
+        <!-- Cahaya orbit (efek lingkaran bergerak halus) -->
+        <div class="absolute w-20 h-20 rounded-full bg-gradient-to-tr from-pink-400/20 to-transparent blur-3xl animate-spin-slow"></div>
+
+        <!-- Icon -->
+        <i class="fas fa-user-plus text-white text-2xl relative z-10 transition-transform duration-500 group-hover:scale-150 group-hover:rotate-[15deg]"></i>
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(fab);
+
+  // Tambahkan animasi custom spin-slow
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+  `;
+  document.head.appendChild(style);
 }
+
+
 
 // Go to Registration Form without pre-selection
 function goToRegistrationForm() {

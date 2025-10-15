@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Usercontroler;
+use App\Http\Controllers\Authcontroller;
 
 //route login
-Route::post('/login', [Usercontroler::class, 'login'])->name('login');
-Route::get('/home', [Usercontroler::class, 'home'])->name('home');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+// Route::get('/home', [AuthController::class, 'home'])->name('home');
 
 
 // Home route

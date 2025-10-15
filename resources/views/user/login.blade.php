@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <title>Login - Kulkul SMKN 13 BANDUNG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -132,7 +133,7 @@
 </head>
 <body class="bg-slate-950 min-h-screen flex items-center justify-center overflow-hidden relative">
     <!-- Animated Background -->
-    <div class="absolute inset-0 fixed overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-orange-600/5 via-red-600/5 to-orange-600/5 animate-pulse-slow"></div>
         
@@ -165,7 +166,7 @@
                         </div>
 
                         <!-- Login Form -->
-                        <form id="loginForm" method="POST" action="{{ url('/login') }}" class="space-y-4">
+                        <form id="loginForm" method="POST" action="{{ url('/loginpost') }}" class="space-y-4">
                             @csrf
                             <!-- Username/NIS Field -->
                             <div class="space-y-2">

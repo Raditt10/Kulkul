@@ -65,7 +65,7 @@
             <div class="my-4 border-t border-slate-800"></div>
 
             <!-- Pengaturan -->
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all duration-300">
+            <a href="{{ route('admin.settings') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all duration-300">
                 <i class="fas fa-cog text-lg"></i>
                 <span class="font-medium">Pengaturan</span>
             </a>

@@ -177,7 +177,7 @@
                     </div>
 
                     <div>
-                        <a href="#" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
+                        <a href="{{ route('services') }}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
                             Jelajahi Layanan
                         </a>
                     </div>

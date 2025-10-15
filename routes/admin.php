@@ -34,3 +34,7 @@ Route::get('/formulir', function () {
     return view('admin/formulir');
 })->name('formulir');
 
+Route::get('/settings', function () {
+    return view('admin/settings');
+})->name('settings');
+
