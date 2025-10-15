@@ -221,10 +221,10 @@
         </div>
     </div>
 
-   <script>
-    // ======== DATA SAMPLE ========
-    let ekskulData = @json($data);
+    <script>
+        let ekskulData = @json($data);
         console.log(ekskulData);
+
 
     let currentFilter = 'all';
     let editMode = false;
@@ -235,35 +235,67 @@
         const grid = document.getElementById('ekskulGrid');
         grid.innerHTML = '';
 
-        const categoryColors = {
-            olahraga: 'from-blue-500 to-cyan-600',
-            seni: 'from-purple-500 to-pink-600',
-            akademik: 'from-green-500 to-emerald-600'
-        };
+            const categoryColors = {
+                olahraga: 'from-blue-500 to-cyan-600',
+                seni: 'from-purple-500 to-pink-600',
+                akademi: 'from-green-500 to-emerald-600',
+                tekhnologi: 'fas-orange-400 to-slate-300'
 
-        const categoryIcons = {
-            olahraga: 'fa-basketball-ball',
-            seni: 'fa-music',
-            akademik: 'fa-book'
-        };
+            };
 
-        ekskulData.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-orange-500/40 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-orange-500/20';
-            card.innerHTML = `
-                <div class="flex items-start justify-between mb-4">
-                    <div class="w-14 h-14 bg-gradient-to-br ${categoryColors[item.kategori]} rounded-xl flex items-center justify-center shadow-md">
-                        <i class="fas ${categoryIcons[item.kategori]} text-white text-2xl"></i>
+            const categoryIcons = {
+                olahraga: 'fa-basketball-ball',
+                seni: 'fa-music',
+                akademi: 'fa-book',
+                tekhnologi: 'fas fa-code'
+            };
+
+            ekskulData.forEach(item => {
+                const card = document.createElement('div');
+                console.log('Grid:', grid);
+                card.className = 'bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-orange-500/30 transition-all duration-300';
+                card.innerHTML = `
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-14 h-14 bg-gradient-to-br ${categoryColors[item.kategori]} rounded-xl flex items-center justify-center">
+                            <i class="fas ${categoryIcons[item.kategori]} text-white text-2xl"></i>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="editEkskul(${item.id_ekskul})" class="p-2 text-slate-400 hover:text-orange-400 transition-colors">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="deleteEkskul(${item.id_ekskul})" class="p-2 text-slate-400 hover:text-red-400 transition-colors">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex space-x-2">
-                        <button onclick="editEkskul(${item.id_ekskul})" class="p-2 text-slate-400 hover:text-orange-400 transition-colors">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button onclick="deleteEkskul(${item.id_ekskul})" class="p-2 text-slate-400 hover:text-red-400 transition-colors">
-                            <i class="fas fa-trash"></i>
+                    
+                    <h3 class="text-xl font-bold text-white mb-2">${item.nama_ekskul}</h3>
+                    <p class="text-slate-400 text-sm mb-4">${item.deskripsi}</p>
+                    
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-user-tie text-orange-400 w-5"></i>
+                            <span class="text-slate-300">${item.pembina}</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-calendar text-orange-400 w-5"></i>
+                            <span class="text-slate-300">${item.hari}</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-clock text-orange-400 w-5"></i>
+                            <span class="text-slate-300">${item.jam_mulai} - ${item.jam_selesai}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-users text-slate-400"></i>
+                            <span class="text-white font-semibold">${item.anggota} Anggota</span>
+                        </div>
+                        <button class="px-4 py-2 bg-slate-800 hover:bg-orange-500 text-white rounded-lg transition-colors text-sm font-medium">
+                            Detail
                         </button>
                     </div>
-                </div>
                 
                 <h3 class="text-xl font-bold text-white mb-2">${item.nama_ekskul}</h3>
                 <p class="text-slate-400 text-sm mb-4">${item.deskripsi}</p>
