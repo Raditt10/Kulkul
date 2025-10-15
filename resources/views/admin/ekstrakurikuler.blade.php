@@ -218,18 +218,9 @@
     </div>
 
     <script>
-        // Sample Data
-        let ekskulData = [
-            { id: 1, nama: 'Basket', kategori: 'olahraga', pembina: 'Budi Santoso', hari: 'Senin & Kamis', waktu: '15:00 - 17:00', anggota: 45, deskripsi: 'Ekstrakurikuler basket untuk melatih kerjasama tim dan kebugaran' },
-            { id: 2, nama: 'Futsal', kategori: 'olahraga', pembina: 'Ahmad Rifai', hari: 'Selasa & Jumat', waktu: '15:30 - 17:30', anggota: 52, deskripsi: 'Melatih keterampilan bermain futsal dan sportivitas' },
-            { id: 3, nama: 'Paduan Suara', kategori: 'seni', pembina: 'Siti Nurhaliza', hari: 'Rabu', waktu: '14:00 - 16:00', anggota: 38, deskripsi: 'Mengembangkan kemampuan vokal dan harmonisasi' },
-            { id: 4, nama: 'Tari Tradisional', kategori: 'seni', pembina: 'Dewi Lestari', hari: 'Kamis', waktu: '15:00 - 17:00', anggota: 28, deskripsi: 'Melestarikan budaya melalui tarian tradisional' },
-            { id: 5, nama: 'Robotika', kategori: 'akademik', pembina: 'Irfan Hakim', hari: 'Jumat', waktu: '13:00 - 15:00', anggota: 35, deskripsi: 'Belajar pemrograman dan merakit robot' },
-            { id: 6, nama: 'Bahasa Inggris', kategori: 'akademik', pembina: 'Sarah Johnson', hari: 'Selasa', waktu: '14:00 - 16:00', anggota: 42, deskripsi: 'Meningkatkan kemampuan berbahasa Inggris' },
-            { id: 7, nama: 'Pramuka', kategori: 'akademik', pembina: 'Eko Prasetyo', hari: 'Sabtu', waktu: '08:00 - 12:00', anggota: 68, deskripsi: 'Membentuk karakter dan kepemimpinan' },
-            { id: 8, nama: 'Voli', kategori: 'olahraga', pembina: 'Diana Kusuma', hari: 'Rabu & Sabtu', waktu: '15:00 - 17:00', anggota: 40, deskripsi: 'Melatih koordinasi dan kerjasama tim' },
-            { id: 9, nama: 'Band', kategori: 'seni', pembina: 'Rian Maulana', hari: 'Jumat', waktu: '15:00 - 18:00', anggota: 25, deskripsi: 'Mengembangkan bakat musik modern' },
-        ];
+        let ekskulData = @json($data);
+        console.log(ekskulData);
+
 
         let currentFilter = 'all';
 
@@ -241,55 +232,58 @@
             const categoryColors = {
                 olahraga: 'from-blue-500 to-cyan-600',
                 seni: 'from-purple-500 to-pink-600',
-                akademik: 'from-green-500 to-emerald-600'
+                akademi: 'from-green-500 to-emerald-600',
+                tekhnologi: 'fas-orange-400 to-slate-300'
+
             };
 
             const categoryIcons = {
                 olahraga: 'fa-basketball-ball',
                 seni: 'fa-music',
-                akademik: 'fa-book'
+                akademi: 'fa-book',
+                tekhnologi: 'fas fa-code'
             };
 
-            data.forEach(ekskul => {
+            ekskulData.forEach((item, viewData) => {
                 const card = document.createElement('div');
                 card.className = 'bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-orange-500/30 transition-all duration-300';
                 card.innerHTML = `
                     <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 bg-gradient-to-br ${categoryColors[ekskul.kategori]} rounded-xl flex items-center justify-center">
-                            <i class="fas ${categoryIcons[ekskul.kategori]} text-white text-2xl"></i>
+                        <div class="w-14 h-14 bg-gradient-to-br ${categoryColors[item.kategori]} rounded-xl flex items-center justify-center">
+                            <i class="fas ${categoryIcons[item.kategori]} text-white text-2xl"></i>
                         </div>
                         <div class="flex space-x-2">
-                            <button onclick="editEkskul(${ekskul.id})" class="p-2 text-slate-400 hover:text-orange-400 transition-colors">
+                            <button onclick="editEkskul(${item.id_ekskul})" class="p-2 text-slate-400 hover:text-orange-400 transition-colors">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button onclick="deleteEkskul(${ekskul.id})" class="p-2 text-slate-400 hover:text-red-400 transition-colors">
+                            <button onclick="deleteEkskul(${item.id_ekskul})" class="p-2 text-slate-400 hover:text-red-400 transition-colors">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
                     </div>
                     
-                    <h3 class="text-xl font-bold text-white mb-2">${ekskul.nama}</h3>
-                    <p class="text-slate-400 text-sm mb-4">${ekskul.deskripsi}</p>
+                    <h3 class="text-xl font-bold text-white mb-2">${item.nama_ekskul}</h3>
+                    <p class="text-slate-400 text-sm mb-4">${item.deskripsi}</p>
                     
                     <div class="space-y-2 mb-4">
                         <div class="flex items-center text-sm">
                             <i class="fas fa-user-tie text-orange-400 w-5"></i>
-                            <span class="text-slate-300">${ekskul.pembina}</span>
+                            <span class="text-slate-300">${item.pembina}</span>
                         </div>
                         <div class="flex items-center text-sm">
                             <i class="fas fa-calendar text-orange-400 w-5"></i>
-                            <span class="text-slate-300">${ekskul.hari}</span>
+                            <span class="text-slate-300">${item.hari}</span>
                         </div>
                         <div class="flex items-center text-sm">
                             <i class="fas fa-clock text-orange-400 w-5"></i>
-                            <span class="text-slate-300">${ekskul.waktu}</span>
+                            <span class="text-slate-300">${item.jam_mulai} - ${item.jam_selesai}</span>
                         </div>
                     </div>
                     
                     <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-users text-slate-400"></i>
-                            <span class="text-white font-semibold">${ekskul.anggota} Anggota</span>
+                            <span class="text-white font-semibold">${item.anggota} Anggota</span>
                         </div>
                         <button class="px-4 py-2 bg-slate-800 hover:bg-orange-500 text-white rounded-lg transition-colors text-sm font-medium">
                             Detail
