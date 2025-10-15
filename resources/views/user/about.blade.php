@@ -321,8 +321,6 @@
         </div>
     </section>
 
-    @include('user/includes.footer')
-
     <script src="{{ asset('js/sidebar.js') }}"></script>
 </body>
 

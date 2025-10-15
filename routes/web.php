@@ -133,3 +133,10 @@ Route::get('admin', function(){
     return view('admin/dashboard');
 })->name('admin');
 
+Route::get('/form', function(){
+    return view('user/form');
+})->name('form');
+
+
+
+

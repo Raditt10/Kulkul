@@ -24,6 +24,14 @@
         .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #fb923c, #ef4444); }
         .modal { display: none; }
         .modal.active { display: flex; }
+
+        .ekskul-checkbox {
+        transition: all 0.2s ease;
+        transform: scale(1);
+        }
+        .ekskul-checkbox:checked {
+        transform: scale(1.2);
+        }
     </style>
 </head>
 <body class="bg-slate-950">
@@ -339,6 +347,12 @@
 
         $('#searchInput').on('keyup', function () {
             table.search(this.value).draw();
+        });
+
+        $('#prestasi-table').on('draw.dt', function () {
+            table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
         });
     </script>
 </body>

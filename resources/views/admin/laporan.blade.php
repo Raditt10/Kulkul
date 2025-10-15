@@ -27,7 +27,7 @@
 </head>
 <body class="bg-slate-950 text-white">
 
-= @include('admin/includes.sidebar')
+ @include('admin/includes.sidebar')
 
   <!-- Main content -->
   <div class="ml-64 min-h-screen">
@@ -42,7 +42,6 @@
 
         <div class="flex items-center space-x-4 ml-6">
           <button id="exportPdfBtn" class="px-4 py-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors text-white"><i class="fas fa-file-pdf mr-2"></i>Export PDF</button>
-          <button id="exportExcelBtn" class="px-4 py-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors text-white"><i class="fas fa-file-excel mr-2"></i>Export Excel</button>
         </div>
       </div>
     </header>
@@ -290,7 +289,6 @@
     document.getElementById('resetFilters').addEventListener('click', ()=>{ document.getElementById('filterTingkat').value='all'; document.getElementById('filterEkskul').value='all'; document.getElementById('filterTahun').value=''; document.getElementById('globalSearch').value=''; filtered = [...laporanData]; renderStats(filtered); renderTable(filtered); renderChart(filtered); });
 
     document.getElementById('globalSearch').addEventListener('input', ()=>{ applyFilterState(); });
-    document.getElementById('exportExcelBtn').addEventListener('click', ()=>exportToCSV('laporan_prestasi.csv'));
     document.getElementById('exportPdfBtn').addEventListener('click', ()=>exportToPDF('laporan_prestasi.pdf'));
 
     // start

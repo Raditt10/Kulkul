@@ -71,9 +71,6 @@
                     <p class="text-slate-400">Kelola data pembina ekstrakurikuler</p>
                 </div>
                 <div class="flex space-x-3">
-                    <button onclick="exportData()" class="px-6 py-3 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition-all duration-300 font-semibold">
-                        <i class="fas fa-file-export mr-2"></i>Export Data
-                    </button>
                     <button onclick="openModal()" class="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl hover:from-orange-400 hover:to-red-500 transition-all duration-300 font-semibold">
                         <i class="fas fa-plus mr-2"></i>Tambah Pembina
                     </button>
@@ -249,7 +246,7 @@
                     <label class="block text-slate-400 text-sm font-medium mb-2">Ekstrakurikuler yang Dibina</label>
                     <div class="grid grid-cols-2 gap-2 bg-slate-800/50 p-4 rounded-lg max-h-40 overflow-y-auto">
                         <label class="flex items-center space-x-2 text-slate-300">
-                            <input type="checkbox" value="Basket" class="rounded border-slate-600 text-orange-500 focus:ring-orange-500 ekskul-checkbox">
+                            <input type="checkbox" value="Basket" class="rounded border-slate-600 text-orange-500 focus:ring-orange-500 ekskul-checkbox ">
                             <span>Basket</span>
                         </label>
                         <label class="flex items-center space-x-2 text-slate-300">
@@ -711,11 +708,17 @@
                 document.getElementById('detailModal').classList.add('active');
             }
         }
-
-        // Export Function
-        function exportData() {
-            alert('Export data pembina ke Excel...');
-        }
+       
+            document.querySelectorAll('.ekskul-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        // Uncheck semua checkbox lain
+                        document.querySelectorAll('.ekskul-checkbox').forEach(cb => {
+                            if (cb !== this) cb.checked = false;
+                        });
+                    }
+                });
+            });
 
         // Initial Render
         renderCards(pembinaData);

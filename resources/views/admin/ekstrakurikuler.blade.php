@@ -201,6 +201,10 @@
                 </div>
 
                 <div>
+                    <label class="block text-slate-400 text-sm font-medium mb-2">Anggota</label>
+                    <input type="number" id="anggotaEkskul" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
+                </div>
+                <div>
                     <label class="block text-slate-400 text-sm font-medium mb-2">Deskripsi</label>
                     <textarea id="deskripsiEkskul" rows="3" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors"></textarea>
                 </div>
@@ -217,18 +221,32 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <script>
         let ekskulData = @json($data);
         console.log(ekskulData);
 
+=======
+   <script>
+    // ======== DATA SAMPLE ========
+    let ekskulData = [
+        { id: 1, nama: 'Basket', kategori: 'olahraga', pembina: 'Budi Santoso', hari: 'Senin & Kamis', waktu: '15:00 - 17:00', anggota: 45, deskripsi: 'Ekstrakurikuler basket untuk melatih kerjasama tim dan kebugaran' },
+        { id: 2, nama: 'Futsal', kategori: 'olahraga', pembina: 'Ahmad Rifai', hari: 'Selasa & Jumat', waktu: '15:30 - 17:30', anggota: 52, deskripsi: 'Melatih keterampilan bermain futsal dan sportivitas' },
+        { id: 3, nama: 'Paduan Suara', kategori: 'seni', pembina: 'Siti Nurhaliza', hari: 'Rabu', waktu: '14:00 - 16:00', anggota: 38, deskripsi: 'Mengembangkan kemampuan vokal dan harmonisasi' },
+        { id: 4, nama: 'Robotika', kategori: 'akademik', pembina: 'Irfan Hakim', hari: 'Jumat', waktu: '13:00 - 15:00', anggota: 35, deskripsi: 'Belajar pemrograman dan merakit robot' },
+    ];
+>>>>>>> origin/main
 
-        let currentFilter = 'all';
+    let currentFilter = 'all';
+    let editMode = false;
+    let editId = null;
 
-        // Render Cards
-        function renderCards(data) {
-            const grid = document.getElementById('ekskulGrid');
-            grid.innerHTML = '';
+    // ======== RENDER KARTU EKSKUL ========
+    function renderCards(data) {
+        const grid = document.getElementById('ekskulGrid');
+        grid.innerHTML = '';
 
+<<<<<<< HEAD
             const categoryColors = {
                 olahraga: 'from-blue-500 to-cyan-600',
                 seni: 'from-purple-500 to-pink-600',
@@ -287,108 +305,178 @@
                         </div>
                         <button class="px-4 py-2 bg-slate-800 hover:bg-orange-500 text-white rounded-lg transition-colors text-sm font-medium">
                             Detail
+=======
+        const categoryColors = {
+            olahraga: 'from-blue-500 to-cyan-600',
+            seni: 'from-purple-500 to-pink-600',
+            akademik: 'from-green-500 to-emerald-600'
+        };
+
+        const categoryIcons = {
+            olahraga: 'fa-basketball-ball',
+            seni: 'fa-music',
+            akademik: 'fa-book'
+        };
+
+        data.forEach(ekskul => {
+            const card = document.createElement('div');
+            card.className = 'bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-orange-500/40 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-orange-500/20';
+            card.innerHTML = `
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-14 h-14 bg-gradient-to-br ${categoryColors[ekskul.kategori]} rounded-xl flex items-center justify-center shadow-md">
+                        <i class="fas ${categoryIcons[ekskul.kategori]} text-white text-2xl"></i>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="editEkskul(${ekskul.id})" class="p-2 text-slate-400 hover:text-orange-400 transition-colors">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="deleteEkskul(${ekskul.id})" class="p-2 text-slate-400 hover:text-red-400 transition-colors">
+                            <i class="fas fa-trash"></i>
+>>>>>>> origin/main
                         </button>
                     </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Filter Functions
-        function filterCategory(category) {
-            currentFilter = category;
-            
-            // Update button styles
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-orange-500', 'text-white');
-                btn.classList.add('text-slate-400');
-            });
-            event.target.classList.add('active', 'bg-orange-500', 'text-white');
-            event.target.classList.remove('text-slate-400');
-
-            // Filter data
-            const filtered = category === 'all' 
-                ? ekskulData 
-                : ekskulData.filter(e => e.kategori === category);
-            
-            renderCards(filtered);
-        }
-
-        // Search Function
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            let filtered = currentFilter === 'all' 
-                ? ekskulData 
-                : ekskulData.filter(e => e.kategori === currentFilter);
-            
-            filtered = filtered.filter(e => 
-                e.nama.toLowerCase().includes(searchTerm) ||
-                e.pembina.toLowerCase().includes(searchTerm)
-            );
-            
-            renderCards(filtered);
+                </div>
+                
+                <h3 class="text-xl font-bold text-white mb-2">${ekskul.nama}</h3>
+                <p class="text-slate-400 text-sm mb-4">${ekskul.deskripsi}</p>
+                
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center text-sm"><i class="fas fa-user-tie text-orange-400 w-5"></i><span class="text-slate-300">${ekskul.pembina}</span></div>
+                    <div class="flex items-center text-sm"><i class="fas fa-calendar text-orange-400 w-5"></i><span class="text-slate-300">${ekskul.hari}</span></div>
+                    <div class="flex items-center text-sm"><i class="fas fa-clock text-orange-400 w-5"></i><span class="text-slate-300">${ekskul.waktu}</span></div>
+                </div>
+                
+                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-users text-slate-400"></i>
+                        <span class="text-white font-semibold">${ekskul.anggota} Anggota</span>
+                    </div>
+                    <button class="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white rounded-lg transition-all text-sm font-medium shadow-md hover:shadow-orange-500/20">
+                        Detail
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
         });
+    }
 
-        // Modal Functions
-        function openModal() {
-            document.getElementById('ekskulModal').classList.add('active');
-            document.getElementById('ekskulForm').reset();
-        }
-
-        function closeModal() {
-            document.getElementById('ekskulModal').classList.remove('active');
-        }
-
-        // Form Submit
-        document.getElementById('ekskulForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const newEkskul = {
-                id: ekskulData.length + 1,
-                nama: document.getElementById('namaEkskul').value,
-                kategori: document.getElementById('kategoriEkskul').value,
-                pembina: document.getElementById('pembinaEkskul').value,
-                hari: document.getElementById('hariEkskul').value,
-                waktu: document.getElementById('waktuEkskul').value,
-                anggota: 0,
-                deskripsi: document.getElementById('deskripsiEkskul').value
-            };
-            
-            ekskulData.push(newEkskul);
-            document.getElementById('totalEkskul').textContent = ekskulData.length;
-            renderCards(ekskulData);
-            closeModal();
-            
-            // Show success notification (you can add a notification component)
-            alert('Ekstrakurikuler berhasil ditambahkan!');
+    // ======== FILTER KATEGORI ========
+    function filterCategory(category, event) {
+        currentFilter = category;
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('bg-orange-500', 'text-white');
+            btn.classList.add('text-slate-400');
         });
+        event.target.classList.add('bg-orange-500', 'text-white');
+        event.target.classList.remove('text-slate-400');
 
-        // Edit Function
-        function editEkskul(id) {
-            const ekskul = ekskulData.find(e => e.id === id);
-            if (ekskul) {
-                document.getElementById('namaEkskul').value = ekskul.nama;
-                document.getElementById('kategoriEkskul').value = ekskul.kategori;
-                document.getElementById('pembinaEkskul').value = ekskul.pembina;
-                document.getElementById('hariEkskul').value = ekskul.hari;
-                document.getElementById('waktuEkskul').value = ekskul.waktu;
-                document.getElementById('deskripsiEkskul').value = ekskul.deskripsi;
-                openModal();
-            }
+        const filtered = category === 'all' ? ekskulData : ekskulData.filter(e => e.kategori === category);
+        renderCards(filtered);
+    }
+
+    // ======== PENCARIAN ========
+    document.getElementById('searchInput').addEventListener('input', e => {
+        const searchTerm = e.target.value.toLowerCase();
+        let filtered = currentFilter === 'all' ? ekskulData : ekskulData.filter(e => e.kategori === currentFilter);
+        filtered = filtered.filter(e => 
+            e.nama.toLowerCase().includes(searchTerm) ||
+            e.pembina.toLowerCase().includes(searchTerm)
+        );
+        renderCards(filtered);
+    });
+
+    // ======== MODAL ========
+    function openModal(isEdit = false) {
+    const modal = document.getElementById('ekskulModal');
+    const modalTitle = modal.querySelector('h2');
+
+    modal.classList.add('active');
+    editMode = isEdit;
+
+    // 🔥 Ubah judul modal tergantung mode
+    modalTitle.textContent = isEdit ? 'Edit Ekskul' : 'Tambah Ekskul';
+}
+
+function closeModal() {
+    const modal = document.getElementById('ekskulModal');
+    const modalTitle = modal.querySelector('h2');
+
+    modal.classList.remove('active');
+    editMode = false;
+    editId = null;
+
+    // 🔥 Balikin judul ke default
+    modalTitle.textContent = 'Tambah Ekskul';
+
+    document.getElementById('ekskulForm').reset();
+}
+
+
+    function closeModal() {
+        document.getElementById('ekskulModal').classList.remove('active');
+        editMode = false;
+        editId = null;
+        document.getElementById('ekskulForm').reset();
+    }
+
+    // ======== FORM TAMBAH / EDIT ========
+    const form = document.getElementById('ekskulForm');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const newData = {
+            id: editMode ? editId : ekskulData.length + 1,
+            nama: document.getElementById('namaEkskul').value,
+            kategori: document.getElementById('kategoriEkskul').value,
+            pembina: document.getElementById('pembinaEkskul').value,
+            hari: document.getElementById('hariEkskul').value,
+            waktu: document.getElementById('waktuEkskul').value,
+            anggota: parseInt(document.getElementById('anggotaEkskul').value),
+            deskripsi: document.getElementById('deskripsiEkskul').value
+        };
+
+        if (editMode) {
+            const index = ekskulData.findIndex(e => e.id === editId);
+            ekskulData[index] = newData;
+            alert('✅ Data ekskul berhasil diperbarui!');
+        } else {
+            ekskulData.push(newData);
+            alert('✅ Ekstrakurikuler baru berhasil ditambahkan!');
         }
 
-        // Delete Function
-        function deleteEkskul(id) {
-            if (confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?')) {
-                ekskulData = ekskulData.filter(e => e.id !== id);
-                document.getElementById('totalEkskul').textContent = ekskulData.length;
-                renderCards(ekskulData);
-                alert('Ekstrakurikuler berhasil dihapus!');
-            }
-        }
-
-        // Initial Render
         renderCards(ekskulData);
-    </script>
+        closeModal();
+    });
+
+    // ======== EDIT EKSKUL ========
+    function editEkskul(id) {
+        const ekskul = ekskulData.find(e => e.id === id);
+        if (!ekskul) return;
+
+        document.getElementById('namaEkskul').value = ekskul.nama;
+        document.getElementById('kategoriEkskul').value = ekskul.kategori;
+        document.getElementById('pembinaEkskul').value = ekskul.pembina;
+        document.getElementById('hariEkskul').value = ekskul.hari;
+        document.getElementById('waktuEkskul').value = ekskul.waktu;
+        document.getElementById('anggotaEkskul').value = ekskul.anggota;
+        document.getElementById('deskripsiEkskul').value = ekskul.deskripsi;
+
+        editId = id;
+        openModal(true);
+    }
+
+    // ======== HAPUS EKSKUL ========
+    function deleteEkskul(id) {
+        if (confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?')) {
+            ekskulData = ekskulData.filter(e => e.id !== id);
+            alert('🗑️ Data ekskul telah dihapus.');
+            renderCards(ekskulData);
+        }
+    }
+
+    // ======== AWAL RENDER ========
+    renderCards(ekskulData);
+</script>
+
 </body>
 </html>
