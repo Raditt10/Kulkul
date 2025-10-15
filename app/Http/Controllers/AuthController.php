@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -17,18 +17,33 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required'],
             'password' => ['required'],
-        ]); 
+        ]);
 
-        $user = User::where('name', $credentials['username']);
-        if ($user && $credentials['password'] === $user->password) {
-            session(['users' => $user]);
+        // Cari user berdasarkan username atau NIS
+        $user = User::where('name', $credentials['username'])
+                ->orWhere('nis', $credentials['username'])
+                ->first();
 
-            if($user->pangkat === 'admin'){
-                return response()->json(['success' => true,'admin'=>true]);
+        if (!$user) {
+            return response()->json(['success' => false, 'message' => 'User tidak ditemukan']);
+        }
+        // Cek kalau user ditemukan
+        if ($user) {
+            // Untuk debug (tanpa hash)
+            if ($credentials['password'] === $user->password) {
+                // Simpan user ke session
+                session(['users' => $user]);
+
+                if ($user->pangkat === 'admin') {
+                    return response()->json(['success' => true, 'admin' => true]);
+                }
+
+                return response()->json(['success' => true, 'admin' => false]);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Password salah']);
             }
-            return response()->json(['success' => true, 'admin'=>false]);
         }
 
         if (Auth::attempt($credentials)) {
@@ -39,6 +54,10 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ]);
+
+        if ($request->has('remember')) {
+            cookie()->queue(cookie('user_token', $user->id, 60 * 24 * 30)); // 30 hari
+        }
     }
 
     public function home()

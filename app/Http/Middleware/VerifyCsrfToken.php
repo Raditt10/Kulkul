@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
 {
     protected $except = [
         // 👇 Tambahkan route yang tidak perlu CSRF protection (API misalnya)
-        'api/*',
+        //'api/*',
     ];
 }
