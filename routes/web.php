@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Usercontroler;
+use App\Http\Controllers\Authcontroller;
 
+//route login
+Route::post('/login', [Authcontroller::class, 'login'])->name('login');
+Route::get('/home', [Authcontroller::class, 'home'])->name('home');
 
 // Home route
 Route::get('/', function () {
@@ -128,6 +131,3 @@ Route::get('admin', function(){
     return view('admin/dashboard');
 })->name('admin');
 
-//route login
-Route::post('/login', [Usercontroler::class, 'login'])->name('login');
-Route::get('/home', [Usercontroler::class, 'home'])->name('home');

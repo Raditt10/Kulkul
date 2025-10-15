@@ -17,15 +17,16 @@
                     <i class="fas fa-user text-white text-xl"></i>
                 </div>
                 <div>
-                    @if(session('users'))
-                    <p class="font-bold text-white text-base">{{session('users')->name}}</p>
-                    <p class="text-sm text-orange-300">NIS: {{session('users')->nis}}</p>
+                    @auth
+                    <p class="font-bold text-white text-base">{{Auth()->user()->name}}</p>
+                    <p class="text-sm text-orange-300">NIS: {{Auth()->user()->nis}}</p>
                     <p class="text-xs text-slate-400">Siswa Aktif</p>
-                    @else
+                    @endauth
+                    @guest
                     <p class="font-bold text-white text-base">guest</p>
                     <p class="text-sm text-orange-300">NIS: xxxxx</p>
                     <p class="text-xs text-slate-400">Belum login</p>
-                    @endif
+                    @endguest
                 </div>
             </div>
         </div>
