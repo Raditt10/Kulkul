@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Login - Kulkul SMKN 13 BANDUNG</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Login Kulkul</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -253,17 +254,6 @@
                                 <div class="absolute inset-0 flex items-center">
                                     <div class="w-full border-t border-slate-700"></div>
                                 </div>
-                                <div class="relative flex justify-center">
-                                    <span class="px-3 bg-slate-800/80 text-slate-500 text-xs font-medium">ATAU</span>
-                                </div>
-                            </div>
-
-                            <!-- Register Link -->
-                            <div class="text-center p-4 bg-slate-800/30 rounded-xl border border-slate-700 hover:border-orange-500/50 transition-all duration-300">
-                                <p class="text-slate-300 text-sm mb-2">Belum punya akun?</p>
-                                <a href="" class="inline-block px-6 py-2 bg-slate-800 hover:bg-slate-700 text-orange-400 text-sm font-bold rounded-lg transition-all duration-300 hover-lift border border-orange-500/30">
-                                    DAFTAR SEKARANG
-                                </a>
                             </div>
                         </form>
                     </div>

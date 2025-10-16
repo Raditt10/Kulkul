@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Kulkul SMKN 13 BANDUNG</title>
+    <title>Services Kulkul</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <!-- Tailwind & custom -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -177,7 +177,7 @@
                     </div>
 
                     <div>
-                        <a href="#" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
+                        <a href="{{ route('services') }}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
                             Jelajahi Layanan
                         </a>
                     </div>

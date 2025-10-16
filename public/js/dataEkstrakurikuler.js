@@ -1,244 +1,608 @@
- // Data Ekstrakurikuler
-    const eskulData = [{
-            name: 'Basket',
-            category: 'olahraga',
-            icon: 'fas fa-basketball-ball',
-            color: 'from-orange-500 to-red-600',
-            members: 45,
-            schedule: 'Senin & Kamis',
-            description: 'Latihan basket untuk mengasah kemampuan tim dan strategi bermain'
-        },
-        {
-            name: 'Futsal',
-            category: 'olahraga',
-            icon: 'fas fa-futbol',
-            color: 'from-green-500 to-emerald-600',
-            members: 52,
-            schedule: 'Selasa & Jumat',
-            description: 'Ekstrakurikuler futsal dengan pelatih berpengalaman'
-        },
-        {
-            name: 'Voli',
-            category: 'olahraga',
-            icon: 'fas fa-volleyball-ball',
-            color: 'from-blue-500 to-cyan-600',
-            members: 38,
-            schedule: 'Rabu & Sabtu',
-            description: 'Melatih kerjasama tim melalui permainan bola voli'
-        },
-        {
-            name: 'Badminton',
-            category: 'olahraga',
-            icon: 'fas fa-shuttlecock',
-            color: 'from-yellow-500 to-orange-600',
-            members: 30,
-            schedule: 'Kamis & Sabtu',
-            description: 'Bermain dan berlatih bulutangkis dengan teknik yang tepat'
-        },
-        {
-            name: 'Pramuka',
-            category: 'akademik',
-            icon: 'fas fa-campground',
-            color: 'from-amber-600 to-yellow-700',
-            members: 65,
-            schedule: 'Jumat',
-            description: 'Membentuk karakter pemimpin dan jiwa petualang'
-        },
-        {
-            name: 'PMR',
-            category: 'akademik',
-            icon: 'fas fa-plus-square',
-            color: 'from-red-500 to-rose-600',
-            members: 40,
-            schedule: 'Rabu',
-            description: 'Palang Merah Remaja untuk melatih kepedulian sosial'
-        },
-        {
-            name: 'Seni Tari',
-            category: 'seni',
-            icon: 'fas fa-drum',
-            color: 'from-pink-500 to-rose-600',
-            members: 28,
-            schedule: 'Senin & Rabu',
-            description: 'Melestarikan budaya melalui tarian tradisional dan modern'
-        },
-        {
-            name: 'Musik',
-            category: 'seni',
-            icon: 'fas fa-music',
-            color: 'from-purple-500 to-pink-600',
-            members: 35,
-            schedule: 'Selasa & Kamis',
-            description: 'Belajar berbagai alat musik dan tampil di acara sekolah'
-        },
-        {
-            name: 'Teater',
-            category: 'seni',
-            icon: 'fas fa-theater-masks',
-            color: 'from-indigo-500 to-purple-600',
-            members: 25,
-            schedule: 'Rabu',
-            description: 'Mengasah kemampuan akting dan ekspresi diri'
-        },
-        {
-            name: 'Fotografi',
-            category: 'seni',
-            icon: 'fas fa-camera',
-            color: 'from-slate-500 to-gray-600',
-            members: 30,
-            schedule: 'Jumat',
-            description: 'Belajar teknik fotografi dan videografi profesional'
-        },
-        {
-            name: 'Robotika',
-            category: 'teknologi',
-            icon: 'fas fa-robot',
-            color: 'from-cyan-500 to-blue-600',
-            members: 32,
-            schedule: 'Senin & Kamis',
-            description: 'Merancang dan membuat robot untuk kompetisi'
-        },
-        {
-            name: 'Musi',
-            category: 'teknologi',
-            icon: 'fas fa-code',
-            color: 'from-green-600 to-teal-600',
-            members: 42,
-            schedule: 'Rabu & Jumat',
-            description: 'Belajar coding dan pengembangan aplikasi'
-        },
-        {
-            name: 'Desain Grafis',
-            category: 'teknologi',
-            icon: 'fas fa-pen-nib',
-            color: 'from-violet-500 to-purple-600',
-            members: 38,
-            schedule: 'Selasa',
-            description: 'Menguasai software desain untuk membuat karya visual'
-        },
-        {
-            name: 'KIR',
-            category: 'akademik',
-            icon: 'fas fa-flask',
-            color: 'from-emerald-500 to-green-600',
-            members: 28,
-            schedule: 'Kamis',
-            description: 'Karya Ilmiah Remaja untuk mengembangkan penelitian'
-        },
-        {
-            name: 'Jurnalistik',
-            category: 'akademik',
-            icon: 'fas fa-newspaper',
-            color: 'from-blue-600 to-indigo-600',
-            members: 26,
-            schedule: 'Senin',
-            description: 'Menulis berita dan mengelola media sekolah'
-        },
-        {
-            name: 'English Club',
-            category: 'akademik',
-            icon: 'fas fa-comments',
-            color: 'from-sky-500 to-blue-600',
-            members: 35,
-            schedule: 'Rabu',
-            description: 'Meningkatkan kemampuan berbahasa Inggris'
-        },
-        {
-            name: 'Pencak Silat',
-            category: 'olahraga',
-            icon: 'fas fa-hand-rock',
-            color: 'from-red-600 to-orange-700',
-            members: 33,
-            schedule: 'Selasa & Kamis',
-            description: 'Bela diri tradisional Indonesia yang membangun mental'
-        },
-        {
-            name: 'E-Sports',
-            category: 'teknologi',
-            icon: 'fas fa-gamepad',
-            color: 'from-purple-600 to-pink-700',
-            members: 40,
-            schedule: 'Jumat',
-            description: 'Kompetisi game profesional dan strategi tim'
-        }
-    ];
+// Data Ekstrakurikuler
+const eskulData = [
+    {
+        id: 1,
+        name: 'Basket',
+        category: 'olahraga',
+        icon: 'fa-basketball-ball',
+        gradient: 'from-orange-500 to-red-600',
+        schedule: 'Senin & Rabu, 15:00 - 17:00',
+        members: 24,
+        coach: 'Bapak Agus Santoso',
+        description: 'Ekstrakurikuler basket untuk mengembangkan kemampuan bermain basket dan kerjasama tim.',
+        achievements: ['Juara 1 Basket Antar Sekolah 2024', 'Juara 2 Piala Gubernur'],
+        available: true
+    },
+    {
+        id: 2,
+        name: 'Paskibra',
+        category: 'olahraga',
+        icon: 'fa-flag',
+        gradient: 'from-blue-500 to-cyan-600',
+        schedule: 'Selasa & Kamis, 14:00 - 16:00',
+        members: 18,
+        coach: 'Ibu Siti Nurhaliza',
+        description: 'Pasukan Pengibar Bendera untuk melatih kedisiplinan dan keterampilan baris-berbaris.',
+        achievements: ['Peleton Inti HUT RI 2024', 'Juara 1 LKBB Tingkat Kota'],
+        available: true
+    },
+    {
+        id: 3,
+        name: 'Coding Club',
+        category: 'teknologi',
+        icon: 'fa-code',
+        gradient: 'from-purple-500 to-pink-600',
+        schedule: 'Rabu & Jumat, 15:00 - 17:00',
+        members: 32,
+        coach: 'Bapak Dedi Kurniawan',
+        description: 'Belajar programming, web development, dan pengembangan aplikasi.',
+        achievements: ['Juara 2 Hackathon Jabar 2024', 'Best App Innovation'],
+        available: true
+    },
+    {
+        id: 4,
+        name: 'Paduan Suara',
+        category: 'seni',
+        icon: 'fa-music',
+        gradient: 'from-green-500 to-emerald-600',
+        schedule: 'Senin & Kamis, 15:30 - 17:30',
+        members: 28,
+        coach: 'Ibu Dewi Lestari',
+        description: 'Mengembangkan kemampuan vokal dan harmonisasi dalam bernyanyi bersama.',
+        achievements: ['Juara 1 Choir Competition 2024', 'Best Vocal Group'],
+        available: true
+    },
+    {
+        id: 5,
+        name: 'Tari Tradisional',
+        category: 'seni',
+        icon: 'fa-masks-theater',
+        gradient: 'from-yellow-500 to-orange-600',
+        schedule: 'Selasa & Jumat, 14:30 - 16:30',
+        members: 20,
+        coach: 'Ibu Rina Wulandari',
+        description: 'Melestarikan budaya Indonesia melalui seni tari tradisional Nusantara.',
+        achievements: ['Juara 1 Festival Tari 2024', 'Penampilan Terbaik'],
+        available: true
+    },
+    {
+        id: 6,
+        name: 'Futsal',
+        category: 'olahraga',
+        icon: 'fa-futbol',
+        gradient: 'from-red-500 to-rose-600',
+        schedule: 'Rabu & Sabtu, 15:00 - 17:00',
+        members: 30,
+        coach: 'Bapak Rudi Hermawan',
+        description: 'Ekstrakurikuler futsal untuk meningkatkan skill dan strategi bermain.',
+        achievements: ['Juara 3 Liga Futsal Pelajar 2024'],
+        available: false
+    },
+    {
+        id: 7,
+        name: 'Robotik',
+        category: 'teknologi',
+        icon: 'fa-robot',
+        gradient: 'from-indigo-500 to-purple-600',
+        schedule: 'Senin & Kamis, 14:00 - 16:00',
+        members: 15,
+        coach: 'Bapak Ahmad Fauzi',
+        description: 'Belajar merancang, membuat, dan memprogram robot untuk berbagai kompetisi.',
+        achievements: ['Juara 2 Kompetisi Robot Nasional 2024'],
+        available: true
+    },
+    {
+        id: 8,
+        name: 'Jurnalistik',
+        category: 'akademik',
+        icon: 'fa-newspaper',
+        gradient: 'from-teal-500 to-cyan-600',
+        schedule: 'Rabu & Jumat, 14:00 - 16:00',
+        members: 22,
+        coach: 'Ibu Farida Hanum',
+        description: 'Mengembangkan kemampuan menulis, fotografi, dan membuat konten media.',
+        achievements: ['Best School Magazine 2024', 'Juara 1 Lomba Jurnalistik'],
+        available: true
+    },
+    {
+        id: 9,
+        name: 'English Club',
+        category: 'akademik',
+        icon: 'fa-language',
+        gradient: 'from-pink-500 to-rose-600',
+        schedule: 'Selasa & Kamis, 15:00 - 17:00',
+        members: 25,
+        coach: 'Miss Sarah Johnson',
+        description: 'Meningkatkan kemampuan berbahasa Inggris melalui conversation dan public speaking.',
+        achievements: ['Juara 1 Debate Competition 2024', 'Best Speaker Award'],
+        available: true
+    },
+    {
+        id: 10,
+        name: 'Seni Lukis',
+        category: 'seni',
+        icon: 'fa-paint-brush',
+        gradient: 'from-amber-500 to-orange-600',
+        schedule: 'Senin & Rabu, 14:30 - 16:30',
+        members: 18,
+        coach: 'Bapak Budi Santoso',
+        description: 'Mengembangkan kreativitas dan kemampuan melukis dengan berbagai media.',
+        achievements: ['Juara 2 Lomba Lukis Tingkat Provinsi'],
+        available: true
+    }
+];
 
-    // Render Eskul Cards
-    function renderEskul(data) {
-        const grid = document.getElementById('eskulGrid');
-        grid.innerHTML = data.map(eskul => `
-                <div class="eskul-card hover-lift" data-category="${eskul.category}">
-                    <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r ${eskul.color} rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                        <div class="relative bg-slate-800 border border-orange-500/20 rounded-2xl overflow-hidden">
-                            <!-- Header -->
-                            <div class="bg-gradient-to-r ${eskul.color} p-6 text-center">
-                                <div class="w-20 h-20 mx-auto bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center mb-4 animate-float">
-                                    <i class="${eskul.icon} text-white text-3xl"></i>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">${eskul.name}</h3>
-                            </div>
-                            
-                            <!-- Content -->
-                            <div class="p-6 space-y-4">
-                                <p class="text-slate-300 text-sm leading-relaxed">${eskul.description}</p>
-                                
-                                <div class="space-y-3">
-                                    <div class="flex items-center text-slate-300">
-                                        <i class="fas fa-users text-orange-400 mr-3 w-5"></i>
-                                        <span class="text-sm">${eskul.members} Anggota</span>
-                                    </div>
-                                    <div class="flex items-center text-slate-300">
-                                        <i class="fas fa-calendar text-orange-400 mr-3 w-5"></i>
-                                        <span class="text-sm">${eskul.schedule}</span>
-                                    </div>
-                                    <div class="flex items-center text-slate-300">
-                                        <i class="fas fa-tag text-orange-400 mr-3 w-5"></i>
-                                        <span class="text-sm capitalize">${eskul.category}</span>
-                                    </div>
-                                </div>
+// Filter function
+function filterEskul(category) {
+    const filtered = category === 'all' 
+        ? eskulData 
+        : eskulData.filter(eskul => eskul.category === category);
+    
+    renderEskulCards(filtered);
+    
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-gradient-to-r', 'from-orange-500', 'to-red-600');
+        btn.classList.add('bg-slate-800');
+    });
+    
+    event.target.classList.add('active', 'bg-gradient-to-r', 'from-orange-500', 'to-red-600');
+    event.target.classList.remove('bg-slate-800');
+}
 
-                                <!-- Action Button -->
-                                <button class="w-full mt-6 px-6 py-3 bg-gradient-to-r ${eskul.color} text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300">
-                                    <i class="fas fa-info-circle mr-2"></i>
-                                    Lihat Detail
-                                </button>
-                            </div>
-                        </div>
+// Render Eskul Cards
+function renderEskulCards(data) {
+    const grid = document.getElementById('eskulGrid');
+    
+    grid.innerHTML = data.map(eskul => `
+        <div class="eskul-card bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-3xl border border-slate-700 overflow-hidden hover-lift glass-effect group" data-category="${eskul.category}">
+            <!-- Header with Icon -->
+            <div class="relative bg-gradient-to-br ${eskul.gradient} p-8">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas ${eskul.icon} text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">${eskul.name}</h3>
+                    <p class="text-white/80 text-sm">
+                        <i class="fas fa-clock mr-2"></i>${eskul.schedule}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-slate-800/50 rounded-xl p-3 text-center">
+                        <i class="fas fa-users text-orange-400 mb-2"></i>
+                        <p class="text-white font-bold">${eskul.members}</p>
+                        <p class="text-slate-400 text-xs">Anggota</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-3 text-center">
+                        <i class="fas fa-chalkboard-teacher text-blue-400 mb-2"></i>
+                        <p class="text-white font-bold text-sm">${eskul.coach.split(' ').slice(0, 2).join(' ')}</p>
+                        <p class="text-slate-400 text-xs">Pembina</p>
                     </div>
                 </div>
-            `).join('');
+
+                <!-- Description -->
+                <p class="text-slate-300 text-sm mb-4 line-clamp-3">${eskul.description}</p>
+
+                <!-- Achievements -->
+                <div class="mb-6">
+                    <p class="text-slate-400 text-xs font-semibold mb-2">
+                        <i class="fas fa-trophy text-yellow-400 mr-1"></i>Prestasi Terbaru:
+                    </p>
+                    ${eskul.achievements.map(achievement => `
+                        <span class="inline-block bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-300 text-xs px-3 py-1 rounded-full mb-2 mr-2">
+                            ${achievement}
+                        </span>
+                    `).join('')}
+                </div>
+
+                <!-- Status Badge -->
+                <div class="mb-4">
+                    ${eskul.available 
+                        ? '<span class="inline-flex items-center px-3 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full"><i class="fas fa-check-circle mr-2"></i>Tersedia</span>'
+                        : '<span class="inline-flex items-center px-3 py-1 bg-red-500/20 text-red-400 text-xs font-semibold rounded-full"><i class="fas fa-times-circle mr-2"></i>Kuota Penuh</span>'
+                    }
+                </div>
+
+                <!-- Action Button -->
+                <button onclick="viewDetail(${eskul.id})" class="w-full px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl transition-all duration-300 border border-slate-700 hover:border-orange-500">
+                    <i class="fas fa-info-circle mr-2"></i>Lihat Detail
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// View Detail Function
+function viewDetail(id) {
+    const eskul = eskulData.find(e => e.id === id);
+    if (!eskul) return;
+
+    // Create modal
+    const modal = document.createElement('div');
+    modal.id = 'detailModal';
+    modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4';
+    modal.innerHTML = `
+        <div class="bg-slate-900 rounded-3xl border border-slate-700 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="relative bg-gradient-to-br ${eskul.gradient} p-8">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="flex items-center space-x-4">
+                    <div class="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center">
+                        <i class="fas ${eskul.icon} text-white text-4xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-2">${eskul.name}</h2>
+                        <p class="text-white/80"><i class="fas fa-clock mr-2"></i>${eskul.schedule}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8 space-y-6">
+                <!-- Description -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-3">Deskripsi</h3>
+                    <p class="text-slate-300">${eskul.description}</p>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Jumlah Anggota</p>
+                        <p class="text-white font-bold text-lg"><i class="fas fa-users text-orange-400 mr-2"></i>${eskul.members} Siswa</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Pembina</p>
+                        <p class="text-white font-bold text-lg"><i class="fas fa-chalkboard-teacher text-blue-400 mr-2"></i>${eskul.coach}</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Kategori</p>
+                        <p class="text-white font-bold text-lg capitalize"><i class="fas fa-tag text-purple-400 mr-2"></i>${eskul.category}</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Status</p>
+                        <p class="text-white font-bold text-lg">
+                            ${eskul.available 
+                                ? '<i class="fas fa-check-circle text-green-400 mr-2"></i><span class="text-green-400">Tersedia</span>'
+                                : '<i class="fas fa-times-circle text-red-400 mr-2"></i><span class="text-red-400">Kuota Penuh</span>'
+                            }
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-trophy text-yellow-400 mr-2"></i>Prestasi</h3>
+                    <div class="space-y-2">
+                        ${eskul.achievements.map(achievement => `
+                            <div class="bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 rounded-xl p-3">
+                                <p class="text-orange-300"><i class="fas fa-medal text-yellow-400 mr-2"></i>${achievement}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-3 pt-4">
+                    <button onclick="closeModal()" class="flex-1 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl transition-colors">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+}
+
+// Daftar Eskul Function
+function daftarEskul(id) {
+    const eskul = eskulData.find(e => e.id === id);
+    if (!eskul) return;
+
+    // Close detail modal if open
+    closeModal();
+
+    // Store selected eskul in sessionStorage
+    const eskulKey = eskul.name.toLowerCase().replace(/\s+/g, '-');
+    sessionStorage.setItem('selectedEskul', eskulKey);
+    sessionStorage.setItem('selectedEskulData', JSON.stringify(eskul));
+
+    // Redirect to registration form
+    window.location.href = '/form';
+}
+
+// Close Modal Function
+function closeModal() {
+    const modal = document.getElementById('detailModal');
+    if (modal) {
+        modal.remove();
     }
+}
 
-    // Filter Function
-    function filterEskul(category) {
-        const cards = document.querySelectorAll('.eskul-card');
-        const buttons = document.querySelectorAll('.filter-btn');
+// Create Floating Action Button for Quick Registration
+function createFloatingButton() {
+  const fab = document.createElement('div');
+  fab.id = 'floatingActionButton';
+  fab.className = 'fixed bottom-10 right-10 z-50 flex items-center justify-end';
 
-        // Update active button
-        buttons.forEach(btn => {
-            btn.classList.remove('active', 'bg-gradient-to-r', 'from-orange-500', 'to-red-600', 'text-white');
-            btn.classList.add('bg-slate-800', 'text-slate-300');
-        });
+  fab.innerHTML = `
+    <div class="relative group flex items-center space-x-4">
 
-        event.target.closest('.filter-btn').classList.add('active', 'bg-gradient-to-r', 'from-orange-500', 'to-red-600', 'text-white');
-        event.target.closest('.filter-btn').classList.remove('bg-slate-800', 'text-slate-300');
+      <!-- Label muncul saat hover -->
+      <span class="opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-3 
+        transition-all duration-500 ease-out
+        bg-white/10 backdrop-blur-2xl border border-white/20 
+        text-white font-semibold text-sm px-4 py-2 rounded-2xl
+        shadow-lg shadow-white/10 tracking-wide select-none
+        group-hover:shadow-white/20 group-hover:scale-105 group-hover:blur-0
+        blur-sm">
+        🚀 Daftar Sekarang
+      </span>
 
-        // Filter cards with animation
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                    card.style.animation = 'slideUp 0.5s ease-out';
-                } else {
-                    card.style.display = 'none';
-                }
-            }, index * 50);
-        });
+      <!-- Tombol utama -->
+      <button onclick="goToRegistrationForm()"
+        class="relative w-16 h-16 rounded-full flex items-center justify-center
+        bg-gradient-to-tr from-orange-500 via-pink-500 to-red-600
+        shadow-lg shadow-pink-500/30 
+        hover:shadow-[0_0_40px_5px_rgba(255,115,180,0.6)]
+        transition-all duration-700 ease-out
+        hover:scale-125 hover:rotate-[10deg] active:scale-95 overflow-hidden group">
+
+        <!-- Gelombang cahaya berdenyut -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-pink-400 via-orange-400 to-red-500 opacity-0 group-hover:opacity-60 blur-2xl animate-pulse rounded-full"></div>
+
+        <!-- Cahaya orbit (efek lingkaran bergerak halus) -->
+        <div class="absolute w-20 h-20 rounded-full bg-gradient-to-tr from-pink-400/20 to-transparent blur-3xl animate-spin-slow"></div>
+
+        <!-- Icon -->
+        <i class="fas fa-user-plus text-white text-2xl relative z-10 transition-transform duration-500 group-hover:scale-150 group-hover:rotate-[15deg]"></i>
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(fab);
+
+  // Tambahkan animasi custom spin-slow
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+  `;
+  document.head.appendChild(style);
+}
+
+
+
+// Go to Registration Form without pre-selection
+function goToRegistrationForm() {
+    window.location.href = '/form';
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    renderEskulCards(eskulData);
+    createFloatingButton();
+});
+
+// Filter function
+function filterEskul(category) {
+    const filtered = category === 'all' 
+        ? eskulData 
+        : eskulData.filter(eskul => eskul.category === category);
+    
+    renderEskulCards(filtered);
+    
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-gradient-to-r', 'from-orange-500', 'to-red-600');
+        btn.classList.add('bg-slate-800');
+    });
+    
+    event.target.classList.add('active', 'bg-gradient-to-r', 'from-orange-500', 'to-red-600');
+    event.target.classList.remove('bg-slate-800');
+}
+
+// Render Eskul Cards
+function renderEskulCards(data) {
+    const grid = document.getElementById('eskulGrid');
+    
+    grid.innerHTML = data.map(eskul => `
+        <div class="eskul-card bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-3xl border border-slate-700 overflow-hidden hover-lift glass-effect group" data-category="${eskul.category}">
+            <!-- Header with Icon -->
+            <div class="relative bg-gradient-to-br ${eskul.gradient} p-8">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas ${eskul.icon} text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">${eskul.name}</h3>
+                    <p class="text-white/80 text-sm">
+                        <i class="fas fa-clock mr-2"></i>${eskul.schedule}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-slate-800/50 rounded-xl p-3 text-center">
+                        <i class="fas fa-users text-orange-400 mb-2"></i>
+                        <p class="text-white font-bold">${eskul.members}</p>
+                        <p class="text-slate-400 text-xs">Anggota</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-3 text-center">
+                        <i class="fas fa-chalkboard-teacher text-blue-400 mb-2"></i>
+                        <p class="text-white font-bold text-sm">${eskul.coach.split(' ').slice(0, 2).join(' ')}</p>
+                        <p class="text-slate-400 text-xs">Pembina</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-slate-300 text-sm mb-4 line-clamp-3">${eskul.description}</p>
+
+                <!-- Achievements -->
+                <div class="mb-6">
+                    <p class="text-slate-400 text-xs font-semibold mb-2">
+                        <i class="fas fa-trophy text-yellow-400 mr-1"></i>Prestasi Terbaru:
+                    </p>
+                    ${eskul.achievements.map(achievement => `
+                        <span class="inline-block bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-300 text-xs px-3 py-1 rounded-full mb-2 mr-2">
+                            ${achievement}
+                        </span>
+                    `).join('')}
+                </div>
+
+                <!-- Status Badge -->
+                <div class="mb-4">
+                    ${eskul.available 
+                        ? '<span class="inline-flex items-center px-3 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full"><i class="fas fa-check-circle mr-2"></i>Tersedia</span>'
+                        : '<span class="inline-flex items-center px-3 py-1 bg-red-500/20 text-red-400 text-xs font-semibold rounded-full"><i class="fas fa-times-circle mr-2"></i>Kuota Penuh</span>'
+                    }
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-3">
+                    <button onclick="viewDetail(${eskul.id})" class="flex-1 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl transition-all duration-300 border border-slate-700 hover:border-orange-500">
+                        <i class="fas fa-info-circle mr-2"></i>Lihat Detail
+                    </button>
+                    }
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// View Detail Function
+function viewDetail(id) {
+    const eskul = eskulData.find(e => e.id === id);
+    if (!eskul) return;
+
+    // Create modal
+    const modal = document.createElement('div');
+    modal.id = 'detailModal';
+    modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4';
+    modal.innerHTML = `
+        <div class="bg-slate-900 rounded-3xl border border-slate-700 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="relative bg-gradient-to-br ${eskul.gradient} p-8">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="flex items-center space-x-4">
+                    <div class="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center">
+                        <i class="fas ${eskul.icon} text-white text-4xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-2">${eskul.name}</h2>
+                        <p class="text-white/80"><i class="fas fa-clock mr-2"></i>${eskul.schedule}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8 space-y-6">
+                <!-- Description -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-3">Deskripsi</h3>
+                    <p class="text-slate-300">${eskul.description}</p>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Jumlah Anggota</p>
+                        <p class="text-white font-bold text-lg"><i class="fas fa-users text-orange-400 mr-2"></i>${eskul.members} Siswa</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Pembina</p>
+                        <p class="text-white font-bold text-lg"><i class="fas fa-chalkboard-teacher text-blue-400 mr-2"></i>${eskul.coach}</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Kategori</p>
+                        <p class="text-white font-bold text-lg capitalize"><i class="fas fa-tag text-purple-400 mr-2"></i>${eskul.category}</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4">
+                        <p class="text-slate-400 text-sm mb-1">Status</p>
+                        <p class="text-white font-bold text-lg">
+                            ${eskul.available 
+                                ? '<i class="fas fa-check-circle text-green-400 mr-2"></i><span class="text-green-400">Tersedia</span>'
+                                : '<i class="fas fa-times-circle text-red-400 mr-2"></i><span class="text-red-400">Kuota Penuh</span>'
+                            }
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-trophy text-yellow-400 mr-2"></i>Prestasi</h3>
+                    <div class="space-y-2">
+                        ${eskul.achievements.map(achievement => `
+                            <div class="bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 rounded-xl p-3">
+                                <p class="text-orange-300"><i class="fas fa-medal text-yellow-400 mr-2"></i>${achievement}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-3 pt-4">
+                    <button onclick="closeModal()" class="flex-1 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl transition-colors">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+}
+
+// Daftar Eskul Function
+function daftarEskul(id) {
+    const eskul = eskulData.find(e => e.id === id);
+    if (!eskul) return;
+
+    // Close detail modal if open
+    closeModal();
+
+    // Store selected eskul in sessionStorage
+    const eskulKey = eskul.name.toLowerCase().replace(/\s+/g, '-');
+    sessionStorage.setItem('selectedEskul', eskulKey);
+    sessionStorage.setItem('selectedEskulData', JSON.stringify(eskul));
+
+    // Redirect to registration form
+    window.location.href = '/pendaftaran-eskul';
+}
+
+// Close Modal Function
+function closeModal() {
+    const modal = document.getElementById('detailModal');
+    if (modal) {
+        modal.remove();
     }
+}
 
-    // Initial render
-    renderEskul(eskulData);
-
-    // Set initial active button
-    document.querySelector('.filter-btn').classList.add('bg-gradient-to-r', 'from-orange-500', 'to-red-600', 'text-white');
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    renderEskulCards(eskulData);
+});

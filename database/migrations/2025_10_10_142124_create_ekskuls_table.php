@@ -12,24 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ekskuls', function (Blueprint $table) {
-            // Menggunakan bigIncrements() untuk Primary Key Auto-Increment dengan nama kustom.
-            $table->id('id_ekskul'); 
-            
-            // Tambahkan unique() jika nama ekskul tidak boleh duplikat
-            $table->string('nama_ekskul', 50)->unique(); 
-            
-            // Hari ekskul
-            $table->string('hari', 8); 
-            
-            // Menggunakan time() untuk menyimpan waktu murni
-            $table->time('jam_mulai');    
-            $table->time('jam_selesai');  
-            
-            $table->string('pelatih', 40);
-            $table->text('deskripsi'); 
-            
-            // Kolom created_at dan updated_at
-            $table->timestamps();
+            $table->id('id_ekskul'); // id_ekskul dari JSON
+            $table->string('nama_ekskul');
+            $table->enum('kategori', ['seni', 'tekhnologi', 'akademi', 'olahraga']);
+            $table->string('pembina'); // nama pembina
+            $table->string('hari'); // hari ekstrakurikuler
+            $table->time('jam_mulai'); // jam mulai
+            $table->time('jam_selesai'); // jam selesai
+            $table->integer('anggota')->default(0); // jumlah anggota
+            $table->text('deskripsi')->nullable(); // deskripsi ekskul
+            $table->timestamps(); // created_at & updated_at
         });
     }
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teman Saya - Kulkul SMKN 13 BANDUNG</title>
+    <title>Teman Saya Kulkul</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>

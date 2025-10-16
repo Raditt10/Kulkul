@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Kulkul SMKN 13 BANDUNG</title>
+    <title>Home Kulkul</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -84,7 +84,6 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-                <!-- Left Content dengan Animasi -->
                 <div class="space-y-8 animate-slide-up">
                     <div class="space-y-4">
                         <div class="flex items-center justify-center mb-6">
@@ -124,9 +123,7 @@
                     </div>
                 </div>
 
-                <!-- Right Content dengan 3D Effect -->
                 <div class="relative animate-slide-in">
-                    <!-- Main Card dengan Advanced Effects -->
                     <div class="relative group hover-lift">
                         <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000 animate-glow"></div>
                         <div class="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl p-10 space-y-8 border border-orange-500/20 shadow-2xl overflow-hidden">
@@ -137,15 +134,12 @@
                                     SMKN 13 BANDUNG
                                 </div>
                             </div>
-                            
-                        <!-- Hero Image dengan Overlay (dengan teks yang berganti) -->
+            
                         <div class="relative rounded-2xl overflow-hidden group mb-6">
-                        <!-- Ubah bg jadi gambar -->
                          <div 
                             class="aspect-video bg-cover bg-center flex items-center justify-center" 
                             style="background-image: url('{{ asset('images/eskul.jpg') }}');">
                             
-                            <!-- Overlay biar teks tetap terbaca -->
                             <div class="absolute inset-0 bg-black/50"></div>
 
                             <!-- Konten -->
@@ -181,7 +175,7 @@
                             <!-- Content -->
                             <div class="text-center space-y-4">
                                 <h3 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-                                    WELCOME, ALIF!
+                                    WELCOME, USER!
                                 </h3>
                                 <p class="text-slate-300 leading-relaxed">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat ante nibh, 
@@ -191,7 +185,7 @@
                                 <!-- Stats -->
                                 <div class="grid grid-cols-3 gap-4 pt-4">
                                     <div class="text-center">
-                                        <div class="text-2xl font-bold text-orange-400">25+</div>
+                                        <div class="text-2xl font-bold text-orange-400">23</div>
                                         <div class="text-xs text-slate-400">Ekstrakurikuler</div>
                                     </div>
                                     <div class="text-center">
@@ -211,45 +205,44 @@
         </div>
 
        <!-- Wave Bottom for Hero Section -->
-<div class="absolute -bottom-1 left-0 w-full overflow-hidden">
-    <svg class="relative block w-full h-[100px]" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <defs>
-            <linearGradient id="wave-gradient" gradientTransform="rotate(90)">
-                <stop offset="0%" stop-color="#0f172a"/>
-                <stop offset="100%" stop-color="#1e293b"/>
-            </linearGradient>
-        </defs>
-        <path 
-            d="M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z"
-            fill="url(#wave-gradient)"
-            class="transition-all duration-300 ease-in-out"
-        >
-            <animate
-                attributeName="d"
-                dur="5s" dowidnp
-                repeatCount="indefinite"
-                values="
-                    M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z;
-                    M0,96L34.3,90.7C68.6,85,137,75,206,69.3C274.3,64,343,64,411,69.3C480,75,549,85,617,90.7C685.7,96,754,96,823,90.7C891.4,85,960,75,1029,69.3C1097.1,64,1166,64,1234,69.3C1302.9,75,1371,85,1406,90.7L1440,96L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z;
-                    M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z"
-            />
-        </path>
-    </svg>
-</div>
-</section>
+        <div class="absolute -bottom-1 left-0 w-full overflow-hidden">
+            <svg class="relative block w-full h-[100px]" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="wave-gradient" gradientTransform="rotate(90)">
+                        <stop offset="0%" stop-color="#0f172a"/>
+                        <stop offset="100%" stop-color="#1e293b"/>
+                    </linearGradient>
+                </defs>
+                <path 
+                    d="M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z"
+                    fill="url(#wave-gradient)"
+                    class="transition-all duration-300 ease-in-out"
+                >
+                    <animate
+                        attributeName="d"
+                        dur="5s" dowidnp
+                        repeatCount="indefinite"
+                        values="
+                            M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z;
+                            M0,96L34.3,90.7C68.6,85,137,75,206,69.3C274.3,64,343,64,411,69.3C480,75,549,85,617,90.7C685.7,96,754,96,823,90.7C891.4,85,960,75,1029,69.3C1097.1,64,1166,64,1234,69.3C1302.9,75,1371,85,1406,90.7L1440,96L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z;
+                            M0,96L34.3,85.3C68.6,75,137,53,206,48C274.3,43,343,53,411,58.7C480,64,549,64,617,69.3C685.7,75,754,85,823,90.7C891.4,96,960,96,1029,90.7C1097.1,85,1166,75,1234,69.3C1302.9,64,1371,64,1406,64L1440,64L1440,120L1405.7,120C1371.4,120,1303,120,1234,120C1165.7,120,1097,120,1029,120C960,120,891,120,823,120C754.3,120,686,120,617,120C548.6,120,480,120,411,120C342.9,120,274,120,206,120C137.1,120,69,120,34,120L0,120Z"
+                    />
+                </path>
+            </svg>
+        </div>
+        </section>
 
-<!-- Features Section -->
-<section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24">
-    <!-- ...existing features content... -->
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400 mb-6">
-                    Kenapa Memilih Kulkul?
-                </h2>
-                <p class="text-slate-300 text-lg">
-                    Temukan berbagai keunggulan dan manfaat yang akan kamu dapatkan di program ekstrakurikuler SMKN 13 Bandung
-                </p>
-            </div>
+        <!-- Features Section -->
+        <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24">
+                <div class="container mx-auto px-4">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400 mb-6">
+                            Kenapa Memilih Kulkul?
+                        </h2>
+                            <p class="text-slate-300 text-lg">
+                                Temukan berbagai keunggulan dan manfaat yang akan kamu dapatkan di program ekstrakurikuler SMKN 13 Bandung
+                            </p>
+                        </div>
 
             <!-- Feature Cards -->
             <div class="grid md:grid-cols-3 gap-8 mb-16">

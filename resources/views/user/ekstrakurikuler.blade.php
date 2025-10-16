@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eskul List - Kulkul SMKN 13 BANDUNG</title>
+<title>Ekstrakurikuler Kulkul</title>
 <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -67,6 +67,19 @@
     .glass-effect {
         backdrop-filter: blur(16px);
     }
+    @keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+/* Hover tombol scale */
+.group:hover .relative {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
 </style>
 </head>
 
@@ -97,14 +110,19 @@
             <p class="text-xl text-slate-300 leading-relaxed">
                 Temukan passion-mu dan kembangkan bakat terbaikmu bersama berbagai pilihan ekstrakurikuler di SMKN 13 Bandung
             </p>
-            <div class="mt-8">
-          <a href="{{ route('otime') }}" class="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-full hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-lg">
-            <i class="fas fa-stopwatch mr-2"></i>
-            Lihat Jadwal O' Time
-        </a>
+       <div class="mt-8 flex flex-wrap justify-center gap-6">
+            <a href="{{ route('otime') }}" 
+            class="relative inline-block px-8 py-4 font-bold text-white rounded-full overflow-hidden group shadow-lg">
+                <span class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 transition-all duration-500 ease-in-out group-hover:from-red-500 group-hover:to-orange-500"></span>
+                <span class="relative flex items-center gap-2">
+                    <i class="fas fa-stopwatch animate-bounce-slow"></i>
+                    Lihat Jadwal O' Time
+                </span>
+                <span class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-orange-500 to-red-600 blur opacity-30 group-hover:opacity-50 transition duration-500"></span>
+            </a>
+         </div>
        </div>
-     </div>
-
+    
         <!-- Filter Section -->
         <div class="flex flex-wrap justify-center gap-4 mb-12">
             <button onclick="filterEskul('all')" class="filter-btn active px-6 py-3 rounded-full font-bold transition-all duration-300 bg-gradient-to-r from-orange-500 to-red-600 text-white">
