@@ -407,7 +407,7 @@ function closeModal() {
     }
 
     // ======== AWAL RENDER ========
-    renderCards(ekskulData);
+    renderCards(ekskulData);    
 </script>
 
 </body>

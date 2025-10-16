@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - Kulkul SMKN 13</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -30,8 +31,8 @@
 </head>
 <body class="bg-slate-950">
     
-    <!-- Sidebar (Include dari file terpisah) -->
-    <!-- @include('admin.includes.sidebar') -->
+    
+     @include('admin.includes.sidebar')
 
     <!-- Main Content -->
     <div class="ml-64 min-h-screen">
@@ -88,18 +89,6 @@
                                 <i class="fas fa-key"></i>
                                 <span>Keamanan</span>
                             </button>
-                            <button onclick="showTab('notifications')" class="settings-tab w-full text-left px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors flex items-center space-x-3">
-                                <i class="fas fa-bell"></i>
-                                <span>Notifikasi</span>
-                            </button>
-                            <button onclick="showTab('system')" class="settings-tab w-full text-left px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors flex items-center space-x-3">
-                                <i class="fas fa-cog"></i>
-                                <span>Sistem</span>
-                            </button>
-                            <button onclick="showTab('backup')" class="settings-tab w-full text-left px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors flex items-center space-x-3">
-                                <i class="fas fa-database"></i>
-                                <span>Backup</span>
-                            </button>
                         </nav>
                     </div>
                 </div>
@@ -134,25 +123,22 @@
                             <div class="grid md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-slate-400 text-sm mb-2">Nama Lengkap</label>
-                                    <input type="text" value="Admin User" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
+                                    <input type="text" value="Admin User" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors" readonly>
                                 </div>
                                 <div>
                                     <label class="block text-slate-400 text-sm mb-2">Email</label>
-                                    <input type="email" value="admin@smkn13.sch.id" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
+                                    <input type="email" value="admin@smkn13.sch.id" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors" readonly>
                                 </div>
                                 <div>
                                     <label class="block text-slate-400 text-sm mb-2">Nomor Telepon</label>
-                                    <input type="tel" value="+62 812 3456 7890" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
+                                    <input type="tel" value="+62 812 3456 7890" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors" readonly>
                                 </div>
                                 <div>
                                     <label class="block text-slate-400 text-sm mb-2">Jabatan</label>
-                                    <input type="text" value="Administrator" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
+                                    <input type="text" value="Administrator" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors" readonly>
                                 </div>
                             </div>
                             <div class="flex justify-end mt-6">
-                                <button class="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-lg hover:from-orange-400 hover:to-red-500 transition-all font-semibold">
-                                    Simpan Perubahan
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -183,7 +169,8 @@
                             </div>
                         </div>
 
-                        <!-- Two Factor Authentication -->
+                        <!-- Two-Factor Authentication -->
+                         
                         <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
                             <h2 class="text-xl font-bold text-white mb-4">Autentikasi Dua Faktor</h2>
                             <p class="text-slate-400 text-sm mb-6">Tambahkan lapisan keamanan ekstra ke akun Anda</p>
@@ -203,10 +190,9 @@
                             </div>
                         </div>
 
-                        <!-- Login Sessions -->
                         <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
-                            <h2 class="text-xl font-bold text-white mb-6">Sesi Login</h2>
-                            <div class="space-y-3">
+                                <h2 class="text-xl font-bold text-white mb-6">Sesi Login</h2>
+                                <div class="space-y-3">
                                 <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
                                     <div class="flex items-center space-x-4">
                                         <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
@@ -248,12 +234,12 @@
                                 </div>
                             </div>
                         </div>
-
+                    
                         <!-- Danger Zone -->
-                        <div class="bg-gradient-to-br from-red-500/10 to-red-600/10 backdrop-blur-xl rounded-2xl p-6 border border-red-500/30">
-                            <h2 class="text-xl font-bold text-red-400 mb-4">Danger Zone</h2>
-                            <p class="text-slate-400 text-sm mb-6">Tindakan berikut bersifat permanen dan tidak dapat dibatalkan</p>
-                            <div class="space-y-3">
+                            <div class="bg-gradient-to-br from-red-500/10 to-red-600/10 backdrop-blur-xl rounded-2xl p-6 border border-red-500/30 mt-6">
+                                <h2 class="text-xl font-bold text-red-400 mb-4">Danger Zone</h2>
+                                <p class="text-slate-400 text-sm mb-6">Tindakan berikut bersifat permanen dan tidak dapat dibatalkan</p>
+                                <div class="space-y-3">
                                 <button class="w-full px-4 py-3 bg-slate-800 text-red-400 rounded-lg hover:bg-slate-700 transition-all text-sm font-semibold flex items-center justify-between">
                                     <span><i class="fas fa-trash-alt mr-2"></i>Hapus Semua Data</span>
                                     <i class="fas fa-chevron-right"></i>
@@ -265,261 +251,15 @@
                             </div>
                         </div>
                     </div>
-
+                    <div>
+                        <p class="text-white font-medium">Windows • Chrome</p>
+                        <p class="text-slate-400 text-sm">Bandung, Indonesia • Saat ini</p>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
-
-    <script>
-        function showTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.settings-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.settings-tab').forEach(tab => {
-                tab.classList.remove('active', 'text-white', 'bg-slate-800');
-                tab.classList.add('text-slate-400');
-            });
-            
-            // Show selected tab
-            document.getElementById(tabName + '-tab').classList.remove('hidden');
-            
-            // Add active class to clicked button
-            event.target.closest('.settings-tab').classList.add('active', 'text-white', 'bg-slate-800');
-            event.target.closest('.settings-tab').classList.remove('text-slate-400');
-        }
-    </script>
-</body>
-</html><i class="fas fa-desktop text-green-400 text-xl"></i>
-                                        <div>
-                                            <p class="text-white font-medium">Windows • Chrome</p>
-                                            <p class="text-slate-400 text-sm">Bandung, Indonesia • Saat ini</p>
-                                        </div>
-                                    </div>
-                                    <span class="text-green-400 text-sm font-semibold">Aktif</span>
-                                </div>
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div class="flex items-center space-x-4">
-                                        <i class="fas fa-mobile-alt text-slate-400 text-xl"></i>
-                                        <div>
-                                            <p class="text-white font-medium">Android • Chrome Mobile</p>
-                                            <p class="text-slate-400 text-sm">Bandung, Indonesia • 3 hari yang lalu</p>
-                                        </div>
-                                    </div>
-                                    <button class="text-red-400 hover:text-red-300 text-sm font-semibold">Logout</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Notifications Tab -->
-                    <div id="notifications-tab" class="settings-content hidden">
-                        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
-                            <h2 class="text-xl font-bold text-white mb-6">Preferensi Notifikasi</h2>
-                            <div class="space-y-4">
-                                <!-- Notification Item -->
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div>
-                                        <p class="text-white font-semibold">Pendaftaran Siswa Baru</p>
-                                        <p class="text-slate-400 text-sm">Dapatkan notifikasi saat ada siswa baru mendaftar</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" checked class="sr-only peer">
-                                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600"></div>
-                                    </label>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div>
-                                        <p class="text-white font-semibold">Prestasi Baru</p>
-                                        <p class="text-slate-400 text-sm">Notifikasi saat ada prestasi baru ditambahkan</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" checked class="sr-only peer">
-                                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600"></div>
-                                    </label>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div>
-                                        <p class="text-white font-semibold">Jadwal Kegiatan</p>
-                                        <p class="text-slate-400 text-sm">Pengingat untuk kegiatan yang akan datang</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" checked class="sr-only peer">
-                                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600"></div>
-                                    </label>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div>
-                                        <p class="text-white font-semibold">Laporan Mingguan</p>
-                                        <p class="text-slate-400 text-sm">Ringkasan aktivitas sistem setiap minggu</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer">
-                                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600"></div>
-                                    </label>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div>
-                                        <p class="text-white font-semibold">Email Marketing</p>
-                                        <p class="text-slate-400 text-sm">Terima update dan tips via email</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer">
-                                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600"></div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- System Tab -->
-                    <div id="system-tab" class="settings-content hidden">
-                        <!-- General Settings -->
-                        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
-                            <h2 class="text-xl font-bold text-white mb-6">Pengaturan Umum</h2>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-slate-400 text-sm mb-2">Nama Sekolah</label>
-                                    <input type="text" value="SMKN 13 Bandung" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
-                                </div>
-                                <div>
-                                    <label class="block text-slate-400 text-sm mb-2">Bahasa Sistem</label>
-                                    <select class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
-                                        <option>Bahasa Indonesia</option>
-                                        <option>English</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-slate-400 text-sm mb-2">Zona Waktu</label>
-                                    <select class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
-                                        <option>WIB (GMT+7)</option>
-                                        <option>WITA (GMT+8)</option>
-                                        <option>WIT (GMT+9)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="flex justify-end mt-6">
-                                <button class="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-lg hover:from-orange-400 hover:to-red-500 transition-all font-semibold">
-                                    Simpan Perubahan
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- System Information -->
-                        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
-                            <h2 class="text-xl font-bold text-white mb-6">Informasi Sistem</h2>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div class="p-4 bg-slate-800/50 rounded-xl">
-                                    <p class="text-slate-400 text-sm mb-1">Versi Sistem</p>
-                                    <p class="text-white font-semibold">v2.5.1</p>
-                                </div>
-                                <div class="p-4 bg-slate-800/50 rounded-xl">
-                                    <p class="text-slate-400 text-sm mb-1">Terakhir Update</p>
-                                    <p class="text-white font-semibold">15 Oktober 2025</p>
-                                </div>
-                                <div class="p-4 bg-slate-800/50 rounded-xl">
-                                    <p class="text-slate-400 text-sm mb-1">Storage Terpakai</p>
-                                    <p class="text-white font-semibold">2.4 GB / 10 GB</p>
-                                </div>
-                                <div class="p-4 bg-slate-800/50 rounded-xl">
-                                    <p class="text-slate-400 text-sm mb-1">Total Pengguna</p>
-                                    <p class="text-white font-semibold">1,267 Users</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Backup Tab -->
-                    <div id="backup-tab" class="settings-content hidden">
-                        <!-- Backup Settings -->
-                        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
-                            <h2 class="text-xl font-bold text-white mb-6">Backup Otomatis</h2>
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div>
-                                        <p class="text-white font-semibold">Backup Harian</p>
-                                        <p class="text-slate-400 text-sm">Backup otomatis setiap hari pukul 02:00 WIB</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" checked class="sr-only peer">
-                                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600"></div>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="block text-slate-400 text-sm mb-2">Simpan Backup Selama</label>
-                                    <select class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition-colors">
-                                        <option>7 Hari</option>
-                                        <option>14 Hari</option>
-                                        <option>30 Hari</option>
-                                        <option>90 Hari</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Recent Backups -->
-                        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800">
-                            <div class="flex items-center justify-between mb-6">
-                                <h2 class="text-xl font-bold text-white">Backup Terbaru</h2>
-                                <button class="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-lg hover:from-orange-400 hover:to-red-500 transition-all text-sm font-semibold">
-                                    <i class="fas fa-plus mr-2"></i>Buat Backup
-                                </button>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-white font-semibold">backup-2025-10-15.zip</p>
-                                            <p class="text-slate-400 text-sm">15 Oktober 2025, 02:00 WIB • 245 MB</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <button class="px-3 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-all text-sm">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                        <button class="px-3 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-all text-sm">
-                                            <i class="fas fa-undo"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-white font-semibold">backup-2025-10-14.zip</p>
-                                            <p class="text-slate-400 text-sm">14 Oktober 2025, 02:00 WIB • 243 MB</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <button class="px-3 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-all text-sm">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                        <button class="px-3 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-all text-sm">
-                                            <i class="fas fa-undo"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-        </div>
-    </div>
+    <script src="{{ asset('js/openTab.js') }}"></script>
 </body>
 </html>
 
