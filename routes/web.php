@@ -9,6 +9,16 @@ Route::post('/login', [Authcontroller::class, 'login'])->name('login');
 Route::get('/home', [Authcontroller::class, 'home'])->name('home');
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
 
+Route::prefix('admin')->group(function () {
+    Route::get('/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
+    Route::post('/ekstrakurikuler', [EkskulController::class, 'store'])->name('admin.ekstrakurikuler.store');
+    Route::put('/ekstrakurikuler/{id}', [EkskulController::class, 'update'])->name('admin.ekstrakurikuler.update');
+    Route::delete('/ekstrakurikuler/{id}', [EkskulController::class, 'destroy'])->name('admin.ekstrakurikuler.delete');
+});
+
+
+
+
 // Home route
 Route::get('/', function () {
     $user = session('user');
