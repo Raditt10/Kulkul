@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id('nip');
             $table->string('nuptk');
             $table->string('nama');
-            $table->enum('gender' ('laki-laki', 'perempuan'));
+            $table->enum('gender', ['laki-laki', 'perempuan']);
             $table->string('no_telp');
             $table->string('email');
-            $table->enum('pendidikan' ('S1', 'S2', 'S3'));
-            $table->enum('jurusan' ('PPLG', 'TKJ', 'KA'));
+            $table->enum('pendidikan', ['S1', 'S2', 'S3']);
+            $table->enum('jurusan', ['PPLG', 'TKJ', 'KA']);
             $table->string('alamat');
             $table->string('ekslul');
             $table->integer('pengalaman');
-            $table->enum('status' ('aktif', 'cuti', 'pensiun', 'nonaktif'));
+            $table->enum('status' ,['aktif', 'cuti', 'pensiun', 'nonaktif']);
         });
     }
 
