@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authcontroller;
 
 //route login
-Route::post('/login', [Authcontroller::class, 'login'])->name('login');
+Route::get('/login', [Authcontroller::class, 'showlogin'])->name('login');
+Route::post('/login', [Authcontroller::class, 'login'])->name('login.post');
 Route::get('/home', [Authcontroller::class, 'home'])->name('home');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Home route
 Route::get('/', function () {
@@ -31,11 +33,6 @@ Route::get('/profile', function () {
         'user'=>$user
     ]);
 })->name('profile');
-
-//login route
-Route::get('/login', function () {
-    return view('user/login');
-})->name('login');
 
 // eskul route
 Route::get('/eskul', function () {

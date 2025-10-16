@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
     public function showLogin() {
-        return view('login'); // nama file login.blade.php kamu
+        return view('user.login'); // nama file login.blade.php kamu
     }
 
     public function login(Request $request) {
         $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
+            'username' => ['required', 'string'],
+            'password' => ['required', 'string'],
         ]);
 
         // Cari user berdasarkan username atau NIS
@@ -32,8 +32,8 @@ class AuthController extends Controller
         // Cek kalau user ditemukan
         if ($user) {
             // Untuk debug (tanpa hash)
-            if ($credentials['password'] === $user->password) {
-                // Simpan user ke session
+            if ($user && $credentials['password'] === $user->password) {
+                // Simpan user ke session (gpt)
                 session(['users' => $user]);
 
                 if ($user->pangkat === 'admin') {
@@ -44,11 +44,8 @@ class AuthController extends Controller
             } else {
                 return response()->json(['success' => false, 'message' => 'Password salah']);
             }
-        }
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
+            dd(session('users'));
         }
 
         return back()->withErrors([
@@ -62,23 +59,20 @@ class AuthController extends Controller
 
     public function home()
     {
-        $user = session('users');
+        $user = session('users'); //gpt
         return view('user/home', [
             'user'=>$user
         ]);
     }
     
     public function logout(Request $request) {
-        // if ($user = Auth::user()) {
-        //     $user->update(['login_token' => null]);
-        // }
-
-        Auth::logout();
 
         Cookie::queue(Cookie::forget('auto_login_token'));
 
+        session()->forget('users');
+        session()->flush();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }
