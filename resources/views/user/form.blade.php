@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Ekstrakurikuler - Kulkul SMKN 13</title>
+    <title>Formulir Pendaftaran Ekstrakurikuler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -400,10 +400,8 @@
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/form.js') }}"></script>
-<script>
+    <script>
     const formUrl = "{{ route('form') }}";
-</script>
-
+    </script>
 </body>
-
 </html>

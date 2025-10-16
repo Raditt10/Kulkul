@@ -30,9 +30,9 @@ Route::get('/laporan', function () {
     return view('admin/laporan');
 })->name('laporan');
 
-Route::get('/formulir', function () {
-    return view('admin/formulir');
-})->name('formulir');
+Route::get('/form', function () {
+    return view('admin/form');
+})->name('form');
 
 Route::get('/settings', function () {
     return view('admin/settings');

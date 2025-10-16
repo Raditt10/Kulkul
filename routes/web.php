@@ -6,7 +6,7 @@ use App\Http\Controllers\EkskulController;
 
 //route login
 Route::post('/login', [Authcontroller::class, 'login'])->name('login');
-Route::get('/home', [Authcontroller::class, 'home'])->name('home');
+// Route::get('/home', [Authcontroller::class, 'home'])->name('home');
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
 
 Route::prefix('admin')->group(function () {
@@ -15,8 +15,6 @@ Route::prefix('admin')->group(function () {
     Route::put('/ekstrakurikuler/{id}', [EkskulController::class, 'update'])->name('admin.ekstrakurikuler.update');
     Route::delete('/ekstrakurikuler/{id}', [EkskulController::class, 'destroy'])->name('admin.ekstrakurikuler.delete');
 });
-
-
 
 
 // Home route
@@ -50,9 +48,9 @@ Route::get('/login', function () {
 })->name('login');
 
 // eskul route
-Route::get('/eskul', function () {
-    return view('user/eskul');
-})->name('eskul');
+Route::get('/ekstrakurikuler', function () {
+    return view('user/ekstrakurikuler');
+})->name('ekstrakurikuler');
 
 // settigs route
 Route::get('/settings', function () {
@@ -60,8 +58,8 @@ Route::get('/settings', function () {
 })->name('settings');
 
 // friends route
-Route::get('/friend', function () {
-    return view('user/friend', [
+Route::get('/friends', function () {
+    return view('user/friends', [
         'friends' => [
             [
                 'id' => 1,
@@ -131,12 +129,12 @@ Route::get('/friend', function () {
             ]
         ]
     ]);
-})->name('friend');
+})->name('friends');
 
 // otime route
-Route::get('/otime', function () {
-    return view('user/otime');
-})->name('otime');
+Route::get('/timeo', function () {
+    return view('user/timeo');
+})->name('timeo');
 
 //admin route
 Route::get('admin', function(){

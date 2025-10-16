@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Laporan Prestasi - Kulkul SMKN 13</title>
+  <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+  <title>Admin Laporan Prestasi Kulkul</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { slate: { 850: '#1a2234' } } } } };

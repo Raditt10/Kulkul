@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('eskul') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                <a href="{{ route('ekstrakurikuler') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-code text-orange-400 w-5"></i>
                     <span class="font-medium">Daftar Esktrakurikuler</span>
                 </a>
@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('friend') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
+                <a href="{{ route('friends') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-users text-orange-400 w-5"></i>
                     <span class="font-medium">Teman Saya</span>
                 </a>
