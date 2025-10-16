@@ -1,0 +1,1 @@
+        tekhnologi: 'fas fa-code'        tekhnologi: 'from-orange-100 to-setle-500'
