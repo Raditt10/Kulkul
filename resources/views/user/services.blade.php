@@ -84,10 +84,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-
-   @include('user/includes.navbar')
-  
-   @include('user/includes.sidebar')
+    @php $page = 'services' @endphp
+    @include('user/includes.navbar')
+    
+    @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>

@@ -208,6 +208,11 @@
         </div>
     </div>
 
+    @php $page = 'settings' @endphp
+    @include('user/includes.navbar')
+    
+    @include('user/includes.sidebar')
+
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
 
@@ -219,7 +224,7 @@
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 mr-4"></div>
                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-xl">
-                       <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-8 h-8 object-contain">
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-8 h-8 object-contain">
                     </div>
                     <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-orange-500 ml-4"></div>
                 </div>
@@ -245,54 +250,47 @@
                             </div>
                         </div>
 
-                        <form id="passwordForm" class="space-y-4">
+                        <form id="passwordForm" class="space-y-4" method="POST" action="{{ route('settings.password') }}">
+                            @csrf
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Password Lama</label>
                                 <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="oldPassword"
-                                        class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Masukkan password lama"
-                                    >
+                                    <input type="password" name="oldPassword" id="oldPassword" placeholder="Password lama" 
+                                    class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    />
                                     <i class="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                                 </div>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Password Baru</label>
                                 <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="newPassword"
-                                        class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Masukkan password baru"
-                                    >
+                                    <input type="password" name="newPassword" id="newPassword" placeholder="Password baru" 
+                                    class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    />
                                     <i class="fas fa-key absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                                 </div>
-                                <div class="mt-2">
-                                    <div class="text-xs text-slate-400 mb-1">Kekuatan Password:</div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div id="passwordStrength" class="progress-bar bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full" style="width: 0%"></div>
-                                    </div>
-                                </div>
                             </div>
+
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Konfirmasi Password</label>
                                 <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="confirmPassword"
+                                    <input type="password" id="confirmPassword" placeholder="Konfirmasi password baru"
                                         class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Konfirmasi password baru"
-                                    >
+                                    />
                                     <i class="fas fa-check-circle absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                                 </div>
                             </div>
-                            <button 
-                                type="submit"
+
+                            <div class="mt-2">
+                                <div class="text-xs text-slate-400 mb-1">Kekuatan Password:</div>
+                                <div class="w-full bg-slate-700 rounded-full h-2">
+                                    <div id="passwordStrength" class="progress-bar bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+      
+                            <button type="submit"
                                 class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-xl"
-                            >
-                                <i class="fas fa-save mr-2"></i>
+                            ><i class="fas fa-save mr-2"></i>
                                 Ubah Password
                             </button>
                         </form>
@@ -687,7 +685,7 @@
                                             Windows PC - Chrome
                                             <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Aktif Sekarang</span>
                                         </div>
-                                        <div class="text-sm text-slate-400">IP: 192.168.1.100 • Bandung, Indonesia</div>
+                                        <div class="text-sm text-slate-400"> @if($sessions) sessions-> • Bandung, Indonesia</div>
                                         <div class="text-xs text-slate-500">Login: 2 jam yang lalu</div>
                                     </div>
                                 </div>
@@ -710,10 +708,14 @@
                                         <div class="text-xs text-slate-500">Login: 1 hari yang lalu</div>
                                     </div>
                                 </div>
-                                <button class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-all duration-300">
-                                    <i class="fas fa-sign-out-alt mr-1"></i>
-                                    Logout
-                                </button>
+                                {{-- <form action="{{ route('session.logout', @if($session) $sessions->id @endif) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg">
+                                        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                                    </button>
+                                </form> --}}
+
                             </div>
                         </div>
 
@@ -729,18 +731,24 @@
                                         <div class="text-xs text-slate-500">Login: 3 hari yang lalu</div>
                                     </div>
                                 </div>
-                                <button class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-all duration-300">
-                                    <i class="fas fa-sign-out-alt mr-1"></i>
-                                    Logout
-                                </button>
+                                {{-- <form action="{{ route('session.logout', $session->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg">
+                                        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                                    </button> --}}
+                                </form>
                             </div>
                         </div>
 
                         <div class="text-center pt-4">
-                            <button class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300">
-                                <i class="fas fa-sign-out-alt mr-2"></i>
-                                Logout Semua Perangkat
-                            </button>
+                            {{-- <form action="{{ route('session.logoutAll') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Logout Semua Perangkat
+                                </button>
+                            </form> --}}
                         </div>
                     </div>
                 </div>

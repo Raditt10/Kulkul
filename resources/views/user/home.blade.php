@@ -119,7 +119,7 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-
+    @php $page = 'home' @endphp
     @include('user/includes.navbar')
 
     @include('user/includes.sidebar')

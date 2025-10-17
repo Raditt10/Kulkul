@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -28,6 +30,7 @@ class AuthController extends Controller
         if (!$user) {
             return response()->json(['success' => false, 'message' => 'User tidak ditemukan']);
         }
+
         // Cek kalau user ditemukan
         if ($user) {
             // Untuk debug (tanpa hash)
@@ -43,9 +46,16 @@ class AuthController extends Controller
             } else {
                 return response()->json(['success' => false, 'message' => 'Password salah']);
             }
-
-            dd(session('users'));
         }
+
+        DB::table('sessions')->insert([
+            'id' => Str::uuid()->toString(),
+            'user_id' => session('user')->nis,
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'payload' => '',
+            'last_activity' => time(),
+        ]);
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',

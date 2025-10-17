@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EkskulController; 
 use App\Http\Controllers\PembinaController;
+use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\FormPendaftaranController;
 
 Route::get('/timeo', [EkskulController::class, 'jadwal'])->name('timeo');
@@ -23,6 +24,14 @@ Route::get('/login', [AuthController::class, 'showlogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/home', [AuthController::class, 'home'])->name('home');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings.password');
+Route::delete('/settings/delete-data', [UserSettingsController::class, 'deleteData'])->name('user.deleteData');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/settings', [UserSettingsController::class, 'sessions'])->name('settings');
+    Route::delete('/settings/session/{id}', [UserSettingsController::class, 'logoutSession'])->name('session.logout');
+    Route::delete('/settings/logout-all', [UserSettingsController::class, 'logoutAllSessions'])->name('session.logoutAll');
+});
 
 
 Route::get('user/form', [FormPendaftaranController::class, 'index'])->name('user.form');
@@ -31,6 +40,7 @@ Route::get('/form', [FormPendaftaranController::class, 'viewUser'])->name('view.
 
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
 Route::get('/admin/pembina', [PembinaController::class, 'viewData'])->name('admin.pembina');
+
 
 Route::prefix('admin')->group(function () {
     Route::post('/pembina', [PembinaController::class, 'store'])->name('pembina.store');

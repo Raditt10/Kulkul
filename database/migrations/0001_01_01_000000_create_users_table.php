@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('kelas');
+            $table->float('score_avg');
             $table->string('no_tlp');
             $table->string('alamat_rumah');
+            $table->string('achievements');
             $table->date('tgl_lahir');
             $table->enum('pangkat', ['admin', 'siswa'])->default('siswa');
+            $table->integer('total_eskul');
             $table->rememberToken();
             $table->timestamps();
         });
