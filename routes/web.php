@@ -3,11 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\EkskulController;
+use App\Http\Controllers\PembinaController;
 
+Route::get('/pembina', function () {
+    return view('pembina.index');
+});
+
+Route::prefix('api')->group(function () {
+    Route::resource('pembina', PembinaController::class);
+});
+
+// API atau aksi CRUD
 //route login
 Route::post('/login', [Authcontroller::class, 'login'])->name('login');
 Route::get('/home', [Authcontroller::class, 'home'])->name('home');
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
+Route::get('/admin/pembina', [PembinaController::class, 'viewData'])->name('admin.pembina');
+
+Route::prefix('admin')->group(function () {
+    Route::post('/pembina', [PembinaController::class, 'store'])->name('pembina.store');
+    Route::put('/pembina/{id}', [PembinaController::class, 'update'])->name('pembina.update');
+    Route::delete('/pembina/{id}', [PembinaController::class, 'destroy'])->name('pembina.destroy');
+});
 
 Route::prefix('admin')->group(function () {
     Route::get('/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
@@ -15,6 +32,8 @@ Route::prefix('admin')->group(function () {
     Route::put('/ekstrakurikuler/{id}', [EkskulController::class, 'update'])->name('admin.ekstrakurikuler.update');
     Route::delete('/ekstrakurikuler/{id}', [EkskulController::class, 'destroy'])->name('admin.ekstrakurikuler.delete');
 });
+
+Route::get('/form', [EkskulController::class, 'viewUser'])->name('form');
 
 
 
@@ -143,9 +162,6 @@ Route::get('admin', function(){
     return view('admin/dashboard');
 })->name('admin');
 
-Route::get('/form', function(){
-    return view('user/form');
-})->name('form');
 
 
 

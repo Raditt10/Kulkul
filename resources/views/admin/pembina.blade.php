@@ -330,62 +330,8 @@
 
     <script>
         // Sample Data
-        let pembinaData = [
-            { 
-                id: 1, nip: '198501152010011001', nama: 'Budi Santoso, S.Pd', jk: 'L', tempat_lahir: 'Bandung', 
-                tgl_lahir: '1985-01-15', telepon: '081234567890', email: 'budi.santoso@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Pendidikan Olahraga', alamat: 'Jl. Sudirman No. 123 Bandung',
-                ekskul: ['Basket', 'Futsal'], kategori: 'olahraga', pengalaman: 12, status: 'Aktif', jumlah_siswa: 97
-            },
-            { 
-                id: 2, nip: '198703202011012002', nama: 'Siti Nurhaliza, S.Sn', jk: 'P', tempat_lahir: 'Jakarta',
-                tgl_lahir: '1987-03-20', telepon: '081234567891', email: 'siti.nurhaliza@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Seni Musik', alamat: 'Jl. Merdeka No. 45 Bandung',
-                ekskul: ['Paduan Suara', 'Band'], kategori: 'seni', pengalaman: 10, status: 'Aktif', jumlah_siswa: 63
-            },
-            { 
-                id: 3, nip: '199005102015011003', nama: 'Ahmad Rifai, S.Pd', jk: 'L', tempat_lahir: 'Surabaya',
-                tgl_lahir: '1990-05-10', telepon: '081234567892', email: 'ahmad.rifai@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Pendidikan Olahraga', alamat: 'Jl. Asia Afrika No. 78 Bandung',
-                ekskul: ['Voli'], kategori: 'olahraga', pengalaman: 8, status: 'Aktif', jumlah_siswa: 40
-            },
-            { 
-                id: 4, nip: '198808122012012004', nama: 'Dewi Lestari, S.Sn', jk: 'P', tempat_lahir: 'Yogyakarta',
-                tgl_lahir: '1988-08-12', telepon: '081234567893', email: 'dewi.lestari@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Seni Tari', alamat: 'Jl. Dago No. 90 Bandung',
-                ekskul: ['Tari Tradisional'], kategori: 'seni', pengalaman: 11, status: 'Aktif', jumlah_siswa: 28
-            },
-            { 
-                id: 5, nip: '199202152016011005', nama: 'Irfan Hakim, S.T', jk: 'L', tempat_lahir: 'Medan',
-                tgl_lahir: '1992-02-15', telepon: '081234567894', email: 'irfan.hakim@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Teknik Elektro', alamat: 'Jl. Braga No. 112 Bandung',
-                ekskul: ['Robotika'], kategori: 'akademik', pengalaman: 7, status: 'Aktif', jumlah_siswa: 35
-            },
-            { 
-                id: 6, nip: '198906252013012006', nama: 'Sarah Johnson, S.Pd', jk: 'P', tempat_lahir: 'Bandung',
-                tgl_lahir: '1989-06-25', telepon: '081234567895', email: 'sarah.johnson@smkn13.sch.id',
-                pendidikan: 'S2', jurusan: 'Pendidikan Bahasa Inggris', alamat: 'Jl. Riau No. 56 Bandung',
-                ekskul: ['Bahasa Inggris'], kategori: 'akademik', pengalaman: 9, status: 'Aktif', jumlah_siswa: 42
-            },
-            { 
-                id: 7, nip: '198404102009011007', nama: 'Eko Prasetyo, S.Pd', jk: 'L', tempat_lahir: 'Solo',
-                tgl_lahir: '1984-04-10', telepon: '081234567896', email: 'eko.prasetyo@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Pendidikan Jasmani', alamat: 'Jl. Gatot Subroto No. 234 Bandung',
-                ekskul: ['Pramuka'], kategori: 'akademik', pengalaman: 14, status: 'Aktif', jumlah_siswa: 68
-            },
-            { 
-                id: 8, nip: '199108182014012008', nama: 'Diana Kusuma, S.Pd', jk: 'P', tempat_lahir: 'Semarang',
-                tgl_lahir: '1991-08-18', telepon: '081234567897', email: 'diana.kusuma@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Pendidikan Olahraga', alamat: 'Jl. Cihampelas No. 167 Bandung',
-                ekskul: ['Voli'], kategori: 'olahraga', pengalaman: 9, status: 'Aktif', jumlah_siswa: 40
-            },
-            { 
-                id: 9, nip: '198912302015011009', nama: 'Rian Maulana, S.Sn', jk: 'L', tempat_lahir: 'Bekasi',
-                tgl_lahir: '1989-12-30', telepon: '081234567898', email: 'rian.maulana@smkn13.sch.id',
-                pendidikan: 'S1', jurusan: 'Seni Musik', alamat: 'Jl. Pasteur No. 89 Bandung',
-                ekskul: ['Band'], kategori: 'seni', pengalaman: 8, status: 'Aktif', jumlah_siswa: 25
-            }
-        ];
+        let pembinaData = @json($data_pembina);
+        console.log(pembinaData);
 
         let currentFilter = 'all';
         let currentSort = 'nama';
@@ -402,14 +348,14 @@
             };
 
             data.forEach(pembina => {
-                const colors = categoryColors[pembina.kategori];
+                const colors = categoryColors["seni"];
                 const card = document.createElement('div');
                 card.className = `bg-gradient-to-br ${colors.bg} backdrop-blur-xl rounded-2xl p-6 border ${colors.border} hover:border-orange-500/30 transition-all duration-300`;
                 
                 card.innerHTML = `
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center space-x-4">
-                            <div class="w-16 h-16 bg-gradient-to-br ${colors.icon} rounded-xl flex items-center justify-center">
+                            <div class="w-16 h-16 bg-gradient-to-br rounded-xl flex items-center justify-center">
                                 <i class="fas fa-user-tie text-white text-2xl"></i>
                             </div>
                             <div>
@@ -426,7 +372,7 @@
                         </div>
                         <div class="flex items-center text-sm">
                             <i class="fas fa-phone text-orange-400 w-5 mr-2"></i>
-                            <span class="text-slate-300">${pembina.telepon}</span>
+                            <span class="text-slate-300">${pembina.no_telp}</span>
                         </div>
                         <div class="flex items-center text-sm">
                             <i class="fas fa-envelope text-orange-400 w-5 mr-2"></i>
@@ -441,11 +387,9 @@
                     <div class="pt-4 border-t border-slate-700 mb-4">
                         <p class="text-slate-400 text-xs font-semibold mb-2">Ekstrakurikuler:</p>
                         <div class="flex flex-wrap gap-2">
-                            ${pembina.ekskul.map(e => `
                                 <span class="px-3 py-1 bg-slate-800/50 text-orange-400 rounded-lg text-xs font-medium">
-                                    ${e}
+                                    ${pembina.ekslul}
                                 </span>
-                            `).join('')}
                         </div>
                     </div>
 
@@ -600,30 +544,31 @@
         });
 
         // Edit Function
-        function editPembina(id) {
-            const pembina = pembinaData.find(p => p.id === id);
-            if (pembina) {
-                document.getElementById('nip').value = pembina.nip;
-                document.getElementById('namaLengkap').value = pembina.nama;
-                document.getElementById('jenisKelamin').value = pembina.jk;
-                document.getElementById('tempatLahir').value = pembina.tempat_lahir;
-                document.getElementById('tanggalLahir').value = pembina.tgl_lahir;
-                document.getElementById('noTelepon').value = pembina.telepon;
-                document.getElementById('email').value = pembina.email;
-                document.getElementById('pendidikan').value = pembina.pendidikan;
-                document.getElementById('jurusan').value = pembina.jurusan;
-                document.getElementById('alamat').value = pembina.alamat;
-                document.getElementById('pengalaman').value = pembina.pengalaman;
-                document.getElementById('status').value = pembina.status;
-                
-                // Check ekskul checkboxes
-                document.querySelectorAll('.ekskul-checkbox').forEach(cb => {
-                    cb.checked = pembina.ekskul.includes(cb.value);
-                });
-                
-                openModal();
-            }
+    function editPembina(id) {
+        const pembina = pembinaData.find(p => p.id === id);
+        if (pembina) {
+            editId = id; // simpan ID untuk update
+
+            document.getElementById('nip').value = pembina.nip;
+            document.getElementById('namaLengkap').value = pembina.nama;
+            document.getElementById('jenisKelamin').value = pembina.jk;
+            document.getElementById('tempatLahir').value = pembina.tempat_lahir;
+            document.getElementById('tanggalLahir').value = pembina.tgl_lahir;
+            document.getElementById('noTelepon').value = pembina.telepon;
+            document.getElementById('email').value = pembina.email;
+            document.getElementById('pendidikan').value = pembina.pendidikan;
+            document.getElementById('jurusan').value = pembina.jurusan;
+            document.getElementById('alamat').value = pembina.alamat;
+            document.getElementById('pengalaman').value = pembina.pengalaman;
+            document.getElementById('status').value = pembina.status;
+
+            document.querySelectorAll('.ekskul-checkbox').forEach(cb => {
+                cb.checked = pembina.ekskul.includes(cb.value);
+            });
+
+            openModal();
         }
+}
 
         // Delete Function
         function deletePembina(id) {
@@ -658,7 +603,7 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div class="bg-slate-800/50 rounded-lg p-4">
                                 <p class="text-slate-400 text-sm mb-1">Jenis Kelamin</p>
-                                <p class="text-white font-semibold">${pembina.jk === 'L' ? 'Laki-laki' : 'Perempuan'}</p>
+                                <p class="text-white font-semibold">${pembina.gender}</p>
                             </div>
                             <div class="bg-slate-800/50 rounded-lg p-4">
                                 <p class="text-slate-400 text-sm mb-1">Tempat, Tanggal Lahir</p>
@@ -690,17 +635,13 @@
                         <div class="bg-slate-800/50 rounded-lg p-4">
                             <p class="text-slate-400 text-sm mb-3">Ekstrakurikuler yang Dibina</p>
                             <div class="flex flex-wrap gap-2">
-                                ${pembina.ekskul.map(e => `
-                                    <span class="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-lg text-sm font-medium">
-                                        ${e}
-                                    </span>
-                                `).join('')}
+
                             </div>
                         </div>
 
                         <div class="bg-slate-800/50 rounded-lg p-4">
                             <p class="text-slate-400 text-sm mb-2">Jumlah Siswa yang Dibina</p>
-                            <p class="text-3xl font-bold text-white">${pembina.jumlah_siswa} <span class="text-lg text-slate-400">Siswa</span></p>
+                            <p class="text-3xl font-bold text-white"> <span class="text-lg text-slate-400">Siswa</span></p>
                         </div>
                     </div>
                 `;

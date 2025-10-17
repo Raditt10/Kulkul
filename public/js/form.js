@@ -7,36 +7,6 @@
                 icon: 'fa-basketball-ball',
                 schedule: 'Latihan setiap Senin & Rabu, 15:00 - 17:00',
                 color: 'from-orange-500 to-red-600'
-            },
-            paskibra: {
-                name: 'Paskibra',
-                icon: 'fa-flag',
-                schedule: 'Latihan setiap Selasa & Kamis, 14:00 - 16:00',
-                color: 'from-blue-500 to-cyan-600'
-            },
-            coding: {
-                name: 'Coding Club',
-                icon: 'fa-code',
-                schedule: 'Latihan setiap Rabu & Jumat, 15:00 - 17:00',
-                color: 'from-purple-500 to-pink-600'
-            },
-            music: {
-                name: 'Paduan Suara',
-                icon: 'fa-music',
-                schedule: 'Latihan setiap Senin & Kamis, 15:30 - 17:30',
-                color: 'from-green-500 to-emerald-600'
-            },
-            tari: {
-                name: 'Tari Tradisional',
-                icon: 'fa-masks-theater',
-                schedule: 'Latihan setiap Selasa & Jumat, 14:30 - 16:30',
-                color: 'from-yellow-500 to-orange-600'
-            },
-            futsal: {
-                name: 'Futsal',
-                icon: 'fa-futbol',
-                schedule: 'Latihan setiap Rabu & Sabtu, 15:00 - 17:00',
-                color: 'from-red-500 to-rose-600'
             }
         };
 
@@ -55,12 +25,10 @@
             
             // Add appropriate border color based on eskul
             const colorMap = {
-                basket: 'border-orange-500',
-                paskibra: 'border-blue-500',
-                coding: 'border-purple-500',
-                music: 'border-green-500',
-                tari: 'border-yellow-500',
-                futsal: 'border-red-500'
+                seni: 'border-orange-500',
+                olahraga: 'border-blue-500',
+                tekhnologi: 'border-purple-500',
+                akademi: 'border-green-500',
             };
             event.currentTarget.classList.add(colorMap[eskul]);
             event.currentTarget.querySelector('.eskul-check').classList.remove('hidden');
