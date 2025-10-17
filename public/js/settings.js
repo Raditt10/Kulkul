@@ -1,4 +1,32 @@
-// Dark mode toggle
+// Change Password
+document.querySelector('#passwordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+    });
+    const result = await res.json();
+    alert(result.message);
+});
+
+
+// Change Language
+document.querySelectorAll('.language-option').forEach(lang => {
+    lang.addEventListener('click', () => {
+        const selectedLang = lang.textContent.includes('English') ? 'en' : 'id';
+        localStorage.setItem('language', selectedLang);
+        alert('Bahasa diset ke: ' + (selectedLang === 'id' ? 'Indonesia' : 'English'));
+    });
+});
+
+document.querySelector('select').addEventListener('change', (e) => {
+    localStorage.setItem('timezone', e.target.value);
+    alert('Zona waktu diset ke: ' + e.target.value);
+});
+
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
 
@@ -401,4 +429,3 @@
             }
         `;
         document.head.appendChild(style);
-    </script>

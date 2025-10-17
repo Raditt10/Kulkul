@@ -93,6 +93,7 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
+    @php $page = 'profile' @endphp
     @include('user/includes.navbar')
   
     @include('user/includes.sidebar')
@@ -153,25 +154,19 @@
                                             <i class="fas fa-camera text-white text-sm"></i>
                                         </button>
                                     </div>
-                                    @if($user)
-                                    <h2 class="text-2xl font-bold text-white mb-2">{{$user->name}}</h2>
-                                    <p class="text-orange-300 font-medium">NIS: {{$user->nis}}</p>
-                                    <p class="text-slate-400 text-sm">Siswa Aktif • Kelas XII RPL</p>
-                                    @else                                    
-                                    <h2 class="text-2xl font-bold text-white mb-2">none</h2>
-                                    <p class="text-orange-300 font-medium">NIS: none</p>
-                                    <p class="text-slate-400 text-sm">none</p>
-                                    @endif
+                                    <h2 class="text-2xl font-bold text-white mb-2">{{session('user')->name}}</h2>
+                                    <p class="text-orange-300 font-medium">NIS: {{session('user')->nis}}</p>
+                                    <p class="text-slate-400 text-sm">Siswa Aktif • {{ session('user')->kelas }}</p>
                                 </div>
 
                                 <!-- Quick Stats -->
                                 <div class="grid grid-cols-2 gap-4 mb-6">
                                     <div class="text-center p-4 bg-slate-700/50 rounded-xl border border-orange-500/20">
-                                        <div class="text-2xl font-bold text-orange-400">3</div>
+                                        <div class="text-2xl font-bold text-orange-400">{{ session('user')->total_eskul }}</div>
                                         <div class="text-xs text-slate-400">Ekstrakurikuler</div>
                                     </div>
                                     <div class="text-center p-4 bg-slate-700/50 rounded-xl border border-orange-500/20">
-                                        <div class="text-2xl font-bold text-red-400">87.5</div>
+                                        <div class="text-2xl font-bold text-red-400">{{ session('user')->score_avg }}</div>
                                         <div class="text-xs text-slate-400">Rata-rata Nilai</div>
                                     </div>
                                 </div>
@@ -206,27 +201,27 @@
 
                                 <!-- Personal Data Tab -->
                                 <div id="personalContent" class="tab-content">
-                                    @if($user)
+                                    @auth
                                     <form class="space-y-6">
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Nama Lengkap</label>
-                                                <input type="text" value="{{$user->name}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="text" value="{{session('user')->name}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">NIS</label>
-                                                <input type="text" value="{{$user->nis}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="text" value="{{session('user')->nis}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                                <input type="email" value="{{$user->email}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="email" value="{{session('user')->email}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">No. Telepon</label>
-                                                <input type="tel" value="{{$user->no_tlp}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="tel" value="{{session('user')->no_tlp}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
@@ -237,13 +232,13 @@
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Tanggal Lahir</label>
-                                                <input type="date" value="{{$user->tgl_lahir}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="date" value="{{session('user')->tgl_lahir}}" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label class="block text-sm font-medium text-slate-300 mb-2">Alamat Lengkap</label>
-                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>{{$user->alamat_rumah}}</textarea>
+                                            <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>{{session('user')->alamat_rumah}}</textarea>
                                         </div>
                                     </form>
                                     @else
@@ -286,7 +281,7 @@
                                             <textarea rows="3" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" placeholder="Masukkan alamat lengkap..." readonly>nan</textarea>
                                         </div>
                                     </form>
-                                    @endif
+                                    @endauth
                                 </div>
 
                                 <!-- Academic Data Tab -->

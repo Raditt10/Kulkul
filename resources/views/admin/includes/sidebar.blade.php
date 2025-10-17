@@ -22,7 +22,7 @@
             </a>
 
             <!-- Ekstrakurikuler -->
-            <a href="{{ route('admin.ekstrakurikuler') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all duration-300">
+            <a href="{{ route('admin.ekstrakurikuler') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl  text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all duration-300">
                 <i class="fas fa-users text-lg"></i>
                 <span class="font-medium">Ekstrakurikuler</span>
             </a>

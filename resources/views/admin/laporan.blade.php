@@ -27,7 +27,6 @@
 	</style>
 </head>
 <body class="bg-slate-950 text-white">
-
 	@include('admin/includes.sidebar')
 
 	@include('admin.includes.notif')

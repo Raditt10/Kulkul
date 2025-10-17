@@ -1,99 +1,98 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ekstrakurikuler Kulkul</title>
-<link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    slate: {
-                        850: '#1a2234'
-                    }
-                },
-                animation: {
-                    'float': 'float 6s ease-in-out infinite',
-                    'glow': 'glow 2s ease-in-out infinite alternate',
-                    'slide-up': 'slideUp 1s ease-out',
-                    'pulse-slow': 'pulse 4s infinite',
-                },
-                keyframes: {
-                    float: {
-                        '0%, 100%': {
-                            transform: 'translateY(0px)'
-                        },
-                        '50%': {
-                            transform: 'translateY(-20px)'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekstrakurikuler Kulkul</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#1a2234'
                         }
                     },
-                    glow: {
-                        '0%': {
-                            boxShadow: '0 0 20px rgba(251, 146, 60, 0.4)'
-                        },
-                        '100%': {
-                            boxShadow: '0 0 40px rgba(251, 146, 60, 0.8)'
-                        }
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 1s ease-out',
+                        'pulse-slow': 'pulse 4s infinite',
                     },
-                    slideUp: {
-                        '0%': {
-                            transform: 'translateY(100px)',
-                            opacity: '0'
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0px)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            }
                         },
-                        '100%': {
-                            transform: 'translateY(0)',
-                            opacity: '1'
+                        glow: {
+                            '0%': {
+                                boxShadow: '0 0 20px rgba(251, 146, 60, 0.4)'
+                            },
+                            '100%': {
+                                boxShadow: '0 0 40px rgba(251, 146, 60, 0.8)'
+                            }
+                        },
+                        slideUp: {
+                            '0%': {
+                                transform: 'translateY(100px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            }
                         }
                     }
                 }
             }
         }
-    }
-</script>
-<style href="{{ asset('css/sidebarscroll.css') }}"></style>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-    .hover-lift {
-        transition: all 0.3s ease;
-    }
+    </script>
+    <style href="{{ asset('css/sidebarscroll.css') }}"></style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
 
-    .hover-lift:hover {
-        transform: translateY(-8px);
-    }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
 
-    .glass-effect {
-        backdrop-filter: blur(16px);
-    }
-    @keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-    }
-    .animate-bounce-slow {
-    animation: bounce-slow 2s infinite;
-    }
+        .glass-effect {
+            backdrop-filter: blur(16px);
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite;
+        }
 
-    /* Hover tombol scale */
-    .group:hover .relative {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-    }
-</style>
+        /* Hover tombol scale */
+        .group:hover .relative {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    </style>
 </head>
-
 <body class="bg-slate-950 overflow-x-hidden">
-
+    @php $page = 'eskul' @endphp
     @include('user/includes.navbar')
   
     @include('user/includes.sidebar')
 
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20">
-    <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-r from-orange-600/5 via-red-600/5 to-orange-600/5 animate-pulse-slow"></div>
-    </div>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-orange-600/5 via-red-600/5 to-orange-600/5 animate-pulse-slow"></div>
+        </div>
 
     <div class="container mx-auto px-4 relative z-10">
         <div class="text-center max-w-4xl mx-auto mb-12 animate-slide-up">
