@@ -107,23 +107,7 @@
                 <p class="text-slate-400 mb-8">Pilih salah satu ekstrakurikuler yang ingin kamu ikuti</p>
                 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Eskul Card 1 -->
-                    <div onclick="selectEskul('basket')" class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-slate-700 hover:border-orange-500 rounded-2xl p-6 transition-all">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-basketball-ball text-white text-2xl"></i>
-                            </div>
-                            <div class="w-6 h-6 rounded-full border-2 border-slate-600 eskul-check hidden">
-                                <i class="fas fa-check text-orange-500 text-xs"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Basket</h3>
-                        <p class="text-slate-400 text-sm mb-4">Latihan setiap Senin & Rabu, 15:00 - 17:00</p>
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-slate-500"><i class="fas fa-users mr-1"></i>24 anggota</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full">Tersedia</span>
-                        </div>
-                    </div>
+                    <!-- Eskul Card -->
                     @foreach($data_ekskul as $ekskul)
                     <div onclick="selectEskul('{{ $ekskul->id_ekskul }}', '{{ $ekskul->nama_ekskul }}')" 
                         class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-slate-700 hover:border-orange-500 rounded-2xl p-6 transition-all">

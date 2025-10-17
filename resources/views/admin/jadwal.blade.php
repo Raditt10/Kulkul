@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-    <title>Admin Jadwal Kulkul</title>
+    <title>Coming soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,8 +31,6 @@
     @php $site = 'schedule' @endphp
 
     @include('admin/includes.sidebar')
-
-    @include('admin.includes.notif')
     
     <!-- Main Content -->
     <div class="ml-64 min-h-screen">

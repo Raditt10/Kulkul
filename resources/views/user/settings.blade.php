@@ -197,8 +197,6 @@
   
    @include('user/includes.sidebar')
 
-   @include('user/includes.notif')
-
     <!-- Success Notification -->
     <div id="successNotification" class="fixed top-24 right-4 z-50 hidden">
         <div class="bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl success-message flex items-center gap-3">

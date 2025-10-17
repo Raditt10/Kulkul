@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teman Saya Kulkul</title>
+    <title>Coming soon</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -121,7 +121,6 @@
   
     @include('user/includes.sidebar')
 
-    @include('user/includes.notif')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>

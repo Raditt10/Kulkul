@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">>
-    <title>Admin Pengaturan Kulkul</title>
+    <title>Coming soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -56,9 +56,6 @@
 
     @include('admin/includes.sidebar')
 
-
-    @include('admin.includes.notif')
-
     <!-- Success Notification -->
     <div id="successNotification" class="fixed top-4 right-4 z-50 hidden">
         <div class="bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 animate-slide-up">
@@ -69,7 +66,6 @@
             </div>
         </div>
     </div>
-
 
         <h1 class="text-3xl font-bold text-white mb-6">Pengaturan</h1>
 
@@ -981,7 +977,6 @@
     </script>
 </body>
 </html>
-
                 <!-- Security Tab -->
                 <div id="security-tab" class="settings-content">
                     <div class="glass-effect rounded-2xl p-6 border border-slate-700 mb-6">
@@ -1163,3 +1158,6 @@
         </div>
     </div>
 </div>
+    <script src="{{ asset('notif.js') }}"></script>
+    </body>
+</html>
