@@ -48,8 +48,7 @@
 
                 <!-- User Profile -->
                 
-                <div class="flex items-center">
-                    
+                <div class="flex items-center">       
                     <div class="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-1 shadow-xl">
                         <div id="profileWrapper" class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
                             <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full overflow-hidden animate-pulse-slow shadow-lg">
