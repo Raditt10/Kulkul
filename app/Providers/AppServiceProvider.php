@@ -20,12 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-            Blade::if('auth', function () {
-            return session()->has('users');
+        Blade::if('auth', function () {
+            return session()->has('user');
         });
 
         Blade::if('guest', function () {
-            return !session()->has('users');
+            return !session()->has('user');
         });
     }
 }

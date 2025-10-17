@@ -18,8 +18,8 @@
                 </div>
                 <div>
                     @auth
-                    <p class="font-bold text-white text-base">{{session('users')->name}}</p>
-                    <p class="text-sm text-orange-300">NIS: {{session('users')->nis}}</p>
+                    <p class="font-bold text-white text-base">{{session('user')->name}}</p>
+                    <p class="text-sm text-orange-300">NIS: {{session('user')->nis}}</p>
                     <p class="text-xs text-slate-400">Siswa Aktif</p>
                     @endauth
                     @guest
@@ -87,10 +87,14 @@
             @endguest
             @auth
             <li class="pt-4 border-t border-orange-500/20">
-                <a href="#" class="flex items-center space-x-4 text-red-300 hover:text-red-200 hover:bg-red-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
-                    <i class="fas fa-sign-out-alt text-red-400 w-5"></i>
-                    <span class="font-medium">Keluar</span>
-                </a>
+                <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
+                    @csrf
+                    <button type="submit" 
+                        class="flex items-center space-x-4 text-red-300 hover:text-red-200 hover:bg-red-600/20 transition-all duration-300 hover-lift p-3 rounded-xl w-full text-left">
+                        <i class="fas fa-sign-out-alt text-red-400 w-5"></i>
+                        <span class="font-medium">Keluar</span>
+                    </button>
+                </form>
             </li>
             @endauth
         </ul>

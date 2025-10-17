@@ -143,6 +143,3 @@ Route::get('/form', function(){
     return view('user/form');
 })->name('form');
 
-
-
-
