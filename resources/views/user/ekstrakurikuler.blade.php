@@ -111,7 +111,7 @@
                 Temukan passion-mu dan kembangkan bakat terbaikmu bersama berbagai pilihan ekstrakurikuler di SMKN 13 Bandung
             </p>
        <div class="mt-8 flex flex-wrap justify-center gap-6">
-            <a href="{{ route('otime') }}" 
+            <a href="{{ route('timeo') }}" 
             class="relative inline-block px-8 py-4 font-bold text-white rounded-full overflow-hidden group shadow-lg">
                 <span class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 transition-all duration-500 ease-in-out group-hover:from-red-500 group-hover:to-orange-500"></span>
                 <span class="relative flex items-center gap-2">

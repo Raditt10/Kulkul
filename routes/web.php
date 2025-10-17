@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Authcontroller;
-use App\Http\Controllers\EkskulController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EkskulController; 
 use App\Http\Controllers\PembinaController;
+use App\Http\Controllers\FormPendaftaranController;
 
 Route::get('/pembina', function () {
     return view('pembina.index');
@@ -15,10 +16,15 @@ Route::prefix('api')->group(function () {
 
 // API atau aksi CRUD
 //route login
-Route::get('/login', [Authcontroller::class, 'showlogin'])->name('login');
-Route::post('/login', [Authcontroller::class, 'login'])->name('login.post');
-Route::get('/home', [Authcontroller::class, 'home'])->name('home');
+Route::get('/login', [AuthController::class, 'showlogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::get('/home', [AuthController::class, 'home'])->name('home');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('user/form', [FormPendaftaranController::class, 'index'])->name('user.form');
+Route::post('user/form', [FormPendaftaranController::class, 'store'])->name('pendaftaran.store');
+Route::get('/form', [FormPendaftaranController::class, 'viewUser'])->name('view.form');
 
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
 Route::get('/admin/pembina', [PembinaController::class, 'viewData'])->name('admin.pembina');
@@ -36,7 +42,6 @@ Route::prefix('admin')->group(function () {
     Route::delete('/ekstrakurikuler/{id}', [EkskulController::class, 'destroy'])->name('admin.ekstrakurikuler.delete');
 });
 
-Route::get('/form', [EkskulController::class, 'viewUser'])->name('form');
 
 
 // Home route
