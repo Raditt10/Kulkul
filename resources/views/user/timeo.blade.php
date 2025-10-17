@@ -82,7 +82,7 @@
   </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden overflow-y-auto min-h-screen">
-
+  @php $page = 'eskul' @endphp
   <!-- Navbar -->
   @include('user/includes.navbar')
 

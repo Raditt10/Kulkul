@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\PembinaController;
+use App\Http\Controllers\UserSettingsController;
 
 Route::get('/pembina', function () {
     return view('pembina.index');
@@ -19,9 +20,18 @@ Route::get('/login', [Authcontroller::class, 'showlogin'])->name('login');
 Route::post('/login', [Authcontroller::class, 'login'])->name('login.post');
 Route::get('/home', [Authcontroller::class, 'home'])->name('home');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings.password');
+Route::delete('/settings/delete-data', [UserSettingsController::class, 'deleteData'])->name('user.deleteData');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/settings', [UserSettingsController::class, 'sessions'])->name('settings');
+    Route::delete('/settings/session/{id}', [UserSettingsController::class, 'logoutSession'])->name('session.logout');
+    Route::delete('/settings/logout-all', [UserSettingsController::class, 'logoutAllSessions'])->name('session.logoutAll');
+});
 
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
 Route::get('/admin/pembina', [PembinaController::class, 'viewData'])->name('admin.pembina');
+
 
 Route::prefix('admin')->group(function () {
     Route::post('/pembina', [PembinaController::class, 'store'])->name('pembina.store');

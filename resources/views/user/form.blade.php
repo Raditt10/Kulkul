@@ -48,7 +48,6 @@
     </style>
 </head>
 <body class="bg-slate-950 min-h-screen">
-
     <!-- Main Content -->
     <div class="max-w-5xl mx-auto px-6 py-12">
         

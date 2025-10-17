@@ -205,9 +205,10 @@
         </div>
     </div>
 
-   @include('user/includes.navbar')
-  
-   @include('user/includes.sidebar')
+    @php $page = 'settings' @endphp
+    @include('user/includes.navbar')
+    
+    @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
@@ -220,7 +221,7 @@
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 mr-4"></div>
                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-xl">
-                       <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-8 h-8 object-contain">
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-8 h-8 object-contain">
                     </div>
                     <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-orange-500 ml-4"></div>
                 </div>
@@ -246,54 +247,47 @@
                             </div>
                         </div>
 
-                        <form id="passwordForm" class="space-y-4">
+                        <form id="passwordForm" class="space-y-4" method="POST" action="{{ route('settings.password') }}">
+                            @csrf
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Password Lama</label>
                                 <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="oldPassword"
-                                        class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Masukkan password lama"
-                                    >
+                                    <input type="password" name="oldPassword" id="oldPassword" placeholder="Password lama" 
+                                    class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    />
                                     <i class="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                                 </div>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Password Baru</label>
                                 <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="newPassword"
-                                        class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Masukkan password baru"
-                                    >
+                                    <input type="password" name="newPassword" id="newPassword" placeholder="Password baru" 
+                                    class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    />
                                     <i class="fas fa-key absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                                 </div>
-                                <div class="mt-2">
-                                    <div class="text-xs text-slate-400 mb-1">Kekuatan Password:</div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div id="passwordStrength" class="progress-bar bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full" style="width: 0%"></div>
-                                    </div>
-                                </div>
                             </div>
+
                             <div>
                                 <label class="block text-sm font-semibold text-slate-300 mb-2">Konfirmasi Password</label>
                                 <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="confirmPassword"
+                                    <input type="password" id="confirmPassword" placeholder="Konfirmasi password baru"
                                         class="w-full px-4 py-3 pl-12 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Konfirmasi password baru"
-                                    >
+                                    />
                                     <i class="fas fa-check-circle absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                                 </div>
                             </div>
-                            <button 
-                                type="submit"
+
+                            <div class="mt-2">
+                                <div class="text-xs text-slate-400 mb-1">Kekuatan Password:</div>
+                                <div class="w-full bg-slate-700 rounded-full h-2">
+                                    <div id="passwordStrength" class="progress-bar bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+      
+                            <button type="submit"
                                 class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-xl"
-                            >
-                                <i class="fas fa-save mr-2"></i>
+                            ><i class="fas fa-save mr-2"></i>
                                 Ubah Password
                             </button>
                         </form>
@@ -688,7 +682,7 @@
                                             Windows PC - Chrome
                                             <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Aktif Sekarang</span>
                                         </div>
-                                        <div class="text-sm text-slate-400">IP: 192.168.1.100 • Bandung, Indonesia</div>
+                                        <div class="text-sm text-slate-400"> @if($sessions) sessions-> • Bandung, Indonesia</div>
                                         <div class="text-xs text-slate-500">Login: 2 jam yang lalu</div>
                                     </div>
                                 </div>
@@ -711,10 +705,14 @@
                                         <div class="text-xs text-slate-500">Login: 1 hari yang lalu</div>
                                     </div>
                                 </div>
-                                <button class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-all duration-300">
-                                    <i class="fas fa-sign-out-alt mr-1"></i>
-                                    Logout
-                                </button>
+                                {{-- <form action="{{ route('session.logout', @if($session) $sessions->id @endif) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg">
+                                        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                                    </button>
+                                </form> --}}
+
                             </div>
                         </div>
 
@@ -730,18 +728,24 @@
                                         <div class="text-xs text-slate-500">Login: 3 hari yang lalu</div>
                                     </div>
                                 </div>
-                                <button class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-all duration-300">
-                                    <i class="fas fa-sign-out-alt mr-1"></i>
-                                    Logout
-                                </button>
+                                {{-- <form action="{{ route('session.logout', $session->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg">
+                                        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                                    </button> --}}
+                                </form>
                             </div>
                         </div>
 
                         <div class="text-center pt-4">
-                            <button class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300">
-                                <i class="fas fa-sign-out-alt mr-2"></i>
-                                Logout Semua Perangkat
-                            </button>
+                            {{-- <form action="{{ route('session.logoutAll') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Logout Semua Perangkat
+                                </button>
+                            </form> --}}
                         </div>
                     </div>
                 </div>
@@ -914,150 +918,5 @@
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>
 
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengaturan - Kulkul SMKN 13 BANDUNG</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style href="{{ asset('css/sidebarscroll.css') }}"></style>
-    <script>
-        // Kode Tailwind config tetap sama
-        tailwind.config = {
-            // ... (tidak diubah)
-        }
-    </script>
-    <style>
-        /* Styles yang ada tetap, tapi tambahkan ini untuk memperbaiki layout */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Pastikan halaman penuh tinggi layar */
-        }
-        .main-content {
-            flex: 1; /* Konten utama mengisi sisa ruang */
-            padding-top: 4rem; /* Sesuaikan berdasarkan tinggi navbar */
-            padding-bottom: 4rem; /* Beri ruang untuk footer */
-        }
-        .sidebar {
-            position: fixed; /* Pastikan sidebar fixed dan tidak tumpang tindih */
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 250px; /* Atur lebar tetap */
-            z-index: 50; /* Di atas overlay */
-        }
-        #sidebarOverlay {
-            z-index: 45; /* Di bawah sidebar tapi di atas konten */
-        }
-        /* Sisa styles tetap sama */
-    </style>
-</head>
-<body class="dark-mode overflow-x-hidden">
-    <!-- Animated Background -->
-    <div class="fixed inset-0 -z-10">
-        <!-- ... (tidak diubah) -->
-    </div>
-
-    <!-- Success Notification -->
-    <div id="successNotification" class="fixed top-24 right-4 z-50 hidden">
-        <!-- ... (tidak diubah) -->
-    </div>
-
-    @include('user/includes.navbar')  <!-- Navbar harus fixed atau sticky -->
-
-    @include('user/includes.sidebar')  <!-- Sidebar harus fixed -->
-
-    <!-- Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-45"></div>
-
-    <!-- Main Content -->
-    <div class="main-content container mx-auto px-4 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <!-- Header -->
-            <div class="text-center mb-12 animate-slide-up">
-                <!-- ... (tidak diubah) -->
-            </div>
-
-            <!-- Settings Grid -->
-            <div class="grid lg:grid-cols-2 gap-8 md:grid-cols-1">  <!-- Buat lebih responsif -->
-                <!-- Left Column -->
-                <div class="space-y-6">
-                    <!-- Keamanan Akun -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-
-                    <!-- Bahasa & Lokalisasi -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.2s">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="space-y-6">
-                    <!-- Tampilan -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.1s">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-
-                    <!-- Notifikasi -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.3s">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Full Width Sections -->
-            <div class="mt-8 space-y-6">
-                <!-- Privasi & Keamanan -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.4s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Backup & Sinkronisasi -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.5s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Ekspor & Impor Data -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.6s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Manajemen Sesi -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.7s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Aksesibilitas -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.8s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Zona Bahaya -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-red-500/50 hover-lift animate-slide-up" style="animation-delay: 0.9s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-            </div>
-
-            <!-- Save All Button -->
-            <div class="mt-8 text-center animate-slide-up" style="animation-delay: 0.7s">
-                <!-- ... (tidak diubah) -->
-            </div>
-        </div>
-    </div>
-
-    @include('user/includes.footer')  <!-- Footer di akhir, pastikan tidak tumpang tindih -->
-
-    <script src="{{ asset('js/sidebar.js') }}"></script>
-    <script src="{{ asset('js/settings.js') }}"></script>
 </body>
 </html>
