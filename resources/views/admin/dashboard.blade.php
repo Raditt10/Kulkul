@@ -32,7 +32,10 @@
 </head>
 <body class="bg-slate-950">
     @php $site = 'dashboard' @endphp
+
    @include('admin.includes.sidebar')
+
+   @include('admin.includes.notif')
 
     <!-- Main Content -->
     <div class="ml-64 min-h-screen">

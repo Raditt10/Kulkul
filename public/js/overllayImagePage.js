@@ -119,22 +119,42 @@
             });
         });
 
-        // Stats counter animation
-        function animateCounter(element, target, duration = 2000) {
-            const start = 0;
+       // Stats counter animation
+        // Animasi counter hanya untuk angka tertentu
+        function animateCounter(element, target, duration = 1000) {
+            let start = 0;
             const increment = target / (duration / 16);
-            let current = start;
             
             const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
+                start += increment;
+                if (start >= target) {
                     element.textContent = target;
                     clearInterval(timer);
                 } else {
-                    element.textContent = Math.floor(current);
+                    element.textContent = Math.floor(start);
                 }
             }, 16);
         }
+
+        // Ambil elemen stats yang relevan dan jalankan animasi
+        document.querySelectorAll('.stats-card').forEach(card => {
+            const label = card.querySelector('.text-xs').textContent.trim();
+            const counter = card.querySelector('.text-3xl');
+            let target = 0;
+
+            if (label === 'Ekstrakurikuler') target = 23;
+            else if (label === 'Siswa Aktif') target = 200;
+            else if (label === 'Kepuasan') target = 100;
+
+            if (target > 0) {
+                counter.textContent = '0';
+                setTimeout(() => animateCounter(counter, target, 1000), 300);
+            } else {
+                counter.textContent = ''; // hilangkan angka lain
+            }
+        });
+
+
 
         // Intersection Observer for animations
         const observerOptions = {

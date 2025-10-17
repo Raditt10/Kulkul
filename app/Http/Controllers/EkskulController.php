@@ -81,4 +81,10 @@ class EkskulController extends Controller
         }
     }
 
+    public function jadwal()
+    {
+        $ekskuls = Ekskul::all();
+        return view('user.timeo', compact('ekskuls'));
+    }
+
 }

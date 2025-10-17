@@ -131,22 +131,22 @@
             <!-- Stats Cards -->
             <div class="grid md:grid-cols-4 gap-6 mb-20">
                 <div class="group bg-gradient-to-br from-orange-900/30 to-red-900/30 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-orange-500/30 hover:border-orange-400/50 transition-all duration-500">
-                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">25+</div>
+                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">23</div>
                     <div class="text-orange-300 font-medium text-lg">Ekstrakurikuler</div>
                     <div class="text-slate-400 text-sm mt-1">Program Unggulan</div>
                 </div>
                 <div class="group bg-gradient-to-br from-red-900/30 to-orange-900/30 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-red-500/30 hover:border-red-400/50 transition-all duration-500">
-                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">1000+</div>
+                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">200+</div>
                     <div class="text-red-300 font-medium text-lg">Siswa Aktif</div>
                     <div class="text-slate-400 text-sm mt-1">Partisipasi Tinggi</div>
                 </div>
                 <div class="group bg-gradient-to-br from-orange-800/30 to-red-800/30 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-orange-600/30 hover:border-orange-500/50 transition-all duration-500">
-                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">50+</div>
+                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">120+</div>
                     <div class="text-orange-300 font-medium text-lg">Prestasi</div>
                     <div class="text-slate-400 text-sm mt-1">Pencapaian Luar Biasa</div>
                 </div>
                 <div class="group bg-gradient-to-br from-red-800/30 to-orange-800/30 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-red-600/30 hover:border-red-500/50 transition-all duration-500">
-                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">15+</div>
+                    <div class="text-5xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300">23+</div>
                     <div class="text-red-300 font-medium text-lg">Pembina Ahli</div>
                     <div class="text-slate-400 text-sm mt-1">Tenaga Profesional</div>
                 </div>
@@ -198,7 +198,7 @@
                             <div class="grid grid-cols-2 gap-6">
                                 <div class="flex items-center space-x-4 text-slate-300 hover:text-white transition-colors duration-300 p-3 rounded-xl hover:bg-orange-600/10">
                                     <i class="fas fa-music text-2xl text-orange-400"></i>
-                                    <span class="font-medium">Studio Musik</span>
+                                    <span class="font-medium">Studio</span>
                                 </div>
                                 <div class="flex items-center space-x-4 text-slate-300 hover:text-white transition-colors duration-300 p-3 rounded-xl hover:bg-orange-600/10">
                                     <i class="fas fa-football-ball text-2xl text-red-400"></i>
@@ -252,18 +252,18 @@
                 <!-- Pembina Card 1 -->
                 <div class="group bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-orange-500/20 hover:border-orange-400/40 transition-all duration-500">
                     <div class="relative mb-8">
-                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-orange-500 to-red-600 p-1 group-hover:animate-bounce shadow-xl">
-                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center">
-                                <i class="fas fa-user-tie text-4xl text-orange-400"></i>
+                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-orange-600 to-red-500 p-1 group-hover:animate-bounce shadow-xl">
+                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center overflow-hidden">
+                                <img src="{{ asset('images/bumaya.jpg') }}" alt="Pak Sukma S.pd" class="w-full h-full object-cover">
                             </div>
                         </div>
                         <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center">
                             <i class="fas fa-crown text-white text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Drs. Ahmad Wijaya</h3>
-                    <p class="text-orange-400 mb-4 font-semibold">Kepala Pembina</p>
-                    <p class="text-slate-400 leading-relaxed mb-6">15+ tahun pengalaman dalam pembinaan ekstrakurikuler dan pengembangan karakter siswa dengan dedikasi tinggi</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">Ibu Maya Kusmayanti M.pd</h3>
+                    <p class="text-orange-400 mb-4 font-semibold">Waka Kesiswaan </p>
+                    <p class="text-slate-400 leading-relaxed mb-6">5+ tahun pengalaman dalam pembinaan ekstrakurikuler dan pengembangan karakter siswa dengan dedikasi tinggi</p>
                     <div class="flex justify-center space-x-4">
                         <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
                         <div class="w-2 h-2 bg-red-400 rounded-full"></div>
@@ -283,9 +283,9 @@
                             <i class="fas fa-star text-white text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Siti Nurhaliza, S.Pd</h3>
-                    <p class="text-red-400 mb-4 font-semibold">Koordinator Seni & Budaya</p>
-                    <p class="text-slate-400 leading-relaxed mb-6">Spesialis dalam pengembangan bakat seni dan budaya dengan prestasi tingkat nasional dalam berbagai kompetisi</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">Ibu Tessa Eka Yuniar S.pd</h3>
+                    <p class="text-red-400 mb-4 font-semibold">Pembina OSIS & MPK</p>
+                    <p class="text-slate-400 leading-relaxed mb-6">2 tahun pengalaman dalam pembinaan ekstrakurikuler dan pengembangan karakter siswa</p>
                     <div class="flex justify-center space-x-4">
                         <div class="w-2 h-2 bg-red-400 rounded-full"></div>
                         <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
@@ -297,8 +297,8 @@
                 <div class="group bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-xl rounded-2xl p-8 text-center hover-lift border border-orange-600/20 hover:border-orange-500/40 transition-all duration-500">
                     <div class="relative mb-8">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-orange-600 to-red-500 p-1 group-hover:animate-bounce shadow-xl">
-                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center">
-                                <i class="fas fa-chalkboard-teacher text-4xl text-orange-400"></i>
+                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center overflow-hidden">
+                                <img src="{{ asset('images/paksukma.jpg') }}" alt="Pak Sukma S.pd" class="w-full h-full object-cover">
                             </div>
                         </div>
                         <div class="absolute -bottom-2 left-1/2 transform -translate-x
@@ -306,10 +306,10 @@
                             <i class="fas fa-medal text-white text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Budi Santoso, M.Kom</h3>
-                    <p class="text-orange-400 mb-4 font-semibold">Koordinator Teknologi
+                    <h3 class="text-2xl font-bold text-white mb-3">Pak Sukma S.pd</h3>
+                    <p class="text-orange-400 mb-4 font-semibold">Koordinator Ekskul
                     </p>
-                    <p class="text-slate-400 leading-relaxed mb-6">Ahli di bidang teknologi informasi dengan pengalaman mengelola lab komputer dan program coding untuk siswa</p>
+                    <p class="text-slate-400 leading-relaxed mb-6">Ahli dalam management ekstrakurikuler </p>
                     <div class="flex justify-center space-x-4">
                         <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
                         <div class="w-2 h-2 bg-red-400 rounded-full"></div>

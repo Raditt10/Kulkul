@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-  <title>Jadwal Ekstrakurikuler Kulkul</title>
+  <title>Time 'O Kulkul</title>
 
   <!-- Tailwind & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -79,6 +79,23 @@
       opacity: 1;
       filter: blur(8px);
     }
+     .event-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(251,146,60,0.3), transparent);
+      transition: left 0.5s;
+    }
+    .event-card:hover::before {
+      left: 100%;
+    }
   </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden overflow-y-auto min-h-screen">
@@ -88,6 +105,16 @@
 
   <!-- Sidebar -->
   @include('user/includes.sidebar')
+
+  @include('user/includes.notif')
+        
+        <!-- Close Button -->
+        <button onclick="closeNotification()" class="flex-shrink-0 w-8 h-8 rounded-full hover:bg-slate-700/50 transition-colors flex items-center justify-center group">
+          <i class="fas fa-times text-slate-400 group-hover:text-white transition-colors"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Content -->
   <main class="pt-24 pb-12 px-10 max-w-7xl mx-auto">
@@ -115,6 +142,11 @@
 
           <!-- Mini Calendar -->
           <div class="mb-8">
+            <div class="flex justify-between items-center mb-3">
+            <button id="prevMonth" class="text-orange-400 font-bold">&lt;</button>
+            <h3 id="miniCurrentMonth" class="text-xl font-bold text-orange-300"></h3>
+            <button id="nextMonth" class="text-orange-400 font-bold">&gt;</button>
+            </div>  
             <div class="grid grid-cols-7 gap-2 text-center mb-3">
               <div class="text-xs font-semibold text-orange-300">S</div>
               <div class="text-xs font-semibold text-orange-300">S</div>
@@ -146,8 +178,8 @@
                 <i class="fas fa-user text-white"></i>
               </div>
               <div class="text-left">
-                <p class="text-sm font-bold text-white">Username</p>
-                <p class="text-xs text-slate-400">NIS : 2080710</p>
+                <p class="text-sm font-bold text-white">{{ session('user')->name }}</p>
+                <p class="text-xs text-slate-400">{{ session('user')->nis }}</p>
               </div>
             </div>
           </div>
@@ -163,24 +195,23 @@
           <p class="text-slate-400 mt-2">Lihat semua kegiatan ekskul dan event penting bulan ini.</p>
         </div>
 
-        <!-- Schedule Cards -->
-        <div id="scheduleList" class="space-y-6">
-          <div class="glass rounded-2xl p-6 flex justify-between items-center hover-lift border border-orange-500/10">
-            <div>
-              <h3 class="text-xl font-bold text-orange-300">Latihan Futsal</h3>
-              <p class="text-slate-400 text-sm">Setiap Rabu & Jumat • 15.00 - 17.00 WIB</p>
-            </div>
-            <span class="px-3 py-1 text-xs bg-gradient-to-r from-orange-500 to-rose-500 rounded-full shadow-lg">Lapangan Utama</span>
+       <!-- Schedule Cards -->
+          <div id="scheduleList" class="space-y-6">
+            @foreach ($ekskuls as $e)
+              <div class="glass rounded-2xl p-6 flex justify-between items-center hover-lift border border-orange-500/10">
+                <div>
+                  <h3 class="text-xl font-bold text-orange-300">{{ $e->nama_ekskul }}</h3>
+                  <p class="text-slate-400 text-sm">
+                    {{ $e->hari }} • {{ $e->jam_mulai_formatted ?? $e->jam_mulai }} - {{ $e->jam_selesai_formatted ?? $e->jam_selesai }} WIB
+                  </p>
+                  <p class="text-slate-500 text-sm">Pembina: {{ $e->pembina }}</p>
+                </div>
+                <span class="px-3 py-1 text-xs bg-gradient-to-r from-orange-500 to-rose-500 rounded-full shadow-lg capitalize">
+                  {{ $e->kategori }}
+                </span>
+              </div>
+            @endforeach
           </div>
-
-          <div class="glass rounded-2xl p-6 flex justify-between items-center hover-lift border border-orange-500/10">
-            <div>
-              <h3 class="text-xl font-bold text-orange-300">Paduan Suara</h3>
-              <p class="text-slate-400 text-sm">Setiap Selasa • 14.00 - 16.00 WIB</p>
-            </div>
-            <span class="px-3 py-1 text-xs bg-gradient-to-r from-orange-500 to-rose-500 rounded-full shadow-lg">Aula Musik</span>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -190,5 +221,6 @@
 
   <script src="{{ asset('js/miniCalendar.js') }}"></script>
   <script src="{{ asset('js/sidebar.js') }}"></script>
+  <script src="{{ asset('js/notif.js') }}"></script>
 </body>
 </html>

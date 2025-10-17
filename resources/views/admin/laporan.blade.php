@@ -30,6 +30,8 @@
 
 	@include('admin/includes.sidebar')
 
+	@include('admin.includes.notif')
+
 	<!-- Main content -->
 	<div class="ml-64 min-h-screen">
 		<header class="bg-gradient-to-r from-slate-900 to-slate-950 border-b border-orange-500/20 sticky top-0 z-40">

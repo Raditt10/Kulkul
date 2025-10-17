@@ -5,6 +5,9 @@ use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\PembinaController;
 
+Route::get('/timeo', [EkskulController::class, 'jadwal'])->name('timeo');
+
+
 Route::get('/pembina', function () {
     return view('pembina.index');
 });
@@ -147,11 +150,6 @@ Route::get('/friends', function () {
         ]
     ]);
 })->name('friends');
-
-// otime route
-Route::get('/timeo', function () {
-    return view('user/timeo');
-})->name('timeo');
 
 //admin route
 Route::get('admin', function(){
