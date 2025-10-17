@@ -33,7 +33,7 @@ class AuthController extends Controller
             // Untuk debug (tanpa hash)
             if ($user && $credentials['password'] === $user->password) {
                 // Simpan user ke session (gpt)
-                session(['users' => $user]);
+                session(['user' => $user]);
 
                 if ($user->pangkat === 'admin') {
                     return response()->json(['success' => true, 'admin' => true]);
@@ -99,10 +99,27 @@ public function resetPassword(Request $request)
 
         Cookie::queue(Cookie::forget('auto_login_token'));
 
-        session()->forget('users');
+        session()->forget('user');
         session()->flush();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('/home');
+    }
+
+    public function home()
+    {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
+        $user = session('user');
+
+        // Kalau user admin, arahkan ke dashboard admin
+        if ($user->pangkat === 'admin') {
+            return view('admin.dashboard', ['user' => $user]);
+        }
+
+        // Kalau user biasa
+        return view('user.home', ['user' => $user]);
     }
 }

@@ -28,8 +28,8 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    
-   @include('admin/includes.sidebar')
+    @php $site = 'form' @endphp
+    @include('admin/includes.sidebar')
 
     <!-- Main Content -->
     <div class="ml-64 min-h-screen">

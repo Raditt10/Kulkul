@@ -51,7 +51,7 @@
                 <div class="flex items-center">
                     
                     <div class="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-1 shadow-xl">
-                        <div id="sidebarToggle" class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
+                        <div id="profileWrapper" class="bg-slate-900/90 rounded-2xl p-3 flex items-center space-x-3 hover-lift">
                             <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full overflow-hidden animate-pulse-slow shadow-lg">
                                 <div class="w-full h-full bg-gradient-to-br from-orange-300 to-red-400 flex items-center justify-center">
                                     <i class="fas fa-user text-white text-lg"></i>
@@ -59,8 +59,8 @@
                             </div>
                             <div class="hidden sm:block">
                                 @auth
-                                    <div class="text-sm font-bold text-white">{{session('users')->name}}</div>
-                                    <div class="text-xs text-orange-300">NIS : {{session('users')->nis}}</div>
+                                    <div class="text-sm font-bold text-white">{{session('user')->name}}</div>
+                                    <div class="text-xs text-orange-300">NIS : {{session('user')->nis}}</div>
                                 @endauth
                                 @guest
                                     <div class="text-sm font-bold text-white">Guest</div>
@@ -72,7 +72,7 @@
                                 </button>
                             @endauth
                             @guest
-                                <button onclick="{{ Route('login') }}" class="text-slate-300 hover:text-white transition-colors duration-300">
+                                <button id="loginButton" class="text-slate-300 hover:text-white transition-colors duration-300">
                                     <a href="{{ route('login') }}" class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 rounded-full font-medium hover:from-red-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover-lift">
                                     Login</a>   
                                 </button>
