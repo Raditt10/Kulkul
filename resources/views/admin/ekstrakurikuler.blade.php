@@ -198,7 +198,7 @@
     </div>
 
 <script>
-let ekskulData = @json($data);
+let ekskulData = @json($data_ekskul);
 console.log(ekskulData);
 ekskulData = ekskulData.map(e => ({
     ...e,

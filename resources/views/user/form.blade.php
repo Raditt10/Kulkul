@@ -123,97 +123,38 @@
                             <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full">Tersedia</span>
                         </div>
                     </div>
+                    @foreach($data_ekskul as $ekskul)
 
-                    <!-- Eskul Card 2 -->
-                    <div onclick="selectEskul('paskibra')" class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-2 border-slate-700 hover:border-blue-500 rounded-2xl p-6 transition-all">
+                    <div onclick="selectEskul('{{ $ekskul->nama }}')" 
+                        class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-slate-700 hover:border-orange-500 rounded-2xl p-6 transition-all">
+                        
                         <div class="flex items-start justify-between mb-4">
-                            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-flag text-white text-2xl"></i>
+                            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                                <i class="{{ $ekskul->icon ?? 'fas fa-star' }} text-white text-2xl"></i>
                             </div>
-                            <div class="w-6 h-6 rounded-full border-2 border-slate-600 eskul-check hidden">
-                                <i class="fas fa-check text-blue-500 text-xs"></i>
+                            <div class="w-10 h-10 rounded-full border-2 border-slate-600 eskul-check hidden">
+                                <i class="fas fa-check text-orange-500 text-xs"></i>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Paskibra</h3>
-                        <p class="text-slate-400 text-sm mb-4">Latihan setiap Selasa & Kamis, 14:00 - 16:00</p>
+
+                        <h3 class="text-xl font-bold text-white mb-2">{{ $ekskul->nama_ekskul }}</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Latihan setiap {{ $ekskul->hari }}, {{ $ekskul->jam_mulai }} - {{ $ekskul->jam_selesai }}
+                        </p>
+
                         <div class="flex items-center justify-between text-xs">
-                            <span class="text-slate-500"><i class="fas fa-users mr-1"></i>18 anggota</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full">Tersedia</span>
+                            <span class="text-slate-500">
+                                <i class="fas fa-users mr-1"></i>{{ $ekskul->anggota}} anggota
+                            </span>
+                            <span class="px-3 py-1 rounded-full
+                                {{'bg-green-500/20 text-green-400'}}">
+                                {{ ucfirst($ekskul->status ?? 'tersedia') }}
+                            </span>
                         </div>
                     </div>
+                @endforeach
+            </div>
 
-                    <!-- Eskul Card 3 -->
-                    <div onclick="selectEskul('coding')" class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-2 border-slate-700 hover:border-purple-500 rounded-2xl p-6 transition-all">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-code text-white text-2xl"></i>
-                            </div>
-                            <div class="w-6 h-6 rounded-full border-2 border-slate-600 eskul-check hidden">
-                                <i class="fas fa-check text-purple-500 text-xs"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Coding Club</h3>
-                        <p class="text-slate-400 text-sm mb-4">Latihan setiap Rabu & Jumat, 15:00 - 17:00</p>
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-slate-500"><i class="fas fa-users mr-1"></i>32 anggota</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full">Tersedia</span>
-                        </div>
-                    </div>
-
-                    <!-- Eskul Card 4 -->
-                    <div onclick="selectEskul('music')" class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-slate-700 hover:border-green-500 rounded-2xl p-6 transition-all">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-music text-white text-2xl"></i>
-                            </div>
-                            <div class="w-6 h-6 rounded-full border-2 border-slate-600 eskul-check hidden">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Paduan Suara</h3>
-                        <p class="text-slate-400 text-sm mb-4">Latihan setiap Senin & Kamis, 15:30 - 17:30</p>
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-slate-500"><i class="fas fa-users mr-1"></i>28 anggota</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full">Tersedia</span>
-                        </div>
-                    </div>
-
-                    <!-- Eskul Card 5 -->
-                    <div onclick="selectEskul('tari')" class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border-2 border-slate-700 hover:border-yellow-500 rounded-2xl p-6 transition-all">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-masks-theater text-white text-2xl"></i>
-                            </div>
-                            <div class="w-6 h-6 rounded-full border-2 border-slate-600 eskul-check hidden">
-                                <i class="fas fa-check text-yellow-500 text-xs"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Tari Tradisional</h3>
-                        <p class="text-slate-400 text-sm mb-4">Latihan setiap Selasa & Jumat, 14:30 - 16:30</p>
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-slate-500"><i class="fas fa-users mr-1"></i>20 anggota</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full">Tersedia</span>
-                        </div>
-                    </div>
-
-                    <!-- Eskul Card 6 -->
-                    <div onclick="selectEskul('futsal')" class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-red-500/10 to-rose-500/10 border-2 border-slate-700 hover:border-red-500 rounded-2xl p-6 transition-all">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-futbol text-white text-2xl"></i>
-                            </div>
-                            <div class="w-6 h-6 rounded-full border-2 border-slate-600 eskul-check hidden">
-                                <i class="fas fa-check text-red-500 text-xs"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Futsal</h3>
-                        <p class="text-slate-400 text-sm mb-4">Latihan setiap Rabu & Sabtu, 15:00 - 17:00</p>
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-slate-500"><i class="fas fa-users mr-1"></i>30 anggota</span>
-                            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full">Hampir Penuh</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="mt-8 flex justify-end">
                     <button onclick="nextStep(2)" id="btnNext1" disabled class="px-8 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
@@ -392,7 +333,7 @@
             </div>
             <h2 class="text-2xl font-bold text-white mb-3">Pendaftaran Berhasil!</h2>
             <p class="text-slate-400 mb-6">Pendaftaran ekstrakurikuler kamu telah berhasil dikirim. Admin akan memproses pendaftaran kamu dalam 1-2 hari kerja.</p>
-            <button onclick="window.location.href = '{{ route('eskul') }}';" class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300">
+            <button onclick="window.location.href = '{{ route('ekstrakurikuler') }}';" class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300">
                 Kembali
             </button>
         </div>
