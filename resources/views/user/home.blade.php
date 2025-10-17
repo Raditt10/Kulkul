@@ -175,7 +175,7 @@
                             <!-- Content -->
                             <div class="text-center space-y-4">
                                 <h3 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-                                    WELCOME, USER!
+                                    WELCOME, @auth {{ Str::upper(session('user')->name) }}! @else USER! @endauth
                                 </h3>
                                 <p class="text-slate-300 leading-relaxed">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat ante nibh, 
