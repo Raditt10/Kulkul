@@ -5,8 +5,11 @@ use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\EkskulController;
 
 //route login
-Route::post('/login', [Authcontroller::class, 'login'])->name('login');
-// Route::get('/home', [Authcontroller::class, 'home'])->name('home');
+Route::get('/login', [Authcontroller::class, 'showlogin'])->name('login');
+Route::post('/login', [Authcontroller::class, 'login'])->name('login.post');
+Route::get('/home', [Authcontroller::class, 'home'])->name('home');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::get('/admin/ekstrakurikuler', [EkskulController::class, 'viewData'])->name('admin.ekstrakurikuler');
 
 Route::prefix('admin')->group(function () {
@@ -41,11 +44,6 @@ Route::get('/profile', function () {
         'user'=>$user
     ]);
 })->name('profile');
-
-//login route
-Route::get('/login', function () {
-    return view('user/login');
-})->name('login');
 
 // eskul route
 Route::get('/ekstrakurikuler', function () {

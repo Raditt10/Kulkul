@@ -166,7 +166,7 @@
                         </div>
 
                         <!-- Login Form -->
-                        <form id="loginForm" method="POST" action="{{ url('/loginpost') }}" class="space-y-4">
+                        <form id="loginForm" method="POST" action="{{ route('login.post') }}" class="space-y-4">
                             @csrf
                             <!-- Username/NIS Field -->
                             <div class="space-y-2">
@@ -462,7 +462,7 @@
 
             // Simulate API call
             try {
-                const response = await fetch("{{ route('login') }}", {
+                const response = await fetch("{{ route('login.post') }}", {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}',

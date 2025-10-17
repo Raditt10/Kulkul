@@ -18,8 +18,8 @@
                 </div>
                 <div>
                     @auth
-                    <p class="font-bold text-white text-base">{{Auth()->user()->name}}</p>
-                    <p class="text-sm text-orange-300">NIS: {{Auth()->user()->nis}}</p>
+                    <p class="font-bold text-white text-base">{{session('users')->name}}</p>
+                    <p class="text-sm text-orange-300">NIS: {{session('users')->nis}}</p>
                     <p class="text-xs text-slate-400">Siswa Aktif</p>
                     @endauth
                     @guest
@@ -57,6 +57,7 @@
                     <span class="font-medium">Daftar Esktrakurikuler</span>
                 </a>
             </li>
+            @auth
             <li>
                 <a href="{{ route('profile') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-user-graduate text-orange-400 w-5"></i>
@@ -69,24 +70,29 @@
                     <span class="font-medium">Teman Saya</span>
                 </a>
             </li>
+            @endauth
             <li>
                 <a href="{{ route('settings') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-cog text-orange-400 w-5"></i>
                     <span class="font-medium">Pengaturan</span>
                 </a>
             </li>
+            @guest
             <li>
                 <a href="{{ route('login') }}" class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-sign-in-alt text-orange-400 w-5"></i>
                     <span class="font-medium">Masuk</span>
                 </a>
+            </li>
+            @endguest
+            @auth
             <li class="pt-4 border-t border-orange-500/20">
                 <a href="#" class="flex items-center space-x-4 text-red-300 hover:text-red-200 hover:bg-red-600/20 transition-all duration-300 hover-lift p-3 rounded-xl">
                     <i class="fas fa-sign-out-alt text-red-400 w-5"></i>
                     <span class="font-medium">Keluar</span>
                 </a>
             </li>
-            
+            @endauth
         </ul>
     </div>
 
