@@ -305,3 +305,15 @@
                 // Add smooth scroll behavior
                 document.documentElement.style.scrollBehavior = 'smooth';
             });
+
+            Swal.fire({
+            icon: 'success',
+            title: 'Pendaftaran Berhasil!',
+            html: '<p class="text-orange-300 font-semibold">Selamat bergabung di ekskul pilihanmu 🎉</p>',
+            background: '#0f172a',
+            color: '#fff',
+            confirmButtonColor: '#f97316',
+            position: 'center', // ⬅️ biar di tengah
+            showConfirmButton: false,
+            timer: 2500,
+            });

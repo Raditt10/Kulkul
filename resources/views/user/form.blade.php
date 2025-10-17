@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <title>Formulir Pendaftaran Ekstrakurikuler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -312,18 +313,23 @@
     </div>
 
     <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm items-center justify-center z-50 hidden">
-        <div class="bg-slate-900 rounded-3xl border border-green-500/30 max-w-md w-full mx-4 p-8 text-center animate-slide-up">
-            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-check text-white text-3xl"></i>
+        <div id="successModal"
+            class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center z-50">
+            <div class="bg-slate-900 rounded-3xl border border-green-500/30 max-w-md w-full mx-4 p-8 text-center animate-slide-up">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-white text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-3">Pendaftaran Berhasil!</h2>
+                <p class="text-slate-400 mb-6">
+                    Pendaftaran ekstrakurikuler kamu telah berhasil dikirim. Admin akan memproses pendaftaran kamu dalam 1–2 hari kerja.
+                </p>
+                <button onclick="window.location.href = '{{ route('ekstrakurikuler') }}';"
+                    class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300">
+                    Kembali
+                </button>
             </div>
-            <h2 class="text-2xl font-bold text-white mb-3">Pendaftaran Berhasil!</h2>
-            <p class="text-slate-400 mb-6">Pendaftaran ekstrakurikuler kamu telah berhasil dikirim. Admin akan memproses pendaftaran kamu dalam 1-2 hari kerja.</p>
-            <button onclick="window.location.href = '{{ route('ekstrakurikuler') }}';" class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300">
-                Kembali
-            </button>
         </div>
-    </div>
+
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/form.js') }}"></script>
