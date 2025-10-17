@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id('id_ekskul'); // id_ekskul dari JSON
             $table->string('nama_ekskul');
             $table->enum('kategori', ['seni', 'tekhnologi', 'akademi', 'olahraga']);
-            $table->string('pembina'); // nama pembina
             $table->string('hari'); // hari ekstrakurikuler
             $table->time('jam_mulai'); // jam mulai
             $table->time('jam_selesai'); // jam selesai

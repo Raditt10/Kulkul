@@ -19,6 +19,12 @@ class EkskulController extends Controller
         return view('user.form', compact('data_ekskul'));
     }
 
+    public function viewEkskulUser()
+    {
+        $data_ekskul = Ekskul::all();
+        return view('user.ekstrakurikuler', compact('data_ekskul'));
+    }
+
     public function store(Request $request)
     {
         // ✅ Ambil data dari JSON
@@ -79,6 +85,12 @@ class EkskulController extends Controller
                 'message' => $e->getMessage()
             ]);
         }
+    }
+
+    public function jadwal()
+    {
+        $ekskuls = Ekskul::all();
+        return view('user.timeo', compact('ekskuls'));
     }
 
 }

@@ -187,7 +187,7 @@
                             <div class="text-xs text-slate-400">Ekskul</div>
                         </div>
                         <div class="text-center p-4 glass-effect rounded-xl hover:bg-red-500/10 transition-all cursor-pointer card-hover-scale">
-                            <div class="text-3xl font-bold text-red-400">500+</div>
+                            <div class="text-3xl font-bold text-red-400">1.000+</div>
                             <div class="text-xs text-slate-400">Siswa</div>
                         </div>
                         <div class="text-center p-4 glass-effect rounded-xl hover:bg-yellow-500/10 transition-all cursor-pointer card-hover-scale">
@@ -277,7 +277,7 @@
                             <div class="p-8 pt-4">
                                 <div class="text-center space-y-4">
                                     <h3 class="text-3xl font-bold gradient-text">
-                                        WELCOME, {{ Str::upper(session('user')->name) }}
+                                        WELCOME, @auth {{ Str::upper(session('user')->name) }} @else GUEST! @endauth
                                     </h3>
                                     <p class="text-slate-300 leading-relaxed text-sm">
                                         Platform digital yang menghubungkan siswa dengan berbagai kegiatan ekstrakurikuler. 

@@ -191,38 +191,38 @@
 
                             <!-- Slide 1 -->
                             <div class="swiper-slide relative group">
-                                <img src="{{ asset('images/eskul.jpg') }}" alt="Olahraga"
+                                <img src="{{ asset('images/pmr.jpg') }}" alt="Olahraga"
                                     class="w-full h-full object-cover filter brightness-75 transition-transform duration-500 group-hover:scale-110">
                                 <!-- Overlay Info -->
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent 
                                             flex flex-col justify-end items-center text-center 
                                             opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-6">
-                                <h3 class="text-white text-xl font-bold mb-2">Ekstrakurikuler Olahraga</h3>
-                                <p class="text-slate-200 text-sm">Tingkatkan kesehatan & kerja sama tim lewat olahraga seru.</p>
+                                <h3 class="text-white text-xl font-bold mb-2">Palang Merah Remaja</h3>
+                                <p class="text-slate-200 text-sm">Ekstrakurikuler yang menumbuhkan kepedulian terhadap masyarakat.</p>
                                 </div>
                             </div>
 
                             <!-- Slide 2 -->
                             <div class="swiper-slide relative group">
-                                <img src="{{ asset('images/eskul.jpg') }}" alt="Seni"
+                                <img src="{{ asset('images/silat.jpg') }}" alt="Seni"
                                     class="w-full h-full object-cover filter brightness-75 transition-transform duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent 
                                             flex flex-col justify-end items-center text-center 
                                             opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-6">
-                                <h3 class="text-white text-xl font-bold mb-2">Ekstrakurikuler Seni</h3>
-                                <p class="text-slate-200 text-sm">Kembangkan kreativitas lewat musik, tari, dan teater.</p>
+                                <h3 class="text-white text-xl font-bold mb-2">Silat</h3>
+                                <p class="text-slate-200 text-sm">Melatih siswa secara non akademik dengan berlatih bela diri.</p>
                                 </div>
                             </div>
 
                             <!-- Slide 3 -->
                             <div class="swiper-slide relative group">
-                                <img src="{{ asset('images/eskul.jpg') }}" alt="Teknologi"
+                                <img src="{{ asset('images/pramuka.jpg') }}" alt="Teknologi"
                                     class="w-full h-full object-cover filter brightness-75 transition-transform duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent 
                                             flex flex-col justify-end items-center text-center 
                                             opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-6">
-                                <h3 class="text-white text-xl font-bold mb-2">Ekstrakurikuler Teknologi</h3>
-                                <p class="text-slate-200 text-sm">Belajar coding, robotik, & inovasi digital.</p>
+                                <h3 class="text-white text-xl font-bold mb-2">Pramuka</h3>
+                                <p class="text-slate-200 text-sm">Media melatih moral siswa di sekolah sebagai wakil bangsa.</p>
                                 </div>
                             </div>
 

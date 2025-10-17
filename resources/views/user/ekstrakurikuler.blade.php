@@ -115,7 +115,7 @@
                 <span class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 transition-all duration-500 ease-in-out group-hover:from-red-500 group-hover:to-orange-500"></span>
                 <span class="relative flex items-center gap-2">
                     <i class="fas fa-stopwatch animate-bounce-slow"></i>
-                    Lihat Jadwal O' Time
+                    Lihat Jadwal Time 'O
                 </span>
                 <span class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-orange-500 to-red-600 blur opacity-30 group-hover:opacity-50 transition duration-500"></span>
             </a>

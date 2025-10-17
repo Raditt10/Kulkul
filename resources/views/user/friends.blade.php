@@ -122,6 +122,8 @@
   
     @include('user/includes.sidebar')
 
+    @include('user/includes.notif')
+
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
 

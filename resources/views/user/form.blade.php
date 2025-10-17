@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Formulir Pendaftaran Ekstrakurikuler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -123,8 +124,7 @@
                         </div>
                     </div>
                     @foreach($data_ekskul as $ekskul)
-
-                    <div onclick="selectEskul('{{ $ekskul->nama }}')" 
+                    <div onclick="selectEskul('{{ $ekskul->id_ekskul }}', '{{ $ekskul->nama_ekskul }}')" 
                         class="eskul-card card-hover cursor-pointer bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-slate-700 hover:border-orange-500 rounded-2xl p-6 transition-all">
                         
                         <div class="flex items-start justify-between mb-4">
@@ -167,18 +167,21 @@
                 <h2 class="text-2xl font-bold text-white mb-6">Lengkapi Data Diri</h2>
                 <p class="text-slate-400 mb-8">Isi data diri kamu dengan lengkap dan benar</p>
                 
-                <form id="formData" class="space-y-6">
+                <form id="formData" method="post" action="{{ route('pendaftaran.store') }}"  class="space-y-6">
+                    @csrf
+
                     <div class="grid md:grid-cols-2 gap-6">
                         <!-- Nama Lengkap -->
                         <div>
                             <label class="text-slate-400 text-sm mb-2 block">Nama Lengkap <span class="text-red-500">*</span></label>
-                            <input type="text" id="nama" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors">
+                            <input type="text" id="nama" value="{{ session('user')->name }}" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors" readonly>
                         </div>
 
                         <!-- NIS -->
                         <div>
                             <label class="text-slate-400 text-sm mb-2 block">NIS <span class="text-red-500">*</span></label>
-                            <input type="text" id="nis" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors">
+                            <input type="text" id="nis" value="{{ session('user')->nis }}" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors" readonly>
+                            <input type="hidden" name="nis" value="{{ session('user')->nis }}">
                         </div>
 
                         <!-- Kelas -->
@@ -204,13 +207,13 @@
                         <!-- No. Telepon -->
                         <div>
                             <label class="text-slate-400 text-sm mb-2 block">No. Telepon/WhatsApp <span class="text-red-500">*</span></label>
-                            <input type="tel" id="phone" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors" placeholder="08xxxxxxxxxx">
+                            <input type="tel" id="phone" value="{{ session('user')->no_tlp }}" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors" placeholder="08xxxxxxxxxx" readonly>
                         </div>
 
                         <!-- Email -->
                         <div>
                             <label class="text-slate-400 text-sm mb-2 block">Email</label>
-                            <input type="email" id="email" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors" placeholder="email@example.com">
+                            <input type="email" id="email" value="{{ session('user')->email }}" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors" placeholder="email@example.com" readonly>
                         </div>
 
                         <!-- Jenis Kelamin -->
@@ -227,13 +230,13 @@
                     <!-- Alasan Mendaftar -->
                     <div>
                         <label class="text-slate-400 text-sm mb-2 block">Alasan Mendaftar <span class="text-red-500">*</span></label>
-                        <textarea id="reason" required rows="4" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors resize-none" placeholder="Ceritakan alasan kamu ingin bergabung dengan ekstrakurikuler ini..."></textarea>
+                        <textarea id="reason" name="alasan" required rows="4" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors resize-none" placeholder="Ceritakan alasan kamu ingin bergabung dengan ekstrakurikuler ini..."></textarea>
                     </div>
 
                     <!-- Pengalaman -->
                     <div>
                         <label class="text-slate-400 text-sm mb-2 block">Pengalaman Terkait (Opsional)</label>
-                        <textarea id="experience" rows="3" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors resize-none" placeholder="Ceritakan pengalaman kamu yang relevan dengan ekstrakurikuler ini..."></textarea>
+                        <textarea id="experience" name="experience" rows="3" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors resize-none" placeholder="Ceritakan pengalaman kamu yang relevan dengan ekstrakurikuler ini..."></textarea>
                     </div>
                 </form>
 
@@ -341,7 +344,8 @@
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/form.js') }}"></script>
     <script>
-    const formUrl = "{{ route('form') }}";
+    const eskulData = @json($data_ekskul);
+    const formUrl = "{{ route('user.form') }}";
     </script>
 </body>
 </html>
