@@ -103,11 +103,11 @@
                     
                     <div class="space-y-4 text-slate-200">
                         <p class="text-lg leading-relaxed font-light">
-                            Sed tristique quis sapien eget posuere. Vivamus vitae felis a orci vulputate ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Platform terdepan yang mengembangkan cara Siswa/i mengakses dan mengelola kegiatan ekstrakurikuler. Kami adalah forum digital yang menghubungkan siswa, guru pembina, dan berbagai jenis ekskul dalam satu lingkubgan digital. Lupakan proses pendaftaran manual, jadwal yang berantakan, dan informasi yang terpisah-pisah. 
                         </p>
                         
                         <p class="text-lg leading-relaxed font-light">
-                            Aenean in tortor nec tellus dictum volutpat varius at turpis. Morbi ornare diam sed rutrum congue. Praesent eget efficitur felis.
+                            Kami hadir sebagai solusi dari sistem yang tidak efisien.
                         </p>
                     </div>
 
@@ -165,8 +165,8 @@
                             <div class="absolute bottom-4 left-4 right-4">
                                 <div class="glass-effect rounded-lg p-3 bg-slate-900/50">
                                 <div class="flex items-center justify-between text-white text-sm">
-                                    <span><i class="fas fa-eye mr-1"></i> 1.2K views</span>
-                                    <span><i class="fas fa-heart mr-1 text-red-400"></i> 89 likes</span>
+                                    <span><i class="fas fa-eye mr-1"></i> 1.9k views</span>
+                                    <span><i class="fas fa-heart mr-1 text-red-400"></i> 53 likes</span>
                                 </div>
                                 </div>
                             </div>

@@ -392,7 +392,7 @@
             </div>
             <h2 class="text-2xl font-bold text-white mb-3">Pendaftaran Berhasil!</h2>
             <p class="text-slate-400 mb-6">Pendaftaran ekstrakurikuler kamu telah berhasil dikirim. Admin akan memproses pendaftaran kamu dalam 1-2 hari kerja.</p>
-            <button onclick="window.location.href = '{{ route('eskul') }}';" class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300">
+            <button onclick="window.location.href = '{{ route('ekstrakurikuler') }}';" class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:from-orange-400 hover:to-red-500 transition-all duration-300">
                 Kembali
             </button>
         </div>
