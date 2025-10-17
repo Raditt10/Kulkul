@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Kulkul - Modern & Interactive</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <title>Home Kulkul</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -144,7 +145,7 @@
                         <div class="flex items-center justify-center lg:justify-start mb-6">
                             <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 mr-4 animate-pulse"></div>
                             <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-xl animate-glow hover:scale-110 transition-transform cursor-pointer">
-                                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                                <img src="{{ asset('images/logo.png') }}" alt="Logo SMKN 13 Bandung" class="w-8 h-8 object-contain">
                             </div>
                             <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-orange-500 ml-4 animate-pulse"></div>
                         </div>
@@ -167,10 +168,10 @@
                     </div>
 
                     <div class="flex flex-wrap gap-4 pt-8">
-                        <button class="interactive-button px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-full hover-lift transition-all duration-300 animate-glow shadow-2xl group">
+                        <a href="{{ route('ekstrakurikuler') }}" class="interactive-button px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-full hover-lift transition-all duration-300 animate-glow shadow-2xl group">
                             <i class="fas fa-rocket mr-2 group-hover:rotate-45 transition-transform"></i>
                             Explore Now!
-                        </button>
+                        </a>
                         <a href="https://youtu.be/O1JP-O-QAnc?si=V7SNRWzKbdfXS_pb" 
                         target="_blank" 
                         class="interactive-button px-8 py-4 glass-effect text-white font-bold rounded-full hover-lift border border-orange-500/50 hover:border-orange-400 transition-all duration-300 group">
@@ -276,7 +277,7 @@
                             <div class="p-8 pt-4">
                                 <div class="text-center space-y-4">
                                     <h3 class="text-3xl font-bold gradient-text">
-                                        WELCOME, USER!
+                                        WELCOME, {{ Str::upper(session('user')->name) }}
                                     </h3>
                                     <p class="text-slate-300 leading-relaxed text-sm">
                                         Platform digital yang menghubungkan siswa dengan berbagai kegiatan ekstrakurikuler. 

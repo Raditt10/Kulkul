@@ -192,7 +192,11 @@
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
     <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-400/5 rounded-full blur-2xl animate-pulse-slow" style="animation-delay: 4s"></div>
 </div>
+/
 
+   @include('user/includes.navbar')
+  
+   @include('user/includes.sidebar')
 
     <!-- Success Notification -->
     <div id="successNotification" class="fixed top-24 right-4 z-50 hidden">
@@ -204,10 +208,6 @@
             </div>
         </div>
     </div>
-
-   @include('user/includes.navbar')
-  
-   @include('user/includes.sidebar')
 
     <!-- Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
@@ -914,150 +914,5 @@
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>
 
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengaturan - Kulkul SMKN 13 BANDUNG</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style href="{{ asset('css/sidebarscroll.css') }}"></style>
-    <script>
-        // Kode Tailwind config tetap sama
-        tailwind.config = {
-            // ... (tidak diubah)
-        }
-    </script>
-    <style>
-        /* Styles yang ada tetap, tapi tambahkan ini untuk memperbaiki layout */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Pastikan halaman penuh tinggi layar */
-        }
-        .main-content {
-            flex: 1; /* Konten utama mengisi sisa ruang */
-            padding-top: 4rem; /* Sesuaikan berdasarkan tinggi navbar */
-            padding-bottom: 4rem; /* Beri ruang untuk footer */
-        }
-        .sidebar {
-            position: fixed; /* Pastikan sidebar fixed dan tidak tumpang tindih */
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 250px; /* Atur lebar tetap */
-            z-index: 50; /* Di atas overlay */
-        }
-        #sidebarOverlay {
-            z-index: 45; /* Di bawah sidebar tapi di atas konten */
-        }
-        /* Sisa styles tetap sama */
-    </style>
-</head>
-<body class="dark-mode overflow-x-hidden">
-    <!-- Animated Background -->
-    <div class="fixed inset-0 -z-10">
-        <!-- ... (tidak diubah) -->
-    </div>
-
-    <!-- Success Notification -->
-    <div id="successNotification" class="fixed top-24 right-4 z-50 hidden">
-        <!-- ... (tidak diubah) -->
-    </div>
-
-    @include('user/includes.navbar')  <!-- Navbar harus fixed atau sticky -->
-
-    @include('user/includes.sidebar')  <!-- Sidebar harus fixed -->
-
-    <!-- Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-45"></div>
-
-    <!-- Main Content -->
-    <div class="main-content container mx-auto px-4 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <!-- Header -->
-            <div class="text-center mb-12 animate-slide-up">
-                <!-- ... (tidak diubah) -->
-            </div>
-
-            <!-- Settings Grid -->
-            <div class="grid lg:grid-cols-2 gap-8 md:grid-cols-1">  <!-- Buat lebih responsif -->
-                <!-- Left Column -->
-                <div class="space-y-6">
-                    <!-- Keamanan Akun -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-
-                    <!-- Bahasa & Lokalisasi -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.2s">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="space-y-6">
-                    <!-- Tampilan -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.1s">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-
-                    <!-- Notifikasi -->
-                    <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.3s">
-                        <!-- ... (tidak diubah) -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Full Width Sections -->
-            <div class="mt-8 space-y-6">
-                <!-- Privasi & Keamanan -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.4s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Backup & Sinkronisasi -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.5s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Ekspor & Impor Data -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.6s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Manajemen Sesi -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.7s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Aksesibilitas -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-slate-700 hover-lift animate-slide-up" style="animation-delay: 0.8s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-
-                <!-- Zona Bahaya -->
-                <div class="section-card glass-effect rounded-2xl p-6 border border-red-500/50 hover-lift animate-slide-up" style="animation-delay: 0.9s">
-                    <!-- ... (tidak diubah) -->
-                </div>
-            </div>
-
-            <!-- Save All Button -->
-            <div class="mt-8 text-center animate-slide-up" style="animation-delay: 0.7s">
-                <!-- ... (tidak diubah) -->
-            </div>
-        </div>
-    </div>
-
-    @include('user/includes.footer')  <!-- Footer di akhir, pastikan tidak tumpang tindih -->
-
-    <script src="{{ asset('js/sidebar.js') }}"></script>
-    <script src="{{ asset('js/settings.js') }}"></script>
 </body>
 </html>
