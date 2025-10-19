@@ -27,6 +27,7 @@
 	</style>
 </head>
 <body class="bg-slate-950 text-white">
+	@php $page = "laporan" @endphp
 	@include('admin/includes.sidebar')
 
 	@include('admin.includes.notif')

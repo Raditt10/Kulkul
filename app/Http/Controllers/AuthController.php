@@ -16,6 +16,11 @@ class AuthController extends Controller
         return view('user.login'); // nama file login.blade.php kamu
     }
 
+    public function showRegister()
+    {
+        return view('user.register');
+    }
+    
     public function login(Request $request) {
         $credentials = $request->validate([
             'username' => ['required', 'string'],
@@ -66,8 +71,7 @@ class AuthController extends Controller
         }
     }
 
-
-public function resetPassword(Request $request)
+    public function resetPassword(Request $request)
     {
         // Validasi input
         $request->validate([
@@ -106,7 +110,6 @@ public function resetPassword(Request $request)
     }
     
     public function logout(Request $request) {
-
         Cookie::queue(Cookie::forget('auto_login_token'));
 
         session()->forget('user');
@@ -118,18 +121,18 @@ public function resetPassword(Request $request)
 
     public function home()
     {
-        if (!session()->has('user')) {
-            return redirect()->route('login');
+        if (session()->has('user')) {
+            $user = session('user');
+            
+            // Kalau user admin, arahkan ke dashboard admin
+            if ($user->pangkat === 'admin') {
+                return view('admin.dashboard', ['user' => $user]);
+            }
+
+            // Kalau user biasa
+            return view('user.home', ['user' => $user]);
         }
 
-        $user = session('user');
-
-        // Kalau user admin, arahkan ke dashboard admin
-        if ($user->pangkat === 'admin') {
-            return view('admin.dashboard', ['user' => $user]);
-        }
-
-        // Kalau user biasa
-        return view('user.home', ['user' => $user]);
+        return view('user.home');
     }
 }

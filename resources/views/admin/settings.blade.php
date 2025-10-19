@@ -53,9 +53,8 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-
+    @php $page = "settings" @endphp
     @include('admin/includes.sidebar')
-
 
     @include('admin.includes.notif')
 

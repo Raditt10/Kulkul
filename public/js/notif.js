@@ -9,3 +9,7 @@
         notif.style.display = 'none';
       }, 500);
     }
+
+function toggleComingSoon(show = true) {
+    document.getElementById('comingSoonModal').classList.toggle('hidden', !show);
+}

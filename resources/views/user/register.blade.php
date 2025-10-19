@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="images/logo.png">
-    <title>Login Kulkul</title>
+    <title>Register Kulkul</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -151,141 +151,183 @@
             <div class="animate-slide-up">
                 <div class="relative group hover-lift">
                     <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000 animate-glow"></div>
-                    <div id="loginCard" class="relative glass-effect rounded-3xl p-6 border border-orange-500/20 shadow-2xl">
+                    <div id="registerCard" class="relative glass-effect rounded-3xl p-6 border border-orange-500/20 shadow-2xl">
+                        
                         <!-- Header -->
                         <div class="text-center mb-6">
-                            <h2 class="text-3xl font-bold text-white mb-2">
-                                Selamat Datang Kembali
-                            </h2>
-                            <p class="text-slate-400 text-sm">Masuk untuk melanjutkan petualanganmu</p>
+                            <h2 class="text-3xl font-bold text-white mb-2">Buat Akun Baru</h2>
+                            <p class="text-slate-400 text-sm">Daftar untuk mulai petualanganmu!</p>
                         </div>
 
-                        <!-- Error Message Container -->
+                        <!-- Error Message -->
                         <div id="errorContainer" class="hidden mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg">
                             <p id="errorMessage" class="text-red-400 text-sm text-center font-medium"></p>
                         </div>
 
-                        <!-- Login Form -->
-                        <form id="loginForm" method="POST" action="{{ route('login.post') }}" class="space-y-4">
+                        <!-- Register Form -->
+                        <form id="registerForm" method="POST" action="{{ route('register.post') }}" class="space-y-4">
                             @csrf
-                            <!-- Username/NIS Field -->
+
+                            <!-- NIS -->
                             <div class="space-y-2">
-                                <label for="username" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
-                                    NIS / Username
+                                <label for="nis" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    NIS
                                 </label>
-                                <div class="relative">
-                                    <input 
-                                        type="text" 
-                                        id="username" 
-                                        name="username"
-                                        required
-                                        class="input-focus w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Masukkan NIS atau Username"
-                                    >
-                                    <div class="absolute right-3 top-1/2 -translate-y-1/2">
-                                        <div id="usernameStatus" class="w-2.5 h-2.5 bg-slate-600 rounded-full transition-all duration-300"></div>
-                                    </div>
-                                </div>
-                                <p id="usernameError" class="text-red-400 text-xs hidden error-message"></p>
+                                <input 
+                                    type="text"
+                                    id="nis"
+                                    name="nis"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan NIS"
+                                >
                             </div>
 
-                            <!-- Password Field -->
+                            <!-- Username -->
+                            <div class="space-y-2">
+                                <label for="username" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Username
+                                </label>
+                                <input 
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan Username"
+                                >
+                            </div>
+
+                            <!-- Email -->
+                            <div class="space-y-2">
+                                <label for="email" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Email
+                                </label>
+                                <input 
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan Email"
+                                >
+                            </div>
+
+                            <!-- Password -->
                             <div class="space-y-2">
                                 <label for="password" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
                                     Password
                                 </label>
-                                <div class="relative">
-                                    <input 
-                                        type="password" 
-                                        id="password" 
-                                        name="password"
-                                        required
-                                        class="input-focus w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
-                                        placeholder="Masukkan Password"
-                                    >
-                                    <button 
-                                        type="button"
-                                        id="togglePassword"
-                                        class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-400 transition-all duration-300 hover:scale-110 text-xs font-bold"
-                                    >
-                                        <span id="toggleText">SHOW</span>
-                                    </button>
-                                </div>
-                                <p id="passwordError" class="text-red-400 text-xs hidden error-message"></p>
+                                <input 
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan Password"
+                                >
                             </div>
 
-                            <!-- Remember Me & Forgot Password -->
-                            <div class="flex items-center justify-between text-xs pt-2">
-                                <label class="flex items-center text-slate-300 cursor-pointer group">
-                                    <div class="relative">
-                                        <input 
-                                            type="checkbox" 
-                                            id="rememberMe"
-                                            name="remember"
-                                            class="sr-only peer"
-                                        >
-                                        <div class="w-9 h-5 bg-slate-700 rounded-full peer peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-red-600 transition-all duration-300"></div>
-                                        <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-4"></div>
-                                    </div>
-                                    <span class="ml-2 group-hover:text-orange-400 transition-colors duration-300 font-medium">Ingat Saya</span>
+                            <!-- Confirm Password -->
+                            <div class="space-y-2">
+                                <label for="password_confirmation" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Konfirmasi Password
                                 </label>
-                                <a href="#" class="text-orange-400 hover:text-orange-300 transition-all duration-300 hover:underline font-medium">
-                                    Lupa Password?
-                                </a>
+                                <input 
+                                    type="password"
+                                    id="password_confirmation"
+                                    name="password_confirmation"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Ulangi Password"
+                                >
                             </div>
 
-                            <!-- Login Button -->
+                            <!-- Kelas -->
+                            <div class="space-y-2">
+                                <label for="kelas" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Kelas
+                                </label>
+                                <input 
+                                    type="text"
+                                    id="kelas"
+                                    name="kelas"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan Username atau NIS"
+                                >
+                            </div>
+
+                            <!-- Tgl lahir -->
+                            <div class="space-y-2">
+                                <label for="birthdate" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Tanggal Lahir
+                                </label>
+                                <input 
+                                    type="text"
+                                    id="birthdate"
+                                    name="birthdate"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan Username atau NIS"
+                                >
+                            </div>
+
+                            <!-- alamat rumah -->
+                            <div class="space-y-2">
+                                <label for="address" class="block text-xs font-semibold text-slate-300 uppercase tracking-wide">
+                                    Alamat Rumah
+                                </label>
+                                <input 
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-all duration-300"
+                                    placeholder="Masukkan Alamat Rumah"
+                                >
+                            </div>
+
+                            <!-- Register Button -->
                             <button 
                                 type="submit"
-                                id="loginBtn"
                                 class="relative w-full px-6 py-3.5 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl hover-lift hover:from-orange-400 hover:to-red-500 transition-all duration-300 shadow-xl overflow-hidden group mt-6"
                             >
-                                <span class="relative z-10" id="btnText">MASUK SEKARANG</span>
+                                <span class="relative z-10">DAFTAR SEKARANG</span>
                                 <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </button>
 
-                            <!-- Loading Bar -->
-                            <div id="loadingBar" class="h-1 bg-slate-800 rounded-full overflow-hidden hidden">
-                                <div class="h-full bg-gradient-to-r from-orange-500 to-red-600 rounded-full transition-all duration-300" style="width: 0%"></div>
-                            </div>
-
                             <!-- Divider -->
-                            {{-- <div class="relative my-6">
+                            <div class="relative my-6">
                                 <div class="absolute inset-0 flex items-center">
                                     <div class="w-full border-t border-slate-700"></div>
                                 </div>
                                 <div class="relative flex justify-center text-xs">
-                                    <span class="px-2 bg-slate-950 text-slate-400">Belum punya akun?</span>
+                                    <span class="px-2 bg-slate-950 text-slate-400">Sudah punya akun?</span>
                                 </div>
                             </div>
 
-                            <!-- Link to Register -->
+                            <!-- Link to Login -->
                             <div class="text-center">
-                                <a href="{{ route('register') }}" class="text-orange-400 hover:text-orange-300 transition-all duration-300 hover:underline font-medium">
-                                    Daftar Sekarang
+                                <a href="{{ route('login') }}" class="text-orange-400 hover:text-orange-300 transition-all duration-300 hover:underline font-medium">
+                                    Masuk Sekarang
                                 </a>
-                            </div> --}}
+                            </div>
                         </form>
                     </div>
                 </div>
 
-                <!-- Additional Info -->
                 <div class="text-center mt-6 text-slate-400 text-xs">
                     <p class="mb-3">© 2025 SMKN 13 Bandung. All rights reserved.</p>
                     <div class="flex items-center justify-center gap-4">
-                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
-                            FACEBOOK
-                        </a>
+                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">FACEBOOK</a>
                         <span class="text-slate-700">•</span>
-                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
-                            TWITTER
-                        </a>
+                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">TWITTER</a>
                         <span class="text-slate-700">•</span>
-                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
-                            INSTAGRAM
-                        </a>
+                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">INSTAGRAM</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -362,7 +404,7 @@
             setTimeout(() => ripple.remove(), 600);
         }
 
-        document.getElementById('loginBtn').addEventListener('click', createRipple);
+        document.getElementById('registerBtn').addEventListener('click', createRipple);
 
         // Show error message
         function showError(message) {
@@ -371,9 +413,9 @@
             errorMessage.textContent = message;
             errorContainer.classList.remove('hidden');
             
-            const loginCard = document.getElementById('loginCard');
-            loginCard.classList.add('shake');
-            setTimeout(() => loginCard.classList.remove('shake'), 500);
+            const registerCard = document.getElementById('registerCard');
+            registerCard.classList.add('shake');
+            setTimeout(() => registerCard.classList.remove('shake'), 500);
         }
 
         // Hide error message
@@ -423,18 +465,20 @@
         }
 
         // Form Submission with AJAX
-        const loginForm = document.getElementById('loginForm');
-        const loginCard = document.getElementById('loginCard');
+        const registerForm = document.getElementById('registerForm');
+        const registerCard = document.getElementById('registerCard');
         const loadingBar = document.getElementById('loadingBar');
+        const nisInput = document.getElementById('nis');
+        const kelasInput
         
-        loginForm.addEventListener('submit', async function(e) {
+        registerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             hideError();
             
             const username = usernameInput.value;
             const password = passwordInput.value;
-            const remember = document.getElementById('rememberMe').checked;
+
 
             // Client-side validation
             if (username.length < 3) {
@@ -450,7 +494,7 @@
             }
 
             // Show loading state
-            const submitBtn = document.getElementById('loginBtn');
+            const submitBtn = document.getElementById('registerBtn');
             const btnText = document.getElementById('btnText');
             const originalText = btnText.textContent;
             
@@ -472,13 +516,13 @@
 
             // Simulate API call
             try {
-                const response = await fetch("{{ route('login.post') }}", {
+                const response = await fetch("{{ route('register.post') }}", {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}',
                         'Accept': 'application/json'
                     },
-                    body: new FormData(loginForm)
+                    body: new FormData(registerForm)
                 });
 
                 const result = await response.json();
@@ -486,7 +530,7 @@
                 loadingBarFill.style.width = '100%';
 
                 if(result.success){
-                    loginCard.classList.add('success-pulse');
+                    registerCard.classList.add('success-pulse');
                     btnText.textContent = '✓ BERHASIL!';
                     submitBtn.classList.remove('opacity-75');
                     submitBtn.classList.add('bg-green-600');
@@ -540,9 +584,9 @@
                     btnText.textContent = 'COBA LAGI';
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                    loginCard.classList.add('shake');
+                    registerCard.classList.add('shake');
                     usernameInput.focus();
-                    setTimeout(() => loginCard.classList.remove('shake'), 500);
+                    setTimeout(() => registerCard.classList.remove('shake'), 500);
                 }
             }catch (error) {
                 console.error(error);
@@ -564,7 +608,7 @@
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
-                loginForm.dispatchEvent(new Event('submit'));
+                registerForm.dispatchEvent(new Event('submit'));
             }
         });    
     </script>

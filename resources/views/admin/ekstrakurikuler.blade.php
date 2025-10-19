@@ -27,7 +27,7 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    @php $site = 'eskul' @endphp
+    @php $page = 'eskul' @endphp
 
     @include('admin/includes.sidebar')
 

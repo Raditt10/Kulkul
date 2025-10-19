@@ -28,7 +28,7 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    
+    @php $page = "pembina" @endphp
     @include('admin/includes.sidebar')
 
     @include('admin.includes.notif')

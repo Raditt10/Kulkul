@@ -31,7 +31,7 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    @php $site = 'dashboard' @endphp
+    @php $page = 'dashboard' @endphp
     @include('admin.includes.sidebar')
 
    @include('admin.includes.notif')

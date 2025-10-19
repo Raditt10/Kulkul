@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('kelas');
-            $table->float('score_avg');
+            $table->float('score_avg')->nullable();
             $table->string('no_tlp');
             $table->string('alamat_rumah');
-            $table->string('achievements');
+            $table->string('achievements')->nullable();
             $table->date('tgl_lahir');
             $table->enum('pangkat', ['admin', 'siswa'])->default('siswa');
-            $table->integer('total_eskul');
+            $table->integer('total_eskul')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
