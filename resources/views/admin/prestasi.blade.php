@@ -36,7 +36,7 @@
         </style>
     </head>
     <body class="bg-slate-950">
-        
+        @php $page = "prestasi" @endphp
         @include('admin/includes.sidebar')
 
         <!-- Main Content -->

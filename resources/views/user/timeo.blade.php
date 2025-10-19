@@ -211,6 +211,30 @@
                 </span>
               </div>
             @endforeach
+              <div class="glass rounded-2xl p-6 flex justify-between items-center hover-lift border border-orange-500/10">
+                <div>
+                  <h3 class="text-xl font-bold text-orange-300">Futsal</h3>
+                  <p class="text-slate-400 text-sm">
+                    Sabtu • 09:30 - 13:00 WIB
+                  </p>
+                  <p class="text-slate-500 text-sm">Pembina: Pak Taufik</p>
+                </div>
+                <span class="px-3 py-1 text-xs bg-gradient-to-r from-orange-500 to-rose-500 rounded-full shadow-lg capitalize">
+                  Olahraga
+                </span>
+              </div>
+              <div class="glass rounded-2xl p-6 flex justify-between items-center hover-lift border border-orange-500/10">
+                <div>
+                  <h3 class="text-xl font-bold text-orange-300">Paduan Suara</h3>
+                  <p class="text-slate-400 text-sm">
+                    Kamis • 15:30 - 17:00 WIB
+                  </p>
+                  <p class="text-slate-500 text-sm">Pembina: Bu Desta</p>
+                </div>
+                <span class="px-3 py-1 text-xs bg-gradient-to-r from-orange-500 to-rose-500 rounded-full shadow-lg capitalize">
+                  Seni & budaya
+                </span>
+              </div>
           </div>
       </div>
     </div>

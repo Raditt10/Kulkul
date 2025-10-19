@@ -27,11 +27,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings.password');
 Route::delete('/settings/delete-data', [UserSettingsController::class, 'deleteData'])->name('user.deleteData');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/settings', [UserSettingsController::class, 'sessions'])->name('settings');
-    Route::delete('/settings/session/{id}', [UserSettingsController::class, 'logoutSession'])->name('session.logout');
-    Route::delete('/settings/logout-all', [UserSettingsController::class, 'logoutAllSessions'])->name('session.logoutAll');
-});
+//Route register
+// Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+// Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+
+// User Settings (WiP)
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/settings', [UserSettingsController::class, 'sessions'])->name('settings');
+//     Route::delete('/settings/session/{id}', [UserSettingsController::class, 'logoutSession'])->name('session.logout');
+//     Route::delete('/settings/logout-all', [UserSettingsController::class, 'logoutAllSessions'])->name('session.logoutAll');
+// });
 
 
 Route::get('user/form', [FormPendaftaranController::class, 'index'])->name('user.form');

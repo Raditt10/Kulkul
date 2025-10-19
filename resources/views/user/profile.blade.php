@@ -175,7 +175,7 @@
                                 <div class="text-center">
                                     <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 rounded-full border border-yellow-400/30">
                                         <i class="fas fa-trophy text-yellow-400 mr-2"></i>
-                                        <span class="text-yellow-300 text-sm font-medium">Siswa Berprestasi</span>
+                                        <span class="text-yellow-300 text-sm font-medium">{{ session('user')->achievements }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -290,15 +290,17 @@
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Kelas</label>
-                                                <select class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
-                                                    <option>XII RPL 1</option>
-                                                    <option>XII RPL 2</option>
-                                                    <option>XII RPL 3</option>
-                                                </select>
+                                                <p class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                    {{ session('user')->kelas }}
+                                                </p>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-medium text-slate-300 mb-2">Jurusan</label>
-                                                <input type="text" value="Rekayasa Perangkat Lunak" class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
+                                                <input type="text" value="@php if(str_contains(session('user')->kelas, "RPL")) echo ("Rekayasa Perangkat Lunak");
+                                                else if(str_contains(session('user')->kelas, "TKJ")) echo ("Teknik Komputer dan Jaringan");
+                                                else echo ("Kimia Analisis"); @endphp"
+                                                
+                                                class="w-full px-4 py-3 bg-slate-700/50 border border-orange-500/20 rounded-xl text-white placeholder-slate-400 focus:border-orange-400 focus:outline-none transition-colors duration-300" readonly>
                                             </div>
                                         </div>
 

@@ -28,7 +28,7 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    @php $site = 'form' @endphp
+    @php $page = 'form' @endphp
 
     @include('admin/includes.sidebar')
 

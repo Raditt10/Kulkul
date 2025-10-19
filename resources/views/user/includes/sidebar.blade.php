@@ -21,12 +21,11 @@
                     <p class="font-bold text-white text-base">{{session('user')->name}}</p>
                     <p class="text-sm text-orange-300">NIS: {{session('user')->nis}}</p>
                     <p class="text-xs text-slate-400">Siswa Aktif</p>
-                    @endauth
-                    @guest
+                    @else
                     <p class="font-bold text-white text-base">guest</p>
                     <p class="text-sm text-orange-300">NIS: xxxxx</p>
                     <p class="text-xs text-slate-400">Belum login</p>
-                    @endguest
+                    @endauth
                 </div>
             </div>
         </div>
@@ -35,8 +34,10 @@
         <ul class="px-6 py-6 space-y-3">
             <li>
                 <a href="{{ route('home') }}" 
-                @if($page == 'home') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'home') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-home text-orange-400 w-5"></i>
                     <span class="font-medium">Beranda</span>
@@ -44,8 +45,10 @@
             </li>
             <li>
                 <a href="{{ route('about') }}"
-                @if($page == 'about') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'about') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-info-circle text-orange-400 w-5"></i>
                     <span class="font-medium">Tentang Kami</span>
@@ -53,8 +56,10 @@
             </li>
             <li>
                 <a href="{{ route('services') }}"
-                @if($page == 'services') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'services') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-cogs text-orange-400 w-5"></i>
                     <span class="font-medium">Layanan</span>
@@ -62,8 +67,10 @@
             </li>
             <li>
                 <a href="{{ route('ekstrakurikuler') }}"
-                @if($page == 'eskul') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'eskul') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-code text-orange-400 w-5"></i>
                     <span class="font-medium">Daftar Esktrakurikuler</span>
@@ -72,8 +79,10 @@
             @auth
             <li>
                 <a href="{{ route('profile') }}"
-                @if($page == 'profile') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'profile') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-user-graduate text-orange-400 w-5"></i>
                     <span class="font-medium">Profil Saya</span>
@@ -81,8 +90,10 @@
             </li>
             <li>
                 <a href="{{ route('friends') }}"
-                @if($page == 'friends') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'friends') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-users text-orange-400 w-5"></i>
                     <span class="font-medium">Teman Saya</span>
@@ -91,8 +102,10 @@
             @endauth
             <li>
                 <a href="{{ route('settings') }}"
-                @if($page == 'settings') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'settings') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-cog text-orange-400 w-5"></i>
                     <span class="font-medium">Pengaturan</span>
@@ -101,8 +114,10 @@
             @guest
             <li>
                 <a href="{{ route('login') }}"
-                @if($page == 'login') class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"
-                @else class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl" @endif
+                @php 
+                    if($page == 'login') {echo 'class="flex items-center space-x-4 text-white bg-orange-600/30 transition-all duration-300 hover-lift p-3 rounded-xl border border-orange-400/30"';}
+                    else {echo 'class="flex items-center space-x-4 text-slate-300 hover:text-white hover:bg-orange-600/20 transition-all duration-300 hover-lift p-3 rounded-xl"';}
+                @endphp
                 >
                     <i class="fas fa-sign-in-alt text-orange-400 w-5"></i>
                     <span class="font-medium">Masuk</span>

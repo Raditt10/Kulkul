@@ -28,7 +28,7 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    
+    @php $page = "siswa" @endphp
     @include('admin/includes.sidebar')
 
     <!-- Main Content -->

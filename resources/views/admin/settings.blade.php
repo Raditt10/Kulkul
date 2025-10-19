@@ -53,8 +53,10 @@
     </style>
 </head>
 <body class="bg-slate-950 overflow-x-hidden">
-
+    @php $page = "settings" @endphp
     @include('admin/includes.sidebar')
+
+    @include('admin.includes.notif')
 
     <!-- Success Notification -->
     <div id="successNotification" class="fixed top-4 right-4 z-50 hidden">

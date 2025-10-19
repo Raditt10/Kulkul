@@ -28,7 +28,7 @@
     </style>
 </head>
 <body class="bg-slate-950">
-    @php $site = 'schedule' @endphp
+    @php $page = 'jadwal' @endphp
 
     @include('admin/includes.sidebar')
     
