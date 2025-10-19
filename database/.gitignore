@@ -1,1 +1,3 @@
-*.sqlite*
+# GANTI isi file menjadi:
+*
+!/.gitignore
