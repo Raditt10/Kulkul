@@ -179,20 +179,33 @@
             .language-option:hover {
                 transform: scale(1.05);
             }
-        </style>
-    </head>
-    <body class="dark-mode overflow-x-hidden">
-        @php $page = 'settings' @endphp
+        }
+    </style>
+</head>
+<body class="dark-mode overflow-x-hidden">
+   <!-- Animated Background -->
+<div class="fixed inset-0 -z-10">
+    <!-- Gradient base -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-orange-600/5 via-red-600/5 to-orange-600/5 animate-pulse-slow"></div>
+    <!-- Floating blobs -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
+    <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-400/5 rounded-full blur-2xl animate-pulse-slow" style="animation-delay: 4s"></div>
+</div>
 
-        <!-- Animated Background -->
-        <div class="fixed inset-0 -z-10">
-            <!-- Gradient base -->
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-orange-600/5 via-red-600/5 to-orange-600/5 animate-pulse-slow"></div>
-            <!-- Floating blobs -->
-            <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
-            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-400/5 rounded-full blur-2xl animate-pulse-slow" style="animation-delay: 4s"></div>
+   @include('user/includes.navbar')
+  
+   @include('user/includes.sidebar')
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="fixed top-24 right-4 z-50 hidden">
+        <div class="bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl success-message flex items-center gap-3">
+            <div class="text-2xl animate-success">✓</div>
+            <div>
+                <div class="font-bold">Berhasil!</div>
+                <div class="text-sm" id="successMessage">Perubahan telah disimpan</div>
+            </div>
         </div>
 
         @include('user/includes.navbar')

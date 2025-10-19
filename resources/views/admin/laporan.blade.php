@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-	<title>Admin Laporan Prestasi Kulkul</title>
+	<title>Coming soon</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script>
 		tailwind.config = { theme: { extend: { colors: { slate: { 850: '#1a2234' } } } } };
@@ -29,8 +29,6 @@
 <body class="bg-slate-950 text-white">
 	@php $page = "laporan" @endphp
 	@include('admin/includes.sidebar')
-
-	@include('admin.includes.notif')
 
 	<!-- Main content -->
 	<div class="ml-64 min-h-screen">

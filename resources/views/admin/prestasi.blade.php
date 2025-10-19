@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-        <title>Admin Prestasi Kulkul</title>
+        <title>Coming soon</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -38,8 +38,6 @@
     <body class="bg-slate-950">
         @php $page = "prestasi" @endphp
         @include('admin/includes.sidebar')
-
-        @include('admin.includes.notif')
 
         <!-- Main Content -->
         <div class="ml-64 min-h-screen">

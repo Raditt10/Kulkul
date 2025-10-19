@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">>
-    <title>Admin Pengaturan Kulkul</title>
+    <title>Coming soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -68,7 +68,6 @@
             </div>
         </div>
     </div>
-
 
         <h1 class="text-3xl font-bold text-white mb-6">Pengaturan</h1>
 
@@ -980,7 +979,6 @@
     </script>
 </body>
 </html>
-
                 <!-- Security Tab -->
                 <div id="security-tab" class="settings-content">
                     <div class="glass-effect rounded-2xl p-6 border border-slate-700 mb-6">
@@ -1162,3 +1160,6 @@
         </div>
     </div>
 </div>
+    <script src="{{ asset('notif.js') }}"></script>
+    </body>
+</html>

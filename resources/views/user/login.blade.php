@@ -273,15 +273,15 @@
                 <div class="text-center mt-6 text-slate-400 text-xs">
                     <p class="mb-3">© 2025 SMKN 13 Bandung. All rights reserved.</p>
                     <div class="flex items-center justify-center gap-4">
-                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
+                        <a href="https://www.facebook.com/smkn13bdg2/" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
                             FACEBOOK
                         </a>
                         <span class="text-slate-700">•</span>
-                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
+                        <a href="https://x.com/smkn13bdg?lang=en" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
                             TWITTER
                         </a>
                         <span class="text-slate-700">•</span>
-                        <a href="#" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
+                        <a href="https://www.instagram.com/smkn13bandung/?hl=en" class="hover:text-orange-400 transition-all duration-300 hover:scale-110 font-medium">
                             INSTAGRAM
                         </a>
                     </div>
