@@ -9,24 +9,15 @@ class Pendaftaran extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_pendaftaran';
     protected $table = 'pendaftarans';
-
+    
     protected $fillable = [
         'nis',
-        'ekskul_id',
+        'ekskul_id', 
         'alasan',
-        'tgl_pendaftaran',
-        'status',
+        'tgl_pendaftaran'
     ];
 
-    // Relasi ke User
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'nis', 'nis');
-    }
-
-    // Relasi ke Ekskul
     public function ekskul()
     {
         return $this->belongsTo(Ekskul::class, 'ekskul_id', 'id_ekskul');
